@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>ReCA · Academic Slide Template</title>
+<style>/*  ReCA academic template · 1600×900 (16:9) · fully self-contained
+    Editing: Change .kicker and .slide-title on each page.
+    Insert your own figures/text/animation HTML inside that page's .slide-content.
+    No external frameworks or fonts needed.  */
+:root {
+  --navy: #173d6a;
+  --blue: #2f70b3;
+  --muted: #647b93;
+  --canvas: #fff;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; width: 100%; margin: 0; overflow: hidden; }
+body {
+  background: #e5ebf2;
+  color: var(--navy);
+  font-family: "Avenir Next", "Helvetica Neue", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+#deck {
+  width: 1600px;
+  height: 900px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  overflow: hidden;
+  transform-origin: center center;
+  background: var(--canvas);
+  box-shadow: 0 18px 65px rgba(24, 53, 85, 0.12);
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  display: none;
+}
+.slide.active { display: block; }
+.kicker {
+  position: absolute;
+  top: 59px;
+  left: 90px;
+  right: 90px;
+  color: var(--blue);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .105em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.slide-title {
+  position: absolute;
+  top: 111px;
+  left: 88px;
+  right: 88px;
+  margin: 0;
+  color: var(--navy);
+  font-size: 57px;
+  font-weight: 750;
+  line-height: 1.17;
+  letter-spacing: -.022em;
+}
+.slide.cover .slide-title {
+  top: 187px;
+  right: 140px;
+  font-size: 66px;
+  line-height: 1.2;
+  letter-spacing: -.027em;
+}
+.slide-content {
+  position: absolute;
+  left: 90px;
+  right: 90px;
+  top: 286px;
+  bottom: 99px;
+  /* Intentionally empty. Add your own HTML here. */
+}
+.slide.cover .slide-content { top: 550px; }
+.slide-number {
+  position: absolute;
+  right: 66px;
+  bottom: 41px;
+  color: #5d6e7e;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+@media print {
+  html, body { overflow: visible; width: 1600px; height: auto; background: #fff; }
+  #deck { position: static; transform: none !important; box-shadow: none; height: auto; overflow: visible; }
+  .slide { display: block !important; position: relative; width: 1600px; height: 900px; break-after: page; page-break-after: always; }
+  @page { size: 1600px 900px; margin: 0; }
+}
+</style>
+</head>
+<body>
+<div id="deck" role="group" aria-label="ReCA slide presentation">
+  <!-- Slide 01 | Presenter A | insert slide content below -->
+  <section class="slide cover active" data-slide="1" data-owner="A" aria-hidden="false">
+    <div class="kicker">PAPER PRESENTATION · ASPLOS 2025</div>
+    <h1 class="slide-title">ReCA: Integrated Acceleration for Real-Time and Efficient Cooperative Embodied Autonomous Agents</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">1</div>
+  </section>
+  <!-- Slide 02 | Presenter A | insert slide content below -->
+  <section class="slide" data-slide="2" data-owner="A" aria-hidden="true">
+    <div class="kicker">01 / MOTIVATION · RUNNING EXAMPLE</div>
+    <h1 class="slide-title">Two Agents, One Mission</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">2</div>
+  </section>
+  <!-- Slide 03 | Presenter A | insert slide content below -->
+  <section class="slide" data-slide="3" data-owner="A" aria-hidden="true">
+    <div class="kicker">01 / MOTIVATION · SYSTEM WORKFLOW</div>
+    <h1 class="slide-title">Inside the Embodied Agent Workflow</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">3</div>
+  </section>
+  <!-- Slide 04 | Presenter A | insert slide content below -->
+  <section class="slide" data-slide="4" data-owner="A" aria-hidden="true">
+    <div class="kicker">01 / CHARACTERIZATION · LATENCY</div>
+    <h1 class="slide-title">Where Does the Time Go?</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">4</div>
+  </section>
+  <!-- Slide 05 | Presenter A | insert slide content below -->
+  <section class="slide" data-slide="5" data-owner="A" aria-hidden="true">
+    <div class="kicker">02 / RECA · CROSS-LAYER OVERVIEW</div>
+    <h1 class="slide-title">ReCA: Optimize the Entire Mission</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">5</div>
+  </section>
+  <!-- Slide 06 | Presenter B | insert slide content below -->
+  <section class="slide" data-slide="6" data-owner="B" aria-hidden="true">
+    <div class="kicker">02 / ALGORITHM · LOCAL MODEL</div>
+    <h1 class="slide-title">Is a Smaller LLM Always Faster?</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">6</div>
+  </section>
+  <!-- Slide 07 | Presenter B | insert slide content below -->
+  <section class="slide" data-slide="7" data-owner="B" aria-hidden="true">
+    <div class="kicker">03 / SYSTEM · DUAL MEMORY</div>
+    <h1 class="slide-title">What Should Agents Remember?</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">7</div>
+  </section>
+  <!-- Slide 08 | Presenter B | insert slide content below -->
+  <section class="slide" data-slide="8" data-owner="B" aria-hidden="true">
+    <div class="kicker">03 / SYSTEM · HIERARCHICAL COOPERATION</div>
+    <h1 class="slide-title">Who Should Coordinate Twelve Agents?</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">8</div>
+  </section>
+  <!-- Slide 09 | Presenter B | insert slide content below -->
+  <section class="slide" data-slide="9" data-owner="B" aria-hidden="true">
+    <div class="kicker">03 / SYSTEM · CLUSTER SIZE TRADE-OFF</div>
+    <h1 class="slide-title">How Large Should a Cluster Be?</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">9</div>
+  </section>
+  <!-- Slide 10 | Presenter B | insert slide content below -->
+  <section class="slide" data-slide="10" data-owner="B" aria-hidden="true">
+    <div class="kicker">04 / EFFICIENT EXECUTION · COMMUNICATION</div>
+    <h1 class="slide-title">Plan First. Communicate When Needed.</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">10</div>
+  </section>
+  <!-- Slide 11 | Presenter A | insert slide content below -->
+  <section class="slide" data-slide="11" data-owner="A" aria-hidden="true">
+    <div class="kicker">04 / EFFICIENT EXECUTION · MULTI-STEP</div>
+    <h1 class="slide-title">Think Once. Act Multiple Times.</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">11</div>
+  </section>
+  <!-- Slide 12 | Presenter A | insert slide content below -->
+  <section class="slide" data-slide="12" data-owner="A" aria-hidden="true">
+    <div class="kicker">04 / EFFICIENT EXECUTION · RUNTIME ADAPTATION</div>
+    <h1 class="slide-title">How Long Should an Action Window Be?</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">12</div>
+  </section>
+  <!-- Slide 13 | Presenter A | insert slide content below -->
+  <section class="slide" data-slide="13" data-owner="A" aria-hidden="true">
+    <div class="kicker">05 / HARDWARE · BOTTLENECK SHIFT</div>
+    <h1 class="slide-title">The Bottleneck Has Moved</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">13</div>
+  </section>
+  <!-- Slide 14 | Presenter A | insert slide content below -->
+  <section class="slide" data-slide="14" data-owner="A" aria-hidden="true">
+    <div class="kicker">05 / HARDWARE · A* SEARCH</div>
+    <h1 class="slide-title">Why Is A* Hard to Accelerate?</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">14</div>
+  </section>
+  <!-- Slide 15 | Presenter A | insert slide content below -->
+  <section class="slide" data-slide="15" data-owner="A" aria-hidden="true">
+    <div class="kicker">05 / HARDWARE · HETEROGENEOUS CO-DESIGN</div>
+    <h1 class="slide-title">Matching LLMs and A* to the Right Hardware</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">15</div>
+  </section>
+  <!-- Slide 16 | Presenter B | insert slide content below -->
+  <section class="slide" data-slide="16" data-owner="B" aria-hidden="true">
+    <div class="kicker">06 / EVALUATION · END-TO-END</div>
+    <h1 class="slide-title">Does ReCA Actually Speed Up the Mission?</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">16</div>
+  </section>
+  <!-- Slide 17 | Presenter B | insert slide content below -->
+  <section class="slide" data-slide="17" data-owner="B" aria-hidden="true">
+    <div class="kicker">06 / EVALUATION · SCALABILITY</div>
+    <h1 class="slide-title">Can ReCA Scale to More Agents?</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">17</div>
+  </section>
+  <!-- Slide 18 | Presenter B | insert slide content below -->
+  <section class="slide" data-slide="18" data-owner="B" aria-hidden="true">
+    <div class="kicker">06 / EVALUATION · ABLATION</div>
+    <h1 class="slide-title">Where Does the 10.2× Speedup Come From?</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">18</div>
+  </section>
+  <!-- Slide 19 | Presenter B | insert slide content below -->
+  <section class="slide" data-slide="19" data-owner="B" aria-hidden="true">
+    <div class="kicker">06 / EVALUATION · EVIDENCE BOUNDARIES</div>
+    <h1 class="slide-title">What Does the Evidence Leave Unanswered?</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">19</div>
+  </section>
+  <!-- Slide 20 | Presenter B | insert slide content below -->
+  <section class="slide" data-slide="20" data-owner="B" aria-hidden="true">
+    <div class="kicker">07 / BEYOND RECA · ARBORIST</div>
+    <h1 class="slide-title">Beyond ReCA: Speculative Motion Planning</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">20</div>
+  </section>
+  <!-- Slide 21 | Presenter A | insert slide content below -->
+  <section class="slide" data-slide="21" data-owner="A" aria-hidden="true">
+    <div class="kicker">07 / BEYOND RECA · FLASH · WA-SPECDEC · DELTORIS</div>
+    <h1 class="slide-title">Beyond ReCA: Faster, World-Aware Inference</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">21</div>
+  </section>
+  <!-- Slide 22 | Presenter B | insert slide content below -->
+  <section class="slide" data-slide="22" data-owner="B" aria-hidden="true">
+    <div class="kicker">07 / BEYOND RECA · DYNAHMRC · THEA · REMAC</div>
+    <h1 class="slide-title">Beyond ReCA: Robust Cooperation and Execution</h1>
+    <main class="slide-content">
+      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    </main>
+    <div class="slide-number">22</div>
+  </section>
+</div>
+<script>/* Keyboard-only navigation. No visible arrows, controls, or progress indicators. */
+(function () {
+  'use strict';
+  const width = 1600;
+  const height = 900;
+  const deck = document.getElementById('deck');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let current = 0;
+
+  function resize() {
+    const scale = Math.min(window.innerWidth / width, window.innerHeight / height);
+    deck.style.transform = `translate(-50%, -50%) scale(${scale})`;
+  }
+
+  function showSlide(next) {
+    const index = Math.min(slides.length - 1, Math.max(0, next));
+    if (slides[current]) {
+      slides[current].classList.remove('active');
+      slides[current].setAttribute('aria-hidden', 'true');
+    }
+    current = index;
+    slides[current].classList.add('active');
+    slides[current].setAttribute('aria-hidden', 'false');
+  }
+
+  window.addEventListener('keydown', function (event) {
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      showSlide(current + 1);
+    } else if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      showSlide(current - 1);
+    }
+  });
+  window.addEventListener('resize', resize);
+  resize();
+  showSlide(0);
+})();</script>
+</body>
+</html>
