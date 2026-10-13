@@ -1,0 +1,309 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+
+<title>ReCA · Slide 01</title>
+
+<link rel="stylesheet" href="slides.css">
+
+<style>
+/* =========================================
+   SLIDE 01 — ACADEMIC COVER
+   ========================================= */
+
+/* Main paper title */
+
+.slide.cover .slide-title {
+  left: 90px;
+  right: 90px;
+  top: 158px;
+
+  margin: 0;
+  line-height: 1;
+  letter-spacing: normal;
+}
+
+/* ReCA — Main title */
+
+.cover-acronym {
+  display: block;
+
+  color: #173d6a;
+  font-size: 101px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+/* Complete paper title */
+
+.cover-paper-title {
+  display: block;
+  margin-top: 20px;
+
+  color: #173d6a;
+  font-size: 46px;
+  font-weight: 740;
+  line-height: 1.2;
+  letter-spacing: -0.027em;
+}
+
+.cover-paper-title span {
+  display: block;
+}
+
+/* =========================================
+   CONTENT POSITION
+   ========================================= */
+
+.slide.cover .slide-content {
+  top: 469px;
+  bottom: 102px;
+  left: 90px;
+  right: 90px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* Shared labels */
+
+.cover .meta-label {
+  color: #2f70b3;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+
+  margin-bottom: 12px;
+}
+
+/* =========================================
+   PAPER AUTHORS
+   ========================================= */
+
+.cover .paper-authors {
+  width: 100%;
+}
+
+.cover .author-names {
+  max-width: 1335px;
+
+  color: #53677e;
+  font-size: 24px;
+  font-weight: 450;
+  line-height: 1.52;
+}
+
+/* =========================================
+   HORIZONTAL DIVIDER
+   ========================================= */
+
+.cover .cover-rule {
+  width: 100%;
+  height: 0;
+
+  border: 0;
+  border-top: 1.5px solid #d8e4ef;
+
+  margin: 40px 0 31px;
+}
+
+/* =========================================
+   BOTTOM INFORMATION
+   ========================================= */
+
+.cover .presentation-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+/* Left: Course information */
+
+.cover .course-name {
+  color: #173d6a;
+  font-size: 27px;
+  font-weight: 760;
+  line-height: 1.3;
+}
+
+.cover .university {
+  margin-top: 11px;
+
+  color: #647b93;
+  font-size: 23px;
+  font-weight: 450;
+  line-height: 1.35;
+}
+
+/* Right: Presenters */
+
+.cover .presenter-block {
+  justify-self: end;
+  text-align: left;
+  min-width: 470px;
+}
+
+.cover .presenters {
+  color: #173d6a;
+  font-size: 27px;
+  font-weight: 740;
+  line-height: 1.4;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="deck" role="group" aria-label="ReCA slide 1">
+
+  <section
+    class="slide cover active"
+    data-slide="1"
+    data-owner="A"
+    aria-hidden="false"
+  >
+
+    <!-- =====================================
+         TOP LEFT — SECTION HEADING
+         ===================================== -->
+
+    <div class="kicker">
+      PAPER PRESENTATION · ASPLOS 2025
+    </div>
+
+
+    <!-- =====================================
+         PAPER TITLE
+         ===================================== -->
+
+    <h1 class="slide-title">
+
+      <span class="cover-acronym">
+        ReCA:
+      </span>
+
+      <span class="cover-paper-title">
+
+        <span>
+          Integrated Acceleration for Real-Time and Efficient
+        </span>
+
+        <span>
+          Cooperative Embodied Autonomous Agents
+        </span>
+
+      </span>
+
+    </h1>
+
+
+    <!-- =====================================
+         AUTHOR AND PRESENTATION INFORMATION
+         ===================================== -->
+
+    <main class="slide-content">
+
+      <!-- Original paper authors -->
+
+      <div class="paper-authors">
+
+        <div class="meta-label">
+          PAPER AUTHORS
+        </div>
+
+        <div class="author-names">
+          Zishen Wan, Yuhang Du, Mohamed Ibrahim,
+          Jiayi Qian, Jason Jabbour, Yang (Katie) Zhao,
+          <br>
+          Tushar Krishna, Arijit Raychowdhury,
+          and Vijay Janapa Reddi
+        </div>
+
+      </div>
+
+
+      <!-- Horizontal separator -->
+
+      <hr class="cover-rule">
+
+
+      <!-- Bottom information -->
+
+      <div class="presentation-info">
+
+        <!-- Left: Course -->
+
+        <div class="course-block">
+
+          <div class="course-name">
+            COMS 6998 — AI-Native Computing
+          </div>
+
+          <div class="university">
+            Columbia University
+          </div>
+
+        </div>
+
+
+        <!-- Right: Presenters -->
+
+        <div class="presenter-block">
+
+          <div class="meta-label">
+            PRESENTED BY
+          </div>
+
+          <div class="presenters">
+            Yishan Song &amp; Shirui Hu
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+
+    <!-- PAGE NUMBER -->
+
+    <div class="slide-number">1</div>
+
+  </section>
+
+</div>
+
+
+<script>
+(function () {
+  const deck = document.getElementById('deck');
+
+  function resize() {
+    const scale = Math.min(
+      window.innerWidth / 1600,
+      window.innerHeight / 900
+    );
+
+    deck.style.transform =
+      `translate(-50%, -50%) scale(${scale})`;
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>ReCA · Slide 02</title>
+<link rel="stylesheet" href="slides.css">
+
+<style>
+/* =========================================
+   SLIDE 02 — Two Agents, One Mission
+   ========================================= */
+
+.s2-layout {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 42px;
+  align-items: center;
+
+  /* Move video and summary upward together */
+  transform: translateY(-55px);
+}
+
+
+/* LEFT — VIDEO */
+
+.s2-media {
+  margin: 0;
+  min-width: 0;
+}
+
+.s2-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #fff;
+}
+
+.s2-video-frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
+}
+
+.s2-media figcaption {
+  margin-top: 9px;
+  text-align: center;
+  color: #8090a3;
+  font-size: 15px;
+}
+
+/* Video error message */
+
+.s2-video-error {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: 30px;
+  background: #f4f8fc;
+  border: 1px dashed #8eb1d6;
+  color: #53677e;
+  font-size: 18px;
+  text-align: center;
+}
+
+.s2-video-error[hidden] {
+  display: none;
+}
+
+/* RIGHT — ACADEMIC SUMMARY */
+
+.s2-summary {
+  min-width: 0;
+  padding-left: 33px;
+  border-left: 2px solid #d8e4ef;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.s2-label {
+  display: block;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #2f70b3;
+}
+
+/* Mission goal */
+
+.s2-goal {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 750;
+  line-height: 1.35;
+  color: #173d6a;
+}
+
+.s2-goal span {
+  color: #2f70b3;
+}
+
+.s2-divider {
+  height: 1px;
+  background: #d8e4ef;
+  margin: 7px 0;
+}
+
+/* Current subtask */
+
+.s2-subtask {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 780;
+  color: #173d6a;
+  line-height: 1.25;
+}
+
+.s2-description {
+  margin: 0;
+  font-size: 20px;
+  color: #53677e;
+  line-height: 1.45;
+}
+
+/* Cooperation flow */
+
+.s2-flow {
+  display: grid;
+  grid-template-columns: 1fr 18px 1fr 18px 1fr;
+  align-items: center;
+  gap: 7px;
+  margin-top: 5px;
+}
+
+.s2-step {
+  min-height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: 1px solid #cfdfef;
+  border-radius: 7px;
+  background: #edf4fb;
+  font-size: 16px;
+  font-weight: 750;
+  text-align: center;
+  color: #245f9c;
+}
+
+.s2-arrow {
+  font-size: 21px;
+  font-weight: 700;
+  color: #6c98c4;
+  text-align: center;
+}
+
+/* Takeaway */
+
+.s2-takeaway {
+  margin: 12px 0 0;
+  padding: 0;
+  border: none;
+
+  color: #173d6a;
+  font-size: 23px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="deck" role="group" aria-label="ReCA slide 2">
+
+  <section
+    class="slide active"
+    data-slide="2"
+    data-owner="A"
+    aria-hidden="false"
+  >
+
+    <div class="kicker">
+      01 / MOTIVATION · RUNNING EXAMPLE
+    </div>
+
+    <h1 class="slide-title">
+      Two Agents, One Mission
+    </h1>
+
+    <main class="slide-content">
+
+      <div class="s2-layout">
+
+        <!-- =========================
+             LEFT — ANIMATION
+             ========================= -->
+
+        <figure class="s2-media">
+
+          <div class="s2-video-frame">
+
+            <video
+              id="s2-video"
+              src="../assets/videos/ReCA_Slide02_Two_Agents_One_Mission.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              aria-label="Alice and Bob cooperative task animation"
+            ></video>
+
+            <div
+              id="s2-video-error"
+              class="s2-video-error"
+              hidden
+            >
+              Video could not be loaded.
+              Please check the MP4 file path.
+            </div>
+
+          </div>
+
+          <figcaption>
+            Illustrative animation based on ReCA Fig. 2
+            
+          </figcaption>
+
+        </figure>
+
+
+        <!-- =========================
+             RIGHT — MAIN CONTENT
+             ========================= -->
+
+        <aside class="s2-summary">
+
+          <!-- Overall mission -->
+
+          <div class="s2-label">
+            MISSION GOAL
+          </div>
+
+          <p class="s2-goal">
+            1 Pear + 2 Apples + 1 Pudding
+            <br>
+            <span>→ 1 Plate</span>
+          </p>
+
+          <div class="s2-divider"></div>
+
+          <!-- Story shown in the animation -->
+
+          <div class="s2-label">
+            CURRENT SUBTASK
+          </div>
+
+          <h2 class="s2-subtask">
+            Fetch One Pear
+          </h2>
+
+          <p class="s2-description">
+            Alice asks Bob to bring a pear to the plate
+            while she continues exploring.
+          </p>
+
+          <!-- Cooperation workflow -->
+
+          <div class="s2-flow">
+
+            <div class="s2-step">
+              Discover
+            </div>
+
+            <div class="s2-arrow">→</div>
+
+            <div class="s2-step">
+              Communicate
+            </div>
+
+            <div class="s2-arrow">→</div>
+
+            <div class="s2-step">
+              Coordinate
+            </div>
+
+          </div>
+
+          <!-- Key takeaway -->
+
+          <p class="s2-takeaway">
+            Shared information enables
+            cooperative task execution.
+          </p>
+
+        </aside>
+
+      </div>
+
+    </main>
+
+    <div class="slide-number">2</div>
+
+  </section>
+
+</div>
+
+<script>
+(function () {
+  const deck = document.getElementById('deck');
+  const video = document.getElementById('s2-video');
+  const warning = document.getElementById('s2-video-error');
+
+  function resize() {
+    const scale = Math.min(
+      window.innerWidth / 1600,
+      window.innerHeight / 900
+    );
+
+    deck.style.transform =
+      `translate(-50%, -50%) scale(${scale})`;
+  }
+
+  video.addEventListener('error', function () {
+    warning.hidden = false;
+    console.error(
+      'Slide 2 video failed to load:',
+      video.src
+    );
+  });
+
+  video.addEventListener('loadeddata', function () {
+    warning.hidden = true;
+  });
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  video.play().catch(function (error) {
+    console.warn(
+      'Video autoplay was delayed:',
+      error.message
+    );
+  });
+})();
+</script>
+
+</body>
+</html>

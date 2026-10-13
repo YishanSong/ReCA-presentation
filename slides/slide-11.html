@@ -1,0 +1,316 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+
+<title>ReCA · Slide 11</title>
+
+<link rel="stylesheet" href="slides.css">
+
+<style>
+/* =========================================
+   SLIDE 11 — Planning-Guided Multi-Step
+   ========================================= */
+
+/* Content placement */
+
+.slide[data-slide="11"] .slide-content {
+  top: 252px;
+  bottom: 95px;
+}
+
+/* Main layout */
+
+.s11-layout {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
+  gap: 44px;
+  align-items: center;
+}
+
+/* =========================================
+   LEFT — ANIMATION
+   ========================================= */
+
+.s11-figure {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.s11-video-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.s11-video-frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+.s11-figure figcaption {
+  margin-top: 12px;
+  color: #8090a3;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* =========================================
+   RIGHT — ACADEMIC SUMMARY
+   ========================================= */
+
+.s11-summary {
+  min-width: 0;
+  padding-left: 30px;
+  border-left: 2px solid #d8e4ef;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 17px;
+}
+
+/* Section labels */
+
+.s11-label {
+  color: #2f70b3;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+}
+
+/* Research question */
+
+.s11-question {
+  margin: 0;
+  color: #173d6a;
+  font-size: 30px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.s11-question em {
+  font-style: normal;
+  color: #2f70b3;
+}
+
+/* Divider */
+
+.s11-divider {
+  width: 100%;
+  height: 1px;
+  background: #d8e4ef;
+  margin: 5px 0;
+}
+
+/* ReCA approach */
+
+.s11-approach {
+  margin: 0;
+  color: #173d6a;
+  font-size: 29px;
+  font-weight: 780;
+  line-height: 1.33;
+}
+
+.s11-approach strong {
+  color: #2f70b3;
+  font-weight: 800;
+}
+
+/* Key insight */
+
+.s11-insight {
+  margin: 0;
+  color: #173d6a;
+  font-size: 25px;
+  font-weight: 750;
+  line-height: 1.38;
+}
+
+.s11-insight strong {
+  color: #2f70b3;
+  font-weight: 800;
+}
+
+/* Transition note */
+
+.s11-note {
+  margin: 2px 0 0;
+  color: #62788e;
+  font-size: 18px;
+  line-height: 1.4;
+}
+</style>
+</head>
+
+<body>
+
+<div id="deck" role="group" aria-label="ReCA slide 11">
+
+  <section
+    class="slide active"
+    data-slide="11"
+    data-owner="A"
+    aria-hidden="false"
+  >
+
+    <!-- Small Section Heading -->
+
+    <div class="kicker">
+      04 / EFFICIENT EXECUTION · MULTI-STEP
+    </div>
+
+    <!-- Main Title -->
+
+    <h1 class="slide-title">
+      Think Once. Act Multiple Times.
+    </h1>
+
+    <main class="slide-content">
+
+      <div class="s11-layout">
+
+        <!-- =========================
+             LEFT — ANIMATED COMPARISON
+             ========================= -->
+
+        <figure class="s11-figure">
+
+          <div class="s11-video-frame">
+
+            <video
+              id="s11-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              aria-label="Comparison between traditional step-by-step planning and ReCA planning-guided multi-step execution"
+            >
+              <source
+                src="../assets/videos/ReCA_Slide11_Multi_Step_Execution.mp4"
+                type="video/mp4"
+              >
+              Your browser does not support MP4 video.
+            </video>
+
+          </div>
+
+          <figcaption>
+            Conceptual animation based on ReCA,
+            Fig. 9 · Planning-Guided Multi-Step Execution
+          </figcaption>
+
+        </figure>
+
+        <!-- =========================
+             RIGHT — RESEARCH SUMMARY
+             ========================= -->
+
+        <aside class="s11-summary">
+
+          <!-- Research Question -->
+
+          <div class="s11-label">
+            RESEARCH QUESTION
+          </div>
+
+          <h2 class="s11-question">
+            Does Bob need to
+            <em>re-plan</em> after
+            every small move?
+          </h2>
+
+          <div class="s11-divider"></div>
+
+          <!-- ReCA Approach -->
+
+          <div class="s11-label">
+            RECA'S APPROACH
+          </div>
+
+          <p class="s11-approach">
+            <strong>One high-level plan</strong>
+            guides multiple
+            low-level actions.
+          </p>
+
+          <div class="s11-divider"></div>
+
+          <!-- Key Insight -->
+
+          <div class="s11-label">
+            KEY INSIGHT
+          </div>
+
+          <p class="s11-insight">
+            Fewer repeated
+            <strong>LLM calls</strong>
+            reduce end-to-end latency.
+          </p>
+
+          <p class="s11-note">
+            Re-planning remains possible when needed.
+          </p>
+
+        </aside>
+
+      </div>
+
+    </main>
+
+    <!-- Page Number -->
+
+    <div class="slide-number">11</div>
+
+  </section>
+
+</div>
+
+<script>
+(function () {
+  const deck = document.getElementById('deck');
+  const video = document.getElementById('s11-video');
+
+  function resize() {
+    const scale = Math.min(
+      window.innerWidth / 1600,
+      window.innerHeight / 900
+    );
+
+    deck.style.transform =
+      `translate(-50%, -50%) scale(${scale})`;
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  if (video) {
+    video.play().catch(function (error) {
+      console.warn(
+        'Slide 11 video autoplay unavailable:',
+        error.message
+      );
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

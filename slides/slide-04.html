@@ -1,0 +1,302 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+
+<title>ReCA · Slide 04</title>
+
+<link rel="stylesheet" href="slides.css">
+
+<style>
+/* =========================================
+   SLIDE 04 — PERFORMANCE BOTTLENECK
+   ========================================= */
+
+/*
+  Slide 04 uses a custom content position
+  because Figure 3 is a wide horizontal chart.
+*/
+
+.slide[data-slide="4"] .slide-content {
+  top: 240px;
+  bottom: 95px;
+}
+
+/* MAIN TWO-COLUMN LAYOUT */
+
+.s4-layout {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: minmax(0, 930px) minmax(0, 1fr);
+  column-gap: 34px;
+
+  align-items: start;
+  padding-top: 20px;
+}
+
+/* =========================================
+   LEFT — ORIGINAL PAPER FIGURE
+   ========================================= */
+
+.s4-figure {
+  margin: 0;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.s4-figure img {
+  display: block;
+
+  /* Use more of the available horizontal space */
+  width: 103%;
+  max-width: none;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.s4-figure figcaption {
+  margin-top: 12px;
+
+  color: #8090a3;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* =========================================
+   RIGHT — RESEARCH SUMMARY
+   ========================================= */
+
+.s4-summary {
+  min-width: 0;
+
+  padding: 4px 0 4px 28px;
+  border-left: 2px solid #d8e4ef;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* SECTION LABELS */
+
+.s4-label {
+  display: block;
+
+  color: #2f70b3;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+
+/* RESEARCH QUESTION */
+
+.s4-question {
+  margin: 0;
+
+  color: #173d6a;
+  font-size: 28px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.s4-question em {
+  color: #2f70b3;
+  font-style: normal;
+}
+
+/* SECTION DIVIDER */
+
+.s4-divider {
+  width: 100%;
+  height: 1px;
+
+  background: #d8e4ef;
+  margin: 5px 0;
+}
+
+/* PROFILING RESULT */
+
+.s4-metric {
+  margin: 0;
+
+  color: #173d6a;
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.s4-metric span {
+  color: #2f70b3;
+}
+
+.s4-metric-description {
+  margin: 0;
+
+  color: #53677e;
+  font-size: 18px;
+  font-weight: 450;
+  line-height: 1.4;
+}
+
+/* KEY FINDING */
+
+.s4-finding {
+  margin: 0;
+
+  color: #173d6a;
+  font-size: 24px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.s4-finding strong {
+  color: #2f70b3;
+  font-weight: 800;
+}
+</style>
+</head>
+
+<body>
+
+<div id="deck" role="group" aria-label="ReCA slide 4">
+
+  <section
+    class="slide active"
+    data-slide="4"
+    data-owner="A"
+    aria-hidden="false"
+  >
+
+    <!-- SECTION HEADING -->
+
+    <div class="kicker">
+      01 / CHARACTERIZATION · LATENCY BOTTLENECK
+    </div>
+
+    <!-- MAIN TITLE -->
+
+    <h1 class="slide-title">
+      Where Does the Time Go?
+    </h1>
+
+    <main class="slide-content">
+
+      <div class="s4-layout">
+
+        <!-- =========================
+             LEFT — PAPER FIGURE
+             ========================= -->
+
+        <figure class="s4-figure">
+
+          <img
+            src="../assets/images/ReCA_Fig3.svg"
+            alt="ReCA Figure 3: Performance bottleneck analysis across CoELA, COMBO, and MindAgent."
+          >
+
+          <figcaption>
+            ReCA, Fig. 3 · Performance Bottleneck Analysis
+          </figcaption>
+
+        </figure>
+
+
+        <!-- =========================
+             RIGHT — RESEARCH SUMMARY
+             ========================= -->
+
+        <aside class="s4-summary">
+
+          <!-- Research Question -->
+
+          <div class="s4-label">
+            RESEARCH QUESTION
+          </div>
+
+          <h2 class="s4-question">
+            Why can a single step
+            take so long for agents
+            <em>like Bob?</em>
+          </h2>
+
+          <div class="s4-divider"></div>
+
+          <!-- Profiling Result -->
+
+          <div class="s4-label">
+            PROFILING RESULT
+          </div>
+
+          <p class="s4-metric">
+            ~20 <span>s / step</span>
+          </p>
+
+          <p class="s4-metric-description">
+            Average per-step latency across
+            three representative baseline systems.
+          </p>
+
+          <div class="s4-divider"></div>
+
+          <!-- Key Finding -->
+
+          <div class="s4-label">
+            KEY FINDING
+          </div>
+
+          <p class="s4-finding">
+            LLM-based
+            <strong>planning</strong> and
+            <strong>communication</strong>
+            dominate runtime.
+          </p>
+
+        </aside>
+
+      </div>
+
+    </main>
+
+    <!-- PAGE NUMBER -->
+
+    <div class="slide-number">4</div>
+
+  </section>
+
+</div>
+
+<script>
+(function () {
+  const deck = document.getElementById('deck');
+
+  function resize() {
+    const scale = Math.min(
+      window.innerWidth / 1600,
+      window.innerHeight / 900
+    );
+
+    deck.style.transform =
+      `translate(-50%, -50%) scale(${scale})`;
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+:root {
+  --navy: #173d6a;
+  --blue: #2f70b3;
+  --muted: #647b93;
+  --canvas: #fff;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; width: 100%; margin: 0; overflow: hidden; }
+body {
+  background: #e5ebf2;
+  color: var(--navy);
+  font-family: "Avenir Next", "Helvetica Neue", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+#deck {
+  width: 1600px;
+  height: 900px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  overflow: hidden;
+  transform-origin: center center;
+  background: var(--canvas);
+  box-shadow: 0 18px 65px rgba(24, 53, 85, 0.12);
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  display: none;
+}
+.slide.active { display: block; }
+.kicker {
+  position: absolute;
+  top: 59px;
+  left: 90px;
+  right: 90px;
+  color: var(--blue);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .105em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.slide-title {
+  position: absolute;
+  top: 111px;
+  left: 88px;
+  right: 88px;
+  margin: 0;
+  color: var(--navy);
+  font-size: 57px;
+  font-weight: 750;
+  line-height: 1.17;
+  letter-spacing: -.022em;
+}
+.slide.cover .slide-title {
+  top: 187px;
+  right: 140px;
+  font-size: 66px;
+  line-height: 1.2;
+  letter-spacing: -.027em;
+}
+.slide-content {
+  position: absolute;
+  left: 90px;
+  right: 90px;
+  top: 286px;
+  bottom: 99px;
+}
+.slide.cover .slide-content { top: 550px; }
+.slide-number {
+  position: absolute;
+  right: 66px;
+  bottom: 41px;
+  color: #5d6e7e;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+@media print {
+  html, body { overflow: visible; width: 1600px; height: auto; background: #fff; }
+  #deck { position: static; transform: none !important; box-shadow: none; height: auto; overflow: visible; }
+  .slide { display: block !important; position: relative; width: 1600px; height: 900px; break-after: page; page-break-after: always; }
+  @page { size: 1600px 900px; margin: 0; }
+}

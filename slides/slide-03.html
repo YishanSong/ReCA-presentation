@@ -1,0 +1,246 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>ReCA · Slide 03</title>
+<link rel="stylesheet" href="slides.css">
+
+<style>
+/* =========================================
+   SLIDE 03 — Embodied Agent Workflow
+   ========================================= */
+
+.s3-layout {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
+  gap: 45px;
+  align-items: center;
+
+  /* Match the visual position of Slide 02 */
+  transform: translateY(-45px);
+}
+
+/* LEFT — PAPER FIGURE */
+
+.s3-figure {
+  margin: 0;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.s3-figure img {
+  display: block;
+  width: 100%;
+  max-height: 465px;
+  height: auto;
+  object-fit: contain;
+}
+
+.s3-figure figcaption {
+  margin-top: 13px;
+  color: #8090a3;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* RIGHT — ACADEMIC SUMMARY */
+
+.s3-summary {
+  min-width: 0;
+  padding-left: 35px;
+  border-left: 2px solid #d8e4ef;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.s3-label {
+  display: block;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #2f70b3;
+}
+
+/* Research Question */
+
+.s3-question {
+  margin: 0;
+
+  font-size: 32px;
+  font-weight: 750;
+  line-height: 1.32;
+  color: #173d6a;
+}
+
+.s3-question em {
+  font-style: normal;
+  color: #2f70b3;
+}
+
+/* Divider */
+
+.s3-divider {
+  width: 100%;
+  height: 1px;
+  background: #d8e4ef;
+  margin: 12px 0;
+}
+
+/* Key Insight */
+
+.s3-insight {
+  margin: 0;
+
+  font-size: 27px;
+  font-weight: 750;
+  line-height: 1.38;
+  color: #173d6a;
+}
+
+.s3-insight-secondary {
+  margin: 0;
+
+  font-size: 22px;
+  font-weight: 450;
+  line-height: 1.45;
+  color: #53677e;
+}
+
+.s3-insight strong {
+  color: #2f70b3;
+  font-weight: 800;
+}
+</style>
+</head>
+
+<body>
+
+<div id="deck" role="group" aria-label="ReCA slide 3">
+
+  <section
+    class="slide active"
+    data-slide="3"
+    data-owner="A"
+    aria-hidden="false"
+  >
+
+    <!-- Small Section Heading -->
+
+    <div class="kicker">
+      01 / MOTIVATION · SYSTEM WORKFLOW
+    </div>
+
+    <!-- Main Title -->
+
+    <h1 class="slide-title">
+      Inside the Embodied Agent Workflow
+    </h1>
+
+    <main class="slide-content">
+
+      <div class="s3-layout">
+
+        <!-- =========================
+             LEFT — ORIGINAL PAPER FIGURE
+             ========================= -->
+
+        <figure class="s3-figure">
+
+          <img
+            src="../assets/images/ReCA_Fig1.svg"
+            alt="ReCA Figure 1: Modular framework for cooperative embodied AI agents, showing perception, memory, planning, communication, and execution modules."
+          >
+
+          <figcaption>
+            ReCA, Fig. 1 · Modular Framework for
+            Cooperative Embodied AI Agents
+          </figcaption>
+
+        </figure>
+
+
+        <!-- =========================
+             RIGHT — RESEARCH QUESTION
+             ========================= -->
+
+        <aside class="s3-summary">
+
+          <!-- Research Question -->
+
+          <div class="s3-label">
+            RESEARCH QUESTION
+          </div>
+
+          <h2 class="s3-question">
+            What happens inside Bob
+            when Alice asks him to
+            <em>fetch a pear?</em>
+          </h2>
+
+          <div class="s3-divider"></div>
+
+          <!-- Key Insight -->
+
+          <div class="s3-label">
+            KEY INSIGHT
+          </div>
+
+          <p class="s3-insight">
+            An embodied agent is a
+            <strong>workflow</strong>,
+            not just an LLM.
+          </p>
+
+          <p class="s3-insight-secondary">
+            Cooperation connects multiple
+            agent workflows.
+          </p>
+
+        </aside>
+
+      </div>
+
+    </main>
+
+    <!-- Page Number -->
+
+    <div class="slide-number">3</div>
+
+  </section>
+
+</div>
+
+<script>
+(function () {
+  const deck = document.getElementById('deck');
+
+  function resize() {
+    const scale = Math.min(
+      window.innerWidth / 1600,
+      window.innerHeight / 900
+    );
+
+    deck.style.transform =
+      `translate(-50%, -50%) scale(${scale})`;
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+})();
+</script>
+
+</body>
+</html>
