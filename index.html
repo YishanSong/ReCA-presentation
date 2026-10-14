@@ -76,10 +76,25 @@ body { background: #e5ebf2; }
     deck.style.transform = `translate(-50%, -50%) scale(${scale})`;
   }
 
+  function setSlideVideoActive(slide, active) {
+    try {
+      const controller = slide.contentWindow.ReCASlideVideo;
+      if (controller) controller.setActive(active);
+    } catch (error) {
+      // Same-origin HTTP preview is required for iframe lifecycle control.
+    }
+  }
+
   function showSlide(next) {
     if (!slides.length) return;
     const index = Math.min(slides.length - 1, Math.max(0, next));
+    if (index === current) {
+      deck.setAttribute('aria-label', `ReCA slide ${current + 1} of ${slides.length}`);
+      window.focus();
+      return;
+    }
     const previous = slides[current];
+    setSlideVideoActive(previous, false);
     previous.classList.remove('active');
     previous.setAttribute('aria-hidden', 'true');
     previous.inert = true;
@@ -88,6 +103,7 @@ body { background: #e5ebf2; }
     active.classList.add('active');
     active.setAttribute('aria-hidden', 'false');
     active.inert = false;
+    setSlideVideoActive(active, true);
     deck.setAttribute('aria-label', `ReCA slide ${current + 1} of ${slides.length}`);
     window.focus();
   }
@@ -112,6 +128,7 @@ body { background: #e5ebf2; }
       try {
         const page = slide.contentDocument;
         if (!page) return;
+        setSlideVideoActive(slide, slide.classList.contains('active'));
         page.addEventListener('keydown', onKeyDown);
         const title = page.querySelector('.slide-title');
         if (title) slide.title = title.textContent.trim();

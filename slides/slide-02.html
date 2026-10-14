@@ -214,9 +214,7 @@
             <video
               id="s2-video"
               src="../assets/videos/ReCA_Slide02_Two_Agents_One_Mission.mp4"
-              autoplay
               muted
-              loop
               playsinline
               preload="auto"
               aria-label="Alice and Bob cooperative task animation"
@@ -348,14 +346,9 @@
   window.addEventListener('resize', resize);
   resize();
 
-  video.play().catch(function (error) {
-    console.warn(
-      'Video autoplay was delayed:',
-      error.message
-    );
-  });
 })();
 </script>
+<script src="video-playback.js"></script>
 
 </body>
 </html>

@@ -196,9 +196,7 @@
 
             <video
               id="s11-video"
-              autoplay
               muted
-              loop
               playsinline
               preload="auto"
               aria-label="Comparison between traditional step-by-step planning and ReCA planning-guided multi-step execution"
@@ -286,7 +284,6 @@
 <script>
 (function () {
   const deck = document.getElementById('deck');
-  const video = document.getElementById('s11-video');
 
   function resize() {
     const scale = Math.min(
@@ -301,16 +298,9 @@
   window.addEventListener('resize', resize);
   resize();
 
-  if (video) {
-    video.play().catch(function (error) {
-      console.warn(
-        'Slide 11 video autoplay unavailable:',
-        error.message
-      );
-    });
-  }
 })();
 </script>
+<script src="video-playback.js"></script>
 
 </body>
 </html>

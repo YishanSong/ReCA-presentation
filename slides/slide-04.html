@@ -15,17 +15,14 @@
    SLIDE 04 — PERFORMANCE BOTTLENECK
    ========================================= */
 
-/*
-  Slide 04 uses a custom content position
-  because Figure 3 is a wide horizontal chart.
-*/
-
 .slide[data-slide="4"] .slide-content {
   top: 240px;
   bottom: 95px;
 }
 
-/* MAIN TWO-COLUMN LAYOUT */
+/* =========================================
+   MAIN TWO-COLUMN LAYOUT
+   ========================================= */
 
 .s4-layout {
   width: 100%;
@@ -44,6 +41,9 @@
    ========================================= */
 
 .s4-figure {
+  /* Negative value moves the figure left */
+  --s4-figure-shift: -50px;
+
   margin: 0;
   min-width: 0;
 
@@ -51,12 +51,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
+  /* Move chart and caption together */
+  transform: translateX(var(--s4-figure-shift));
 }
 
 .s4-figure img {
   display: block;
 
-  /* Use more of the available horizontal space */
   width: 103%;
   max-width: none;
   height: auto;
@@ -213,7 +215,6 @@
           </figcaption>
 
         </figure>
-
 
         <!-- =========================
              RIGHT — RESEARCH SUMMARY

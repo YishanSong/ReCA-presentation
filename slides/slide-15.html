@@ -1,23 +1,375 @@
+
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
+
 <title>ReCA · Slide 15</title>
+
 <link rel="stylesheet" href="slides.css">
+
+<style>
+/* =========================================
+   SLIDE 15 — HETEROGENEOUS CO-DESIGN
+   ========================================= */
+
+.slide[data-slide="15"] .slide-content {
+  top: 240px;
+  bottom: 95px;
+}
+
+/* =========================================
+   MAIN TWO-COLUMN LAYOUT
+   ========================================= */
+
+.s15-layout {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 930px) minmax(0, 1fr);
+
+  column-gap: 40px;
+  align-items: center;
+}
+
+/* =========================================
+   LEFT — ORIGINAL PAPER FIGURE
+   ========================================= */
+
+.s15-figure {
+  --s15-figure-shift: -12px;
+
+  margin: 0;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateX(var(--s15-figure-shift));
+}
+
+.s15-figure img {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  max-height: 490px;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.s15-figure figcaption {
+  margin-top: 15px;
+
+  color: #8090a3;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* =========================================
+   RIGHT — RESEARCH SUMMARY
+   ========================================= */
+
+.s15-summary {
+  min-width: 0;
+
+  padding: 6px 0 6px 30px;
+  border-left: 2px solid #d8e4ef;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* SECTION LABELS */
+
+.s15-label {
+  margin: 0 0 12px;
+
+  color: #2f70b3;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+
+/* =========================================
+   RESEARCH QUESTION
+   ========================================= */
+
+.s15-question {
+  margin: 0;
+
+  color: #173d6a;
+  font-size: 28px;
+  font-weight: 750;
+  line-height: 1.32;
+}
+
+.s15-question em {
+  color: #2f70b3;
+  font-style: normal;
+  font-weight: 800;
+}
+
+/* =========================================
+   SECTION DIVIDERS
+   ========================================= */
+
+.s15-divider {
+  width: 100%;
+  height: 1px;
+
+  background: #d8e4ef;
+  margin: 23px 0;
+}
+
+/* =========================================
+   HARDWARE DESIGN
+   ========================================= */
+
+.s15-hardware {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.s15-hardware-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.s15-hardware-name {
+  margin: 0;
+
+  color: #173d6a;
+  font-size: 23px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.s15-hardware-name strong {
+  color: #2f70b3;
+  font-weight: 800;
+}
+
+.s15-hardware-description {
+  margin: 0;
+
+  color: #53677e;
+  font-size: 18px;
+  font-weight: 450;
+  line-height: 1.4;
+}
+
+.s15-memory-note {
+  margin: 14px 0 0;
+
+  color: #687f99;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* =========================================
+   KEY FINDING
+   ========================================= */
+
+.s15-finding {
+  margin: 0;
+
+  color: #173d6a;
+  font-size: 24px;
+  font-weight: 750;
+  line-height: 1.38;
+}
+
+.s15-finding strong {
+  color: #2f70b3;
+  font-weight: 800;
+}
+</style>
 </head>
+
 <body>
-<div id="deck" role="group" aria-label="ReCA slide 15">
-  <section class="slide active" data-slide="15" data-owner="A" aria-hidden="false">
-    <div class="kicker">05 / HARDWARE · HETEROGENEOUS CO-DESIGN</div>
-    <h1 class="slide-title">Matching LLMs and A* to the Right Hardware</h1>
+
+<div
+  id="deck"
+  role="group"
+  aria-label="ReCA slide 15"
+>
+
+  <section
+    class="slide active"
+    data-slide="15"
+    data-owner="A"
+    aria-hidden="false"
+  >
+
+    <!-- =========================
+         SECTION HEADING
+         ========================= -->
+
+    <div class="kicker">
+      05 / HARDWARE · HETEROGENEOUS CO-DESIGN
+    </div>
+
+    <!-- =========================
+         MAIN TITLE
+         ========================= -->
+
+    <h1 class="slide-title">
+      Matching LLMs and A* to the Right Hardware
+    </h1>
+
     <main class="slide-content">
-      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+
+      <div class="s15-layout">
+
+        <!-- =========================
+             LEFT — PAPER FIGURE
+             ========================= -->
+
+        <figure class="s15-figure">
+
+          <img
+            src="../assets/images/ReCA_Fig10a.svg"
+            alt="ReCA Figure 10(a): Heterogeneous architecture with an A-star subsystem containing APUs and shared scratchpad, an LLM subsystem containing GPU blocks and L2 cache, and shared global DRAM."
+          >
+
+          <figcaption>
+            ReCA, Fig. 10(a) · Integrated Hardware Architecture
+          </figcaption>
+
+        </figure>
+
+        <!-- =========================
+             RIGHT — RESEARCH SUMMARY
+             ========================= -->
+
+        <aside class="s15-summary">
+
+          <!-- RESEARCH QUESTION -->
+
+          <div class="s15-label">
+            RESEARCH QUESTION
+          </div>
+
+          <h2 class="s15-question">
+            What hardware can help Bob
+            <em>plan his path faster?</em>
+          </h2>
+
+          <div class="s15-divider"></div>
+
+          <!-- HARDWARE DESIGN -->
+
+          <div class="s15-label">
+            HARDWARE DESIGN
+          </div>
+
+          <div class="s15-hardware">
+
+            <!-- GPU -->
+
+            <div class="s15-hardware-item">
+
+              <p class="s15-hardware-name">
+                <strong>GPU</strong> — LLM Inference
+              </p>
+
+              <p class="s15-hardware-description">
+                High-level planning and reasoning.
+              </p>
+
+            </div>
+
+            <!-- APU -->
+
+            <div class="s15-hardware-item">
+
+              <p class="s15-hardware-name">
+                <strong>APU</strong> — A* Acceleration
+              </p>
+
+              <p class="s15-hardware-description">
+                Low-level path planning and search.
+              </p>
+
+            </div>
+
+          </div>
+
+          <p class="s15-memory-note">
+            Both subsystems communicate through shared global DRAM.
+          </p>
+
+          <div class="s15-divider"></div>
+
+          <!-- KEY FINDING -->
+
+          <div class="s15-label">
+            KEY FINDING
+          </div>
+
+          <p class="s15-finding">
+            Match each workload to
+            <strong>specialized hardware.</strong>
+          </p>
+
+        </aside>
+
+      </div>
+
     </main>
+
+    <!-- =========================
+         PAGE NUMBER
+         ========================= -->
+
     <div class="slide-number">15</div>
+
   </section>
+
 </div>
-<script>(function () { const deck = document.getElementById('deck'); function resize() { const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900); deck.style.transform = `translate(-50%, -50%) scale(${scale})`; } window.addEventListener('resize', resize); resize(); })();</script>
+
+<script>
+(function () {
+  'use strict';
+
+  const deck = document.getElementById('deck');
+
+  /* =========================================
+     SCALE SLIDE TO WINDOW
+     ========================================= */
+
+  function resize() {
+
+    const scale = Math.min(
+      window.innerWidth / 1600,
+      window.innerHeight / 900
+    );
+
+    deck.style.transform =
+      `translate(-50%, -50%) scale(${scale})`;
+
+  }
+
+  window.addEventListener('resize', resize);
+
+  resize();
+
+})();
+</script>
+
 </body>
 </html>
