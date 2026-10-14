@@ -6,18 +6,200 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 06</title>
 <link rel="stylesheet" href="slides.css">
+<style>
+.slide[data-slide="6"] .slide-content { top: 246px; bottom: 107px; }
+.s6-layout {
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 950px) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+.s6-figure { margin: 0; min-width: 0; }
+.s6-mission {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.s6-label {
+  color: var(--blue);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  line-height: 1.35;
+}
+.s6-mission h2 {
+  margin: 7px 0 0;
+  font-size: 29px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+.s6-goal-icon { width: 87px; height: 65px; margin-right: 23px; }
+.s6-timeline { display: block; width: 100%; height: auto; overflow: visible; }
+.s6-timeline text { font-family: inherit; fill: var(--navy); }
+.s6-row-label { font-size: 17px; font-weight: 800; letter-spacing: .065em; }
+.s6-detail { font-size: 18px; fill: #647b93 !important; }
+.s6-block-label { font-size: 20px; font-weight: 700; text-anchor: middle; }
+.s6-plan rect { fill: #2f70b3; stroke: #2f70b3; stroke-width: 1; }
+.s6-plan text { fill: #fff; }
+.s6-act rect { fill: #e9f1f9; stroke: #ccdeef; stroke-width: 1; }
+.s6-figure figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 10px;
+  color: #8090a3;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.s6-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  border: 1px solid #cfdfef;
+  border-radius: 5px;
+  background: #fff;
+  color: #2f70b3;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+}
+.s6-control:hover { background: #edf4fb; }
+.s6-control:focus-visible { outline: 3px solid #2f70b3; outline-offset: 4px; }
+.s6-summary {
+  padding-left: 30px;
+  border-left: 2px solid #d8e4ef;
+  min-width: 0;
+}
+.s6-approach {
+  margin: 9px 0 12px;
+  font-size: 31px;
+  font-weight: 750;
+  line-height: 1.3;
+  letter-spacing: -.015em;
+}
+.s6-description { margin: 0; color: #53677e; font-size: 23px; line-height: 1.45; }
+.s6-divider { height: 1px; margin: 30px 0 27px; background: #d8e4ef; }
+.s6-insight { margin: 12px 0 0; font-size: 38px; font-weight: 750; line-height: 1.25; }
+.s6-insight strong { color: var(--blue); font-weight: 800; }
+.s6-source { position: absolute; left: 90px; bottom: 42px; margin: 0; color: #8090a3; font-size: 15px; line-height: 1.4; }
+</style>
+<link rel="stylesheet" href="slide-06-animation.css">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 6">
-  <section class="slide active" data-slide="6" data-owner="B" aria-hidden="false">
+  <section class="slide active" data-slide="6" data-owner="B" data-phase="complete" data-result="visible" aria-hidden="false">
     <div class="kicker">02 / ALGORITHM · LOCAL MODEL</div>
-    <h1 class="slide-title">Is a Smaller LLM Always Faster?</h1>
+    <h1 class="slide-title">A Faster LLM Call ≠ A Faster Mission</h1>
     <main class="slide-content">
-      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+      <div class="s6-layout">
+        <figure class="s6-figure">
+          <div class="s6-mission">
+            <div>
+              <div class="s6-label">ANIMATION EXAMPLE</div>
+              <h2>Bob's task: fetch a pear.</h2>
+            </div>
+            <div class="s6-status">
+              <svg class="s6-goal-icon" viewBox="0 0 87 65" aria-hidden="true">
+              <ellipse cx="44" cy="53" rx="36" ry="8" fill="#edf4fb" stroke="#c6d9ec" stroke-width="2"/>
+              <path d="M45 10c-7 0-7 9-10 14-4 6-10 10-10 17 0 9 8 14 19 14s19-5 19-14c0-7-6-11-10-17-3-5-2-14-8-14Z" fill="#dce9cf" stroke="#7b9a61" stroke-width="2"/>
+              <path d="M45 11c0-5 1-8 5-10" fill="none" stroke="#7b9a61" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M47 8c8-9 15-5 16-4-4 7-10 9-16 4Z" fill="#99b581"/>
+              </svg>
+              <div class="s6-clock">
+                <span class="s6-clock-label">DEMO TIME</span>
+                <output id="s6-clock" for="s6-time">12.0 s</output>
+              </div>
+            </div>
+          </div>
+
+          <!-- This is a conceptual example of the trade-off in Sec. 5.1,
+               not an experimental comparison of particular model sizes. -->
+          <svg class="s6-timeline" viewBox="0 0 950 306" role="img" aria-labelledby="s6-chart-title s6-chart-desc">
+            <title id="s6-chart-title">Fast model calls can still produce a slower mission</title>
+            <desc id="s6-chart-desc">Illustrative timeline. Shorter planning calls take one second; better planning calls take one and a half seconds. Actions take two seconds. The smaller model finishes after twelve seconds; the model with better planning finishes after seven seconds. Green dashed lines mark completion. A red dashed bracket labels the five-second difference. All times and counts are illustrative, not experimental measurements.</desc>
+            <defs>
+              <clipPath id="s6-elapsed"><rect id="s6-elapsed-clip" x="0" y="0" width="828" height="306"/></clipPath>
+              <mask id="s6-result-mask" maskUnits="userSpaceOnUse" x="477" y="118" width="357" height="123">
+                <path class="s6-result-reveal" d="M483 235V154H828V124" fill="none" stroke="#fff" stroke-width="8" stroke-dasharray="456"/>
+              </mask>
+              <g id="s6-blocks">
+                <g class="s6-plan"><rect x="0" y="73" width="63" height="51" rx="5"/><text x="31.5" y="106" class="s6-block-label">Plan</text></g>
+                <g class="s6-act"><rect x="69" y="73" width="132" height="51" rx="5"/><text x="135" y="106" class="s6-block-label">Act</text></g>
+                <g class="s6-plan"><rect x="207" y="73" width="63" height="51" rx="5"/><text x="238.5" y="106" class="s6-block-label">Plan</text></g>
+                <g class="s6-act"><rect x="276" y="73" width="132" height="51" rx="5"/><text x="342" y="106" class="s6-block-label">Act</text></g>
+                <g class="s6-plan"><rect x="414" y="73" width="63" height="51" rx="5"/><text x="445.5" y="106" class="s6-block-label">Plan</text></g>
+                <g class="s6-act"><rect x="483" y="73" width="132" height="51" rx="5"/><text x="549" y="106" class="s6-block-label">Act</text></g>
+                <g class="s6-plan"><rect x="621" y="73" width="63" height="51" rx="5"/><text x="652.5" y="106" class="s6-block-label">Plan</text></g>
+                <g class="s6-act"><rect x="690" y="73" width="132" height="51" rx="5"/><text x="756" y="106" class="s6-block-label">Act</text></g>
+                <g class="s6-plan"><rect x="0" y="241" width="97.5" height="51" rx="5"/><text x="48.75" y="274" class="s6-block-label">Plan</text></g>
+                <g class="s6-act"><rect x="103.5" y="241" width="132" height="51" rx="5"/><text x="169.5" y="274" class="s6-block-label">Act</text></g>
+                <g class="s6-plan"><rect x="241.5" y="241" width="97.5" height="51" rx="5"/><text x="290.25" y="274" class="s6-block-label">Plan</text></g>
+                <g class="s6-act"><rect x="345" y="241" width="132" height="51" rx="5"/><text x="411" y="274" class="s6-block-label">Act</text></g>
+              </g>
+            </defs>
+            <text x="0" y="24" class="s6-row-label">SMALLER MODEL</text>
+            <text x="0" y="52" class="s6-detail">Shorter calls · more task steps</text>
+            <text x="0" y="192" class="s6-row-label">MODEL WITH BETTER PLANNING</text>
+            <text x="0" y="220" class="s6-detail">Longer calls · fewer task steps</text>
+            <use href="#s6-blocks" class="s6-future"/>
+            <use href="#s6-blocks" clip-path="url(#s6-elapsed)"/>
+            <path id="s6-playhead" class="s6-playhead" d="M828 67V132M828 235V300"/>
+            <g class="s6-result">
+              <path d="M483 235V154H828V124" fill="none" stroke="#bf4c4c" stroke-width="2" stroke-dasharray="7 6" mask="url(#s6-result-mask)"/>
+              <text x="655.5" y="144" text-anchor="middle" class="s6-result-text">Result: 5 s longer</text>
+            </g>
+            <g id="s6-small-finish" class="s6-finished" data-done="true">
+              <path class="s6-finish-line" d="M828 67V349"/>
+              <text x="840" y="106" class="s6-finish">Done · 12 s</text>
+            </g>
+            <g id="s6-better-finish" class="s6-finished" data-done="true">
+              <path class="s6-finish-line" d="M483 235V349"/>
+              <text x="506" y="274" class="s6-finish">Done · 7 s</text>
+            </g>
+          </svg>
+
+          <div class="s6-scrubber" id="s6-scrubber">
+            <div class="s6-range-rail" aria-hidden="true"></div>
+            <output class="s6-time-bubble" id="s6-time-label" for="s6-time">12.0 s</output>
+            <input class="s6-range" id="s6-time" type="range" min="0" max="12" step="0.1" value="12" aria-label="Animation time in seconds">
+            <div class="s6-range-ticks" aria-hidden="true">
+              <span style="left:0%">0 s</span><span style="left:25%">3 s</span><span style="left:50%">6 s</span><span style="left:75%">9 s</span><span style="left:100%">12 s</span>
+            </div>
+          </div>
+          <figcaption>
+            <div class="s6-controls">
+              <button class="s6-control" id="s6-speed" type="button" aria-label="Playback speed: 3 times. Click to change speed.">3×</button>
+              <button class="s6-control" id="s6-toggle" type="button">Replay</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <aside class="s6-summary">
+          <div class="s6-label">RECA'S APPROACH</div>
+          <h2 class="s6-approach">Balance inference speed<br>with planning quality.</h2>
+          <p class="s6-description">Tune the local model to avoid extra task steps.</p>
+          <div class="s6-divider"></div>
+          <div class="s6-label">ONE TAKEAWAY</div>
+          <p class="s6-insight">Choose for<br><strong>mission time.</strong></p>
+        </aside>
+      </div>
     </main>
+    <p class="s6-source">ReCA §5.1 (p. 987) · Reference presentation: slide 35, Key Idea-1 — Local LLM processing</p>
     <div class="slide-number">6</div>
+    <aside hidden aria-label="Presenter notes" lang="zh-CN">
+      <p>讲解约 30–40 秒。对应参考 slides 第 35 页 Key Idea-1 中的 Local LLM processing。具体取舍来自论文 §5.1 的 Model experimentation，图是重画的教学示意。</p>
+      <p>“Bob 要拿到梨，小模型每次思考更快，但如果计划不够好，就需要多走几步、多想几次。看上面的短蓝块，单次快；再看整个时间线，完成却更慢。下面的模型虽然每次规划稍慢，却用更少步骤更早完成。ReCA 因此同时优化本地模型的推理速度和规划质量。记住一个指标：整个任务完成时间。”</p>
+      <p>蓝色块代表规划，浅蓝块代表执行。示意计时中，上方每次规划 1 秒，下方 1.5 秒，每次执行 2 秒；最终分别在 12 秒和 7 秒结束。绿色虚线标记完成，红色虚线说明 5 秒时间差。这些次数和秒数是教学示意，并非论文实测数据。下一页进入影响规划质量的记忆结构。</p>
+    </aside>
   </section>
 </div>
-<script>(function () { const deck = document.getElementById('deck'); function resize() { const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900); deck.style.transform = `translate(-50%, -50%) scale(${scale})`; } window.addEventListener('resize', resize); resize(); })();</script>
+<script src="slide-06-animation.js"></script>
 </body>
 </html>
