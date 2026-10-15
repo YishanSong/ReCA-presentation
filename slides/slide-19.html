@@ -6,18 +6,40 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 19</title>
 <link rel="stylesheet" href="slides.css">
+<link rel="stylesheet" href="slide-19.css">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 19">
   <section class="slide active" data-slide="19" data-owner="B" aria-hidden="false">
     <div class="kicker">06 / EVALUATION · EVIDENCE BOUNDARIES</div>
     <h1 class="slide-title">What Does the Evidence Leave Unanswered?</h1>
-    <main class="slide-content">
-      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    <main class="slide-content content-area">
+      <table class="s19-evidence" aria-label="Reported experimental evidence and our interpretation of its limits">
+        <colgroup><col><col></colgroup>
+        <thead><tr><th scope="col">REPORTED IN THE PAPER</th><th scope="col">OUR READING · NEXT TEST</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong class="s19-topic">Six benchmark environments</strong><p class="s19-detail">Transport, cooking, housework, and games.</p></td>
+            <td><strong class="s19-topic">Transfer to physical robots?</strong><p class="s19-detail">Test sensing errors, actuation failures, and changing scenes.</p></td>
+          </tr>
+          <tr>
+            <td><strong class="s19-topic">Timing is conditioned on success</strong><p class="s19-detail">Average runtime and steps use <strong>successful missions</strong>.</p></td>
+            <td><strong class="s19-topic">What happens in the slow or failed trials?</strong><p class="s19-detail">Report failure cost and tail latency alongside the mean.</p></td>
+          </tr>
+          <tr>
+            <td><strong class="s19-topic">A specified network and hardware setup</strong><p class="s19-detail">75 ms / 100 Mbps WAN · A6000 + ZC706 FPGA.</p></td>
+            <td><strong class="s19-topic">How sensitive is deployment performance?</strong><p class="s19-detail">Sweep network jitter, link failures, and device budgets.</p></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="s19-conclusion"><strong>Strong benchmark gains.</strong> Physical deployment still needs validation.</p>
     </main>
+    <p class="source-note">Evidence: <a href="https://doi.org/10.1145/3676641.3716016" target="_blank" rel="noreferrer">ReCA, §7.1–7.3</a>. Right column: presenter analysis and proposed follow-up tests.</p>
+    <aside hidden class="speaker-notes" lang="zh-CN">这一页区分论文已报告的证据和我们的批判性解读。第一，六个基准覆盖不同任务，但这些结果还不能直接证明真实机器人的感知、执行和环境变化鲁棒性。第二，论文第7.1节明确说明，平均步数和端到端运行时间只统计成功任务；成功率另报。因此10.2倍平均加速不等于所有尝试都更快，也不是尾延迟保证。第三，网络假设为75毫秒和100Mbps，硬件为A6000、i7和ZC706 FPGA；需要进一步测试网络抖动、断连和更小设备预算。右栏是我们的后续实验建议，不是论文报告的失败结论。</aside>
+    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
     <div class="slide-number">19</div>
   </section>
 </div>
-<script>(function () { const deck = document.getElementById('deck'); function resize() { const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900); deck.style.transform = `translate(-50%, -50%) scale(${scale})`; } window.addEventListener('resize', resize); resize(); })();</script>
+<script src="runtime.js"></script>
 </body>
 </html>

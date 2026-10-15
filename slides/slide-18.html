@@ -6,18 +6,46 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 18</title>
 <link rel="stylesheet" href="slides.css">
+<link rel="stylesheet" href="slide-18.css">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 18">
   <section class="slide active" data-slide="18" data-owner="B" aria-hidden="false">
     <div class="kicker">06 / EVALUATION · ABLATION</div>
-    <h1 class="slide-title">Where Does the 10.2× Speedup Come From?</h1>
-    <main class="slide-content">
-      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    <h1 class="slide-title">Why Does ReCA Need the Full Co-Design?</h1>
+    <main class="slide-content content-area">
+      <div class="content-grid">
+        <figure class="slide-figure">
+          <p class="s18-chart-title">Each successive configuration lowers task latency.<span>Normalized to the configuration with all five optimizations removed.</span></p>
+          <img class="figure-image" src="../assets/images/pb-fig17-ablation.svg" alt="Original ReCA paper Figure 17. For CoELA, COMBO and MindAgent, bars show progressively lower normalized task latency as heterogeneous hardware, multi-step execution, hierarchical cooperation, dual memory and the local model are successively included.">
+          <p class="s18-reading"><strong>Read left → right within each group:</strong> more optimizations are enabled. The percentages annotate cumulative runtime reductions.</p>
+          <figcaption class="figure-caption">Original paper Fig. 17 · Lower bars mean lower end-to-end latency.</figcaption>
+        </figure>
+        <aside class="slide-summary">
+          <p class="section-label">SUCCESSIVE CONFIGURATIONS</p>
+          <h2 class="content-heading">Build the whole stack.</h2>
+          <ol class="s18-stages" aria-label="Order in which optimizations are enabled">
+            <li>GPU / A-star hardware</li>
+            <li>Multi-step execution</li>
+            <li>Hierarchical cooperation</li>
+            <li>Dual memory</li>
+            <li>Local model</li>
+          </ol>
+          <hr class="content-rule">
+          <p class="takeaway">The gain comes from <strong>co-design across layers.</strong></p>
+        </aside>
+      </div>
     </main>
+    <p class="source-note">Source: Wan et al., ReCA (ASPLOS ’25), §7.3, Fig. 17, p. 994. Successive configurations; effects are not independent.</p>
+    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
     <div class="slide-number">18</div>
+    <aside hidden aria-label="Presenter notes" lang="zh-CN">
+      <p>约 60 秒。对应老师 slides 第 53 页。这不是五个独立组件各跑一次的 leave-one-out 柱状图。读原图图例：第一根柱去掉 LM、DM、HC、MT、HW，归一化为 100%；第二根只开启硬件；第三根在硬件上叠加 multi-step；随后再叠加 hierarchical cooperation、dual memory，最后是完整 ReCA 加上 local model。因此右侧按照实际叠加顺序排列。</p>
+      <p>柱边的 23%、40%、62% 等是相对于无五项优化配置的累计时间降低比例，不是每项组件的独立贡献。例如 CoELA 的标注逐步为 23%、40%、62%、82%、91%。不能将这些百分比相加，不能直接把顺序中的差值解释成与配置无关的独立收益，也不能由本图把平均 10.2 倍拆成五个可相加的数字。</p>
+      <p>论文 §7.3 正文概括：仅硬件平均降低 25.3% runtime，逐步引入 multi-step、hierarchical planning、dual memory 后累计降低达到 48.7%、70.7%、82.3%。本页不重复堆叠这组数字，让原图证明三个系统中的相同趋势。结论是跨模型、系统和硬件的完整设计有必要。图从论文 PDF 第 13 页（印刷页 994）直接裁取，原始图例、单位和注释均保留。</p>
+    </aside>
   </section>
 </div>
-<script>(function () { const deck = document.getElementById('deck'); function resize() { const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900); deck.style.transform = `translate(-50%, -50%) scale(${scale})`; } window.addEventListener('resize', resize); resize(); })();</script>
+<script src="runtime.js"></script>
 </body>
 </html>

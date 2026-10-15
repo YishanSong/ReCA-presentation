@@ -1,0 +1,5 @@
+.s17-chart-title { margin: 0 0 15px; font-size: 23px; font-weight: 750; line-height: 1.35; }
+.s17-result { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0 23px; }
+.s17-result strong { display: block; color: var(--blue); font-size: 46px; font-weight: 800; line-height: 1.12; letter-spacing: -.035em; white-space: nowrap; }
+.s17-result span { display: block; margin-top: 7px; color: #647b93; font-size: 20px; line-height: 1.35; }
+.s17-context { color: #647b93; font-size: 21px; line-height: 1.45; }

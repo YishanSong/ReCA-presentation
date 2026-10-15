@@ -6,18 +6,53 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 08</title>
 <link rel="stylesheet" href="slides.css">
+<link rel="stylesheet" href="animation.css">
+<link rel="stylesheet" href="slide-08.css">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 8">
   <section class="slide active" data-slide="8" data-owner="B" aria-hidden="false">
     <div class="kicker">03 / SYSTEM · HIERARCHICAL COOPERATION</div>
-    <h1 class="slide-title">Who Should Coordinate Twelve Agents?</h1>
-    <main class="slide-content">
-      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    <h1 class="slide-title">Who Should Coordinate a Team of Agents?</h1>
+    <main class="slide-content content-area">
+      <div class="content-grid s8-layout">
+        <figure class="slide-figure" data-animation-placeholder="hierarchical-cooperation" data-animation-stages="plan,feedback,share-progress">
+          <div class="s8-diagram animation-diagram">
+            <img class="figure-image" src="../assets/images/pb-hierarchical-cooperation-fig8.svg" alt="Original ReCA hierarchical cooperation diagram. Within a cluster a parent agent plans for child agents and receives feasibility feedback. Across clusters, parent agents exchange progress without a global coordinator.">
+            <span class="s8-focus animation-stage" data-stage="plan" aria-hidden="true"></span>
+            <span class="s8-focus animation-stage" data-stage="feedback" aria-hidden="true"></span>
+            <span class="s8-focus animation-stage" data-stage="share-progress" aria-hidden="true"></span>
+          </div>
+          <div class="s8-stages" aria-hidden="true">
+            <div class="s8-stage" data-stage="plan-and-feedback"><span>1</span>Plan + check feasibility</div>
+            <div class="s8-stage" data-stage="share-progress"><span>2</span>Share progress across clusters</div>
+          </div>
+          <figcaption class="figure-caption">Original paper figure · one hierarchy, two coordination patterns</figcaption>
+        </figure>
+        <aside class="slide-summary s8-summary">
+          <p class="section-label">WITHIN A CLUSTER</p>
+          <h2 class="content-heading">One parent plans</h2>
+          <p class="body-copy">Children check assigned actions.<br>Feedback triggers replanning.</p>
+          <hr class="content-rule">
+          <p class="section-label">ACROSS CLUSTERS</p>
+          <h2 class="content-heading">Parents coordinate</h2>
+          <p class="body-copy">Exchange progress through decentralized communication.</p>
+          <hr class="content-rule">
+          <p class="takeaway"><strong>Centralize locally.</strong><br>Coordinate across clusters.</p>
+        </aside>
+      </div>
     </main>
+    <p class="source-note">ReCA §5.3 · Fig. 8, p. 988 · Author slides pp. 37–38</p>
+    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
     <div class="slide-number">8</div>
+    <aside hidden aria-label="Presenter notes" lang="zh-CN">
+      <p>不要把所有代理都塞进一个中央规划器，也不要让每个代理都与所有代理协商。ReCA先分簇：簇内由parent做统一规划，child检查动作是否可行，不可行就反馈重规划；簇间由parent以分散方式协调进展。执行可以异步，但每轮动作后进行簇内同步。</p>
+      <p>原始图直接来自论文PDF第7页、印刷页988的Fig.8，对应作者slides第37–38页。图中包含四个示例簇，不代表本页声称团队固定为十二个代理。聚类依据代理能够相互交互的接近关系。</p>
+      <p>动画设计占位：完整原图为基础画面。未来第一阶段高亮左半图parent下发Plan箭头，第二阶段高亮child返回Feedback箭头，第三阶段高亮右半图parent间进展交换。下方两个阶段标签已经独立为data-stage元素，后续只需SVG覆盖高亮与标签状态，不必重新绘制机器人。</p>
+    </aside>
   </section>
 </div>
-<script>(function () { const deck = document.getElementById('deck'); function resize() { const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900); deck.style.transform = `translate(-50%, -50%) scale(${scale})`; } window.addEventListener('resize', resize); resize(); })();</script>
+<script src="runtime.js"></script>
+<script src="animation.js"></script>
 </body>
 </html>

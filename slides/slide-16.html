@@ -6,18 +6,44 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 16</title>
 <link rel="stylesheet" href="slides.css">
+<link rel="stylesheet" href="slide-16.css">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 16">
   <section class="slide active" data-slide="16" data-owner="B" aria-hidden="false">
     <div class="kicker">06 / EVALUATION · END-TO-END</div>
     <h1 class="slide-title">Does ReCA Actually Speed Up the Mission?</h1>
-    <main class="slide-content">
-      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    <main class="slide-content content-area">
+      <div class="content-grid">
+        <figure class="slide-figure">
+          <div class="s16-figure-labels" aria-hidden="true">
+            <p>Task success<span>Higher is better</span></p>
+            <p>End-to-end runtime<span>Lower is better · dots show task steps</span></p>
+          </div>
+          <img class="figure-image" src="../assets/images/pb-fig12-end-to-end.svg" alt="Original ReCA paper Figure 12. Across six benchmarks, blue ReCA bars show higher task success and lower runtime than pink baseline bars; the dots show average task steps.">
+          <figcaption class="figure-caption">Original paper Fig. 12 · Six benchmarks, three systems, four agents.</figcaption>
+        </figure>
+        <aside class="slide-summary">
+          <p class="section-label">PAPER RESULT</p>
+          <p class="s16-metric">10.2×</p>
+          <p class="s16-metric-label">average end-to-end speedup</p>
+          <p class="body-copy"><strong>4.3% improvement</strong> in task success rate, with only <strong>3.2% more steps</strong>.</p>
+          <p class="s16-note">Runtime and steps are measured on successful missions.</p>
+          <hr class="content-rule">
+          <p class="takeaway">The mission is faster because <strong>each step costs less.</strong></p>
+        </aside>
+      </div>
     </main>
+    <p class="source-note">Source: Wan et al., ReCA (ASPLOS ’25), §7.1–7.2, Fig. 12, pp. 992–993. Values follow the paper.</p>
+    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
     <div class="slide-number">16</div>
+    <aside hidden aria-label="Presenter notes" lang="zh-CN">
+      <p>约 55 秒。对应老师 slides 第 48–49 页。先看左半图，ReCA 在六个 benchmark 中没有通过牺牲成功率来换速度。再看右半图，柱子是端到端时间，圆点/菱形对应右轴的平均任务步数。蓝色柱子明显更低，但步数与 baseline 接近，因此收益主要来自降低每一步的开销。</p>
+      <p>正文数字统一采用论文 §7.2：平均 10.2 倍加速、成功率提升 4.3%、步数增加 3.2%。论文只写 improvement by 4.3%，没有明确写百分点，故保持原文口径，不将它换算为 percentage points。老师 slides 第 48 页写 8.2 倍、第 49 页写 8.4 倍，且成功率写 4%，与论文版本不一致；本页原始矢量图与数字均以论文为准。</p>
+      <p>实验覆盖 CoELA、COMBO、MindAgent，六个长时程多目标 benchmark。Fig. 12 的 baseline 使用四个 agent；平均端到端时间和任务步数只统计成功的任务，不能据此推断包含失败重试的总成本。图从论文 PDF 第 12 页（印刷页 993）直接裁取，不重画数据。</p>
+    </aside>
   </section>
 </div>
-<script>(function () { const deck = document.getElementById('deck'); function resize() { const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900); deck.style.transform = `translate(-50%, -50%) scale(${scale})`; } window.addEventListener('resize', resize); resize(); })();</script>
+<script src="runtime.js"></script>
 </body>
 </html>

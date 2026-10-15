@@ -87,3 +87,34 @@ body {
   .slide { display: block !important; position: relative; width: 1600px; height: 900px; break-after: page; page-break-after: always; }
   @page { size: 1600px 900px; margin: 0; }
 }
+
+/* Opt-in layout and typography primitives, shared by any slide. */
+.slide-content.content-area { top: var(--content-top, 246px); bottom: var(--content-bottom, 108px); }
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, var(--figure-width, 850px)) minmax(0, 1fr);
+  gap: var(--column-gap, 42px);
+  align-items: center;
+  height: 100%;
+}
+.slide-content.content-grid { height: auto; }
+.slide-figure { margin: 0; min-width: 0; }
+.figure-image { display: block; width: 100%; height: auto; max-height: var(--figure-height, 460px); object-fit: contain; }
+.figure-caption { margin: 14px 0 0; color: #8090a3; font-size: 15px; line-height: 1.4; }
+.figure-caption a { color: inherit; }
+.slide-summary { min-width: 0; padding-left: 30px; border-left: 2px solid #d8e4ef; }
+.section-label { margin: 0; color: var(--blue); font-size: 17px; font-weight: 800; letter-spacing: .08em; line-height: 1.35; }
+.content-heading { margin: 9px 0 14px; font-size: 30px; font-weight: 750; line-height: 1.28; letter-spacing: -.015em; }
+.body-copy { margin: 0; color: #53677e; font-size: 23px; line-height: 1.44; }
+.body-copy strong { color: var(--navy); font-weight: 750; }
+.content-rule { height: 1px; margin: 24px 0; border: 0; background: #d8e4ef; }
+.takeaway { margin: 9px 0 0; color: var(--navy); font-size: 28px; font-weight: 750; line-height: 1.3; letter-spacing: -.01em; }
+.takeaway strong { color: var(--blue); font-weight: 800; }
+.source-note { position: absolute; left: 90px; bottom: 42px; max-width: 1320px; margin: 0; color: #8090a3; font-size: 15px; line-height: 1.4; }
+.source-note a { color: inherit; }
+.content-list { margin: 12px 0 0; padding-left: 24px; color: #53677e; font-size: 23px; line-height: 1.45; }
+.content-list li + li { margin-top: 10px; }
+.stat-value { display: block; margin: 4px 0 8px; color: var(--blue); font-size: 58px; font-weight: 800; line-height: 1.05; letter-spacing: -.035em; }
+@media print {
+  .source-note a, .figure-caption a { text-decoration: none; }
+}

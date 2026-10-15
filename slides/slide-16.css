@@ -1,0 +1,6 @@
+.s16-figure-labels { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 0 0 17px; }
+.s16-figure-labels p { margin: 0; color: var(--navy); font-size: 23px; font-weight: 750; }
+.s16-figure-labels span { display: block; margin-top: 4px; color: #647b93; font-size: 17px; font-weight: 500; }
+.s16-metric { margin: 4px 0 2px; color: var(--blue); font-size: 82px; font-weight: 800; line-height: 1.1; letter-spacing: -.045em; }
+.s16-metric-label { margin: 0 0 23px; color: var(--navy); font-size: 25px; font-weight: 750; }
+.s16-note { margin: 12px 0 0; color: #8090a3; font-size: 17px; line-height: 1.4; }

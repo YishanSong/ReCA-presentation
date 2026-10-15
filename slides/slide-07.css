@@ -1,0 +1,7 @@
+.s7-layout { grid-template-columns: minmax(0, 850px) minmax(0, 1fr); }
+.s7-summary .content-heading { margin-bottom: 8px; }
+.s7-summary .body-copy { font-size: 22px; }
+.s7-summary .content-rule { margin: 22px 0; }
+.s7-memory-region { top: 55%; height: 43%; }
+.s7-memory-region[data-stage="long-term"] { left: 1%; width: 45%; }
+.s7-memory-region[data-stage="short-term"] { left: 49%; width: 50%; }

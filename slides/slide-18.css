@@ -1,0 +1,9 @@
+.s18-chart-title { margin: 0 0 23px; color: var(--navy); font-size: 26px; font-weight: 750; line-height: 1.35; }
+.s18-chart-title span { display: block; margin-top: 6px; color: #647b93; font-size: 18px; font-weight: 500; }
+.s18-reading { margin: 24px 0 0; padding: 17px 20px; background: #f1f6fb; color: #53677e; font-size: 21px; line-height: 1.45; }
+.s18-reading strong { color: var(--navy); }
+.s18-stages { margin: 18px 0 0; padding: 0; list-style: none; color: #53677e; font-size: 22px; line-height: 1.42; }
+.s18-stages li { padding-left: 28px; position: relative; }
+.s18-stages li + li { margin-top: 8px; }
+.s18-stages li::before { content: "+"; position: absolute; left: 0; color: var(--blue); font-weight: 800; }
+.s18-stages li:first-child::before { content: "1"; font-size: 17px; top: 4px; }

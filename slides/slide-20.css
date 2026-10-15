@@ -1,0 +1,11 @@
+.slide[data-slide="20"] .slide-title { font-size: 55px; }
+.s20-figure-heading { margin-bottom: 29px; }
+.s20-figure .figure-image { max-height: 355px; }
+.s20-stage-region { bottom: 3%; height: 31%; }
+.s20-stage-region[data-stage="issue"] { left: 17%; width: 13%; }
+.s20-stage-region[data-stage="execute"] { left: 31%; width: 29%; }
+.s20-stage-region[data-stage="complete"] { left: 61%; width: 14%; }
+.s20-stage-region[data-stage="commit"] { left: 76%; width: 22%; }
+.s20-summary .content-heading { margin-bottom: 10px; }
+.s20-summary .content-rule { margin: 20px 0; }
+.s20-related { margin: 17px 0 0; color: #647b93; font-size: 20px; line-height: 1.42; }

@@ -6,18 +6,48 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 20</title>
 <link rel="stylesheet" href="slides.css">
+<link rel="stylesheet" href="animation.css">
+<link rel="stylesheet" href="slide-20.css">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 20">
   <section class="slide active" data-slide="20" data-owner="B" aria-hidden="false">
     <div class="kicker">07 / BEYOND RECA · ARBORIST</div>
     <h1 class="slide-title">Beyond ReCA: Speculative Motion Planning</h1>
-    <main class="slide-content">
-      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    <main class="slide-content content-area content-grid">
+      <figure class="slide-figure s20-figure" data-animation-placeholder="ordered-speculation" aria-label="Original Arborist look-ahead planning architecture">
+        <p class="section-label s20-figure-heading">LOOK-AHEAD PLANNING ENGINE · ORIGINAL FIG. 9</p>
+        <div class="s20-diagram animation-diagram">
+          <img class="figure-image" src="../assets/images/pb-arborist-fig9.svg" alt="Arborist's per-tree reorder buffer connects issue, neighbor-query execution, completion, validation and in-order commit, with mismatch recovery.">
+          <span class="s20-stage-region animation-stage" data-stage="issue" aria-hidden="true"></span>
+          <span class="s20-stage-region animation-stage" data-stage="execute" aria-hidden="true"></span>
+          <span class="s20-stage-region animation-stage" data-stage="complete" aria-hidden="true"></span>
+          <span class="s20-stage-region animation-stage" data-stage="commit" aria-hidden="true"></span>
+        </div>
+        <figcaption class="figure-caption">Original vector figure extracted from Liu et al., Arborist, Fig. 9.<br>A per-tree reorder buffer separates early computation from committed updates.</figcaption>
+        <!-- Animation foundation only: highlight issue → neighbor-query execution → READY → ordered commit.
+             Later show a validation mismatch flushing younger entries. Keep the original vector diagram static until implemented. -->
+      </figure>
+      <div class="slide-summary s20-summary">
+        <p class="section-label">RELATED WORK · MICRO 2026</p>
+        <h2 class="content-heading">Expose more parallel work</h2>
+        <p class="body-copy">FMT* <strong>multi-tree expansion</strong> plus speculative look-ahead.</p>
+        <hr class="content-rule">
+        <h2 class="content-heading">Validate before commit</h2>
+        <p class="body-copy">Keep sequential FMT* semantics through <strong>in-order commit</strong> and mismatch recovery.</p>
+        <hr class="content-rule">
+        <p class="section-label">DESIGN LESSON</p>
+        <p class="takeaway">Parallelize computation.<br><strong>Preserve planning correctness.</strong></p>
+        <p class="s20-related">Independent related system; integration with ReCA is not evaluated.</p>
+      </div>
     </main>
+    <p class="source-note">Source: <a href="https://arxiv.org/abs/2609.13420" target="_blank" rel="noreferrer">Liu et al., Arborist: Algorithm-Hardware Co-Design for Fast and Efficient Motion Planning (2026)</a>, §§III, IV-D; Fig. 9.</p>
+    <aside hidden class="speaker-notes" lang="zh-CN">Arborist 是独立的后续相关研究，2026年MICRO接收，作者为Yaotian Liu、Lingyi Huang、Zishen Wan、Bo Yuan、Cheng Tan和Jeff (Jun) Zhang。来源版本为arXiv:2609.13420v1，2026-09-11；原始矢量图为PDF第8页图9。它研究FMT*采样式运动规划，不是ReCA多智能体系统中的已实现模块，也没有与ReCA的端到端任务运行时间直接比较。本页只讲可迁移的设计思想：通过安全的多树展开以及树内前瞻计算暴露并行性；前瞻阶段提前做只读的邻居查询，重排序缓冲区按序提交，在提交时重新校验父节点选择和当前树状态，若失配则清除较年轻的投机结果。原始图9显示Issue、Execution、Complete、Commit四阶段。未来动画仅需高亮这些现有基础元素，无需视频或重新画复杂算法。结论是加速不应破坏规划语义。</aside>
+    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
     <div class="slide-number">20</div>
   </section>
 </div>
-<script>(function () { const deck = document.getElementById('deck'); function resize() { const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900); deck.style.transform = `translate(-50%, -50%) scale(${scale})`; } window.addEventListener('resize', resize); resize(); })();</script>
+<script src="runtime.js"></script>
+<script src="animation.js"></script>
 </body>
 </html>
