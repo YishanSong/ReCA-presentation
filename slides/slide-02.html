@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,348 +6,168 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 02</title>
 <link rel="stylesheet" href="slides.css">
-
-<style>
-/* =========================================
-   SLIDE 02 — Two Agents, One Mission
-   ========================================= */
-
-.s2-layout {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-  gap: 42px;
-  align-items: center;
-
-  /* Move video and summary upward together */
-  transform: translateY(-55px);
-}
-
-
-/* LEFT — VIDEO */
-
-.s2-media {
-  margin: 0;
-  min-width: 0;
-}
-
-.s2-video-frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: #fff;
-}
-
-.s2-video-frame video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #fff;
-}
-
-.s2-media figcaption {
-  margin-top: 9px;
-  text-align: center;
-  color: #8090a3;
-  font-size: 15px;
-}
-
-/* Video error message */
-
-.s2-video-error {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-content: center;
-  padding: 30px;
-  background: #f4f8fc;
-  border: 1px dashed #8eb1d6;
-  color: #53677e;
-  font-size: 18px;
-  text-align: center;
-}
-
-.s2-video-error[hidden] {
-  display: none;
-}
-
-/* RIGHT — ACADEMIC SUMMARY */
-
-.s2-summary {
-  min-width: 0;
-  padding-left: 33px;
-  border-left: 2px solid #d8e4ef;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 15px;
-}
-
-.s2-label {
-  display: block;
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: #2f70b3;
-}
-
-/* Mission goal */
-
-.s2-goal {
-  margin: 0;
-  font-size: 25px;
-  font-weight: 750;
-  line-height: 1.35;
-  color: #173d6a;
-}
-
-.s2-goal span {
-  color: #2f70b3;
-}
-
-.s2-divider {
-  height: 1px;
-  background: #d8e4ef;
-  margin: 7px 0;
-}
-
-/* Current subtask */
-
-.s2-subtask {
-  margin: 0;
-  font-size: 30px;
-  font-weight: 780;
-  color: #173d6a;
-  line-height: 1.25;
-}
-
-.s2-description {
-  margin: 0;
-  font-size: 20px;
-  color: #53677e;
-  line-height: 1.45;
-}
-
-/* Cooperation flow */
-
-.s2-flow {
-  display: grid;
-  grid-template-columns: 1fr 18px 1fr 18px 1fr;
-  align-items: center;
-  gap: 7px;
-  margin-top: 5px;
-}
-
-.s2-step {
-  min-height: 57px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  border: 1px solid #cfdfef;
-  border-radius: 7px;
-  background: #edf4fb;
-  font-size: 16px;
-  font-weight: 750;
-  text-align: center;
-  color: #245f9c;
-}
-
-.s2-arrow {
-  font-size: 21px;
-  font-weight: 700;
-  color: #6c98c4;
-  text-align: center;
-}
-
-/* Takeaway */
-
-.s2-takeaway {
-  margin: 12px 0 0;
-  padding: 0;
-  border: none;
-
-  color: #173d6a;
-  font-size: 23px;
-  font-weight: 750;
-  line-height: 1.35;
-}
-
-</style>
+<link rel="stylesheet" href="animation.css">
+<link rel="stylesheet" href="slide-02.css">
 </head>
-
 <body>
-
 <div id="deck" role="group" aria-label="ReCA slide 2">
-
-  <section
-    class="slide active"
-    data-slide="2"
-    data-owner="A"
-    aria-hidden="false"
-  >
-
-    <div class="kicker">
-      01 / MOTIVATION · RUNNING EXAMPLE
-    </div>
-
-    <h1 class="slide-title">
-      Two Agents, One Mission
-    </h1>
-
-    <main class="slide-content">
-
+  <section class="slide active" data-slide="2" data-owner="A" aria-hidden="false">
+    <div class="kicker">01 / MOTIVATION · COOPERATIVE TASK</div>
+    <h1 class="slide-title">How Do Two Agents Coordinate One Mission?</h1>
+    <main class="slide-content content-area">
       <div class="s2-layout">
-
-        <!-- =========================
-             LEFT — ANIMATION
-             ========================= -->
-
-        <figure class="s2-media">
-
-          <div class="s2-video-frame">
-
-            <video
-              id="s2-video"
-              src="../assets/videos/ReCA_Slide02_Two_Agents_One_Mission.mp4"
-              muted
-              playsinline
-              preload="auto"
-              aria-label="Alice and Bob cooperative task animation"
-            ></video>
-
-            <div
-              id="s2-video-error"
-              class="s2-video-error"
-              hidden
-            >
-              Video could not be loaded.
-              Please check the MP4 file path.
+        <figure class="slide-figure s2-figure">
+          <div class="s2-mission">
+            <div>
+              <div class="section-label">ANIMATION EXAMPLE</div>
+              <h2>Alice and Bob: Fetching One Pear</h2>
             </div>
-
+            <p id="s2-status" class="s2-status" role="status" aria-live="polite">A shared mission</p>
           </div>
-
+          <svg id="s2-scene" class="s2-scene" viewBox="0 0 1000 420" role="img" aria-labelledby="s2-scene-title s2-scene-desc">
+            <title id="s2-scene-title">Alice delegates a pear retrieval to Bob</title>
+            <desc id="s2-scene-desc">Two rooms, Alice in cyan, Bob in purple, a plate and one pear. Alice discovers the plate and remembers Bob found a pear. She sends him a request. Bob approaches, picks up the pear, and carries it back to the center near the plate, while Alice explores. He stops holding the pear. This completes only the pear retrieval subtask, not the full mission.</desc>
+            <defs>
+              <g id="s2-pear-shape">
+                <path d="M0-26C-10-26-9-14-14-8C-19-2-24 4-24 11C-24 22-13 26 0 26S24 22 24 11C24 4 19-2 14-8C9-14 10-26 0-26Z" fill="#AEC56C" stroke="#839C4E" stroke-width="2"/>
+                <path d="M1-25C1-32 4-36 9-39" fill="none" stroke="#798C53" stroke-width="2.7" stroke-linecap="round"/>
+                <path d="M5-29C12-41 22-37 25-35C22-27 14-24 5-29Z" fill="#94B76C"/>
+                <path d="M-14 2C-19 11-16 17-10 19" fill="none" stroke="#DCE6BE" stroke-width="2.5" stroke-linecap="round"/>
+              </g>
+              <g id="s2-head-shell">
+                <rect x="-37" y="-167" width="74" height="48" rx="13" fill="#fff" stroke="#173D70" stroke-width="2.5"/>
+                <rect x="-31" y="-161" width="62" height="34" rx="9" fill="#173D70" stroke="currentColor" stroke-width="1.5"/>
+              </g>
+              <g id="s2-torso">
+                <rect x="-7" y="-120" width="14" height="17" rx="4" fill="#EAF2FA" stroke="#173D70" stroke-width="2"/>
+                <path d="M-20-108Q-29-108-26-97L-21-59Q-20-51-12-51H12Q20-51 21-59L26-97Q29-108 20-108Z" fill="#fff" stroke="#173D70" stroke-width="2.5"/>
+                <path d="M-18-99L-14-65M18-99L14-65" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                <rect x="-11" y="-97" width="22" height="31" rx="6" fill="#EAF2FA"/>
+                <rect x="-19" y="-54" width="38" height="7" rx="3.5" fill="#fff" stroke="#173D70" stroke-width="2"/>
+              </g>
+            </defs>
+            <!-- Persistent architecture and furniture: always visible, with no global fade. -->
+            <g class="s2-architecture">
+              <path d="M65 300V44H505V210M65 335V362H505M535 210V44H945V362H535V335"/>
+              <rect x="98" y="76" width="148" height="68" rx="3"/>
+              <path d="M172 77V143M160 102V120M184 102V120"/>
+              <path d="M91 208H245V221H91ZM100 221V303H233V221M167 223V302M149 242V256M184 242V256"/>
+              <ellipse cx="169" cy="207" rx="30" ry="5"/>
+              <path d="M148 203V190Q148 179 159 179Q170 179 170 189"/>
+              <path d="M663 110H772M678 108V83H687V108M692 108V73H702V108M708 108V88H717V108M724 108V95H735V108"/>
+              <rect x="859" y="77" width="63" height="64" rx="3"/>
+              <path d="M890 78V140M881 100V117M900 100V117"/>
+            </g>
+            <g class="s2-furniture">
+              <rect x="369" y="242" width="103" height="12" rx="3"/>
+              <path d="M380 254V360M461 254V360M381 335H460"/>
+              <rect x="841" y="242" width="89" height="12" rx="3"/>
+              <path d="M852 254V360M919 254V360M852 335H919"/>
+            </g>
+            <g id="s2-plate">
+              <ellipse cx="420" cy="234" rx="35" ry="9" fill="#fff" stroke="#8DAEC8" stroke-width="2"/>
+              <ellipse cx="420" cy="233" rx="26" ry="5.5" fill="#F4F8FC" stroke="#CBDDEA" stroke-width="1.4"/>
+            </g>
+            <g id="s2-plate-focus" opacity="0" class="s2-focus"><ellipse cx="420" cy="234" rx="49" ry="19"/></g>
+            <g id="s2-pear-focus" opacity="0"><ellipse cx="885" cy="218" rx="38" ry="41" fill="none" stroke="#A8BE77" stroke-width="2"/></g>
+            <path id="s2-perception" d="M276 222Q337 197 384 232" class="s2-association" opacity="0"/>
+            <path id="s2-memory-link" d="M705 208Q784 176 866 210" class="s2-association" opacity="0"/>
+            <g id="s2-memory" transform="translate(278 96)" opacity="0">
+              <path d="M-8 48L-14 63M-19 70L-23 76" class="s2-association"/>
+              <rect width="91" height="54" rx="10" fill="#fff" stroke="#D8E4EF" stroke-width="1.8"/>
+              <use href="#s2-pear-shape" transform="translate(25 30) scale(.4)"/>
+              <path d="M45 27H57M52 22L57 27L52 32" class="s2-association"/>
+              <rect x="64" y="16" width="17" height="16" rx="4" fill="#173D70"/>
+              <path d="M68 21V26M76 21V26" stroke="#8C92E8" stroke-width="2"/>
+            </g>
+            <g id="s2-communication" opacity="0">
+              <path id="s2-link" d="M270 205Q465 73 680 205"/>
+              <g transform="translate(390 56)">
+                <path d="M12 0H129Q141 0 141 12V63Q141 75 129 75H28L12 87V75Q0 75 0 63V12Q0 0 12 0Z" fill="#fff" stroke="#8DAEC8" stroke-width="1.8"/>
+                <use href="#s2-pear-shape" transform="translate(32 39) scale(.52)"/>
+                <path d="M59 39H88M80 32L88 39L80 46" stroke="#8DAEC8" stroke-width="2" fill="none"/>
+                <ellipse cx="112" cy="41" rx="17" ry="5" fill="#EAF2FA" stroke="#8DAEC8" stroke-width="1.5"/>
+              </g>
+              <g id="s2-message"><rect x="-11" y="-7.5" width="22" height="15" rx="3" fill="#fff" stroke="#2F70B3" stroke-width="2"/><path d="M-10-6L0 1L10-6" fill="none" stroke="#2F70B3" stroke-width="1.6"/></g>
+            </g>
+            <!-- Articulated SVG rigs preserve the cyan/purple identities from the original. -->
+            <g id="s2-alice" class="s2-agent s2-alice" transform="translate(240 360)">
+              <g class="s2-leg" data-limb="left-leg"><path class="s2-link-under"/><path class="s2-link"/><circle class="s2-joint" r="4"/><rect class="s2-foot" x="-23" y="-5" width="17" height="6" rx="3"/></g>
+              <g class="s2-leg" data-limb="right-leg"><path class="s2-link-under"/><path class="s2-link"/><circle class="s2-joint" r="4"/><rect class="s2-foot" x="6" y="-5" width="17" height="6" rx="3"/></g>
+              <g class="s2-shell"><use href="#s2-torso"/><rect x="-3" y="-92" width="6" height="19" rx="3" class="s2-indicator"/></g>
+              <g class="s2-head">
+                <g class="s2-side-pieces"><circle cx="-39" cy="-144" r="4"/><circle cx="39" cy="-144" r="4"/></g>
+                <use href="#s2-head-shell"/>
+                <g class="s2-eyes"><rect x="-18" y="-151" width="7" height="11" rx="3"/><rect x="11" y="-151" width="7" height="11" rx="3"/></g>
+                <path class="s2-mouth" d="M-7-134H7"/>
+                <g class="s2-antenna"><path d="M0-167V-181"/><circle cy="-184" r="3.5" class="s2-accent-fill"/></g>
+              </g>
+              <g class="s2-arm" data-limb="left-arm"><path class="s2-link-under"/><path class="s2-link"/><circle class="s2-joint" r="4"/><circle class="s2-hand" r="5"/></g>
+              <g class="s2-arm" data-limb="right-arm"><path class="s2-link-under"/><path class="s2-link"/><circle class="s2-joint" r="4"/><circle class="s2-hand" r="5"/></g>
+              <text y="394" class="s2-agent-label" transform="translate(0 -360)">Alice</text>
+            </g>
+            <g id="s2-bob" class="s2-agent s2-bob" transform="translate(685 360)">
+              <g class="s2-leg" data-limb="left-leg"><path class="s2-link-under"/><path class="s2-link"/><circle class="s2-joint" r="4"/><rect class="s2-foot" x="-23" y="-5" width="17" height="6" rx="3"/></g>
+              <g class="s2-leg" data-limb="right-leg"><path class="s2-link-under"/><path class="s2-link"/><circle class="s2-joint" r="4"/><rect class="s2-foot" x="6" y="-5" width="17" height="6" rx="3"/></g>
+              <g class="s2-shell"><use href="#s2-torso"/><circle cy="-83" r="7" class="s2-indicator"/><path d="M-7-69H7" class="s2-accent-line"/></g>
+              <g class="s2-head">
+                <g class="s2-side-pieces"><rect x="-43" y="-155" width="5" height="23" rx="2"/><rect x="38" y="-155" width="5" height="23" rx="2"/></g>
+                <use href="#s2-head-shell"/>
+                <g class="s2-eyes"><rect x="-18" y="-151" width="7" height="11" rx="3"/><rect x="11" y="-151" width="7" height="11" rx="3"/></g>
+                <path class="s2-mouth" d="M-7-134H7"/>
+                <g class="s2-antenna"><path d="M0-167V-178L5-181"/><path d="M5-186L10-181L5-176L0-181Z" class="s2-accent-fill"/></g>
+              </g>
+              <g class="s2-arm" data-limb="left-arm"><path class="s2-link-under"/><path class="s2-link"/><circle class="s2-joint" r="4"/><circle class="s2-hand" r="5"/></g>
+              <g class="s2-arm" data-limb="right-arm"><path class="s2-link-under"/><path class="s2-link"/><circle class="s2-joint" r="4"/><circle class="s2-hand" r="5"/></g>
+              <text y="394" class="s2-agent-label" transform="translate(0 -360)">Bob</text>
+            </g>
+            <!-- One physical pear, moved continuously from the table to Bob's hand. -->
+            <g id="s2-pear" transform="translate(885 214)"><use href="#s2-pear-shape"/></g>
+            <g id="s2-grip" opacity="0" aria-hidden="true"><path class="s2-grip-outline" d="M-8-2Q0 5 8-2"/><path class="s2-grip-fingers" d="M-8-2Q0 5 8-2"/></g>
+            <g id="s2-ack" opacity="0" class="s2-check"><circle cx="685" cy="155" r="14"/><path d="M678 155L683 160L693 149"/></g>
+            <g id="s2-pickup-check" opacity="0" class="s2-check"><circle cx="887" cy="167" r="13"/><path d="M880 167L885 172L895 161"/></g>
+          </svg>
+          <div class="s2-scrubber" id="s2-scrubber">
+            <div class="s2-range-rail" aria-hidden="true"></div>
+            <input class="s2-range" id="s2-time" type="range" min="0" max="100" step="0.1" value="0" aria-label="Animation progress" aria-valuetext="0% complete">
+            <div class="s2-range-ticks" aria-hidden="true"><span style="left:0%"></span><span style="left:25%"></span><span style="left:50%"></span><span style="left:75%"></span><span style="left:100%"></span></div>
+          </div>
           <figcaption>
-            Illustrative animation based on ReCA Fig. 2
-            
+            <div class="animation-controls">
+              <button class="animation-control" id="s2-speed" type="button" aria-label="Playback speed: 1.5 times. Click to change speed.">1.5×</button>
+              <button class="animation-control" id="s2-toggle" type="button" aria-label="Play the animation">Play</button>
+            </div>
           </figcaption>
-
         </figure>
-
-
-        <!-- =========================
-             RIGHT — MAIN CONTENT
-             ========================= -->
-
-        <aside class="s2-summary">
-
-          <!-- Overall mission -->
-
-          <div class="s2-label">
-            MISSION GOAL
+        <aside class="slide-summary s2-summary">
+          <div class="section-label">MISSION GOAL</div>
+          <h2 class="content-heading s2-goal">Prepare One Plate</h2>
+          <p class="s2-goal-items">1 Pear + 2 Apples + 1 Pudding</p>
+          <hr class="content-rule">
+          <div class="section-label">CURRENT SUBTASK</div>
+          <h2 class="content-heading">Bob Retrieves the Pear</h2>
+          <p class="s2-description">Alice shares the target with Bob, who retrieves the pear while Alice continues exploring.</p>
+          <div class="s2-cooperation">
+            <div class="section-label">COOPERATION FLOW</div>
+            <div class="s2-flow" aria-label="Discover, then communicate, then act"><span>Discover</span><span aria-hidden="true">→</span><span>Communicate</span><span aria-hidden="true">→</span><span>Act</span></div>
           </div>
-
-          <p class="s2-goal">
-            1 Pear + 2 Apples + 1 Pudding
-            <br>
-            <span>→ 1 Plate</span>
-          </p>
-
-          <div class="s2-divider"></div>
-
-          <!-- Story shown in the animation -->
-
-          <div class="s2-label">
-            CURRENT SUBTASK
-          </div>
-
-          <h2 class="s2-subtask">
-            Fetch One Pear
-          </h2>
-
-          <p class="s2-description">
-            Alice asks Bob to bring a pear to the plate
-            while she continues exploring.
-          </p>
-
-          <!-- Cooperation workflow -->
-
-          <div class="s2-flow">
-
-            <div class="s2-step">
-              Discover
-            </div>
-
-            <div class="s2-arrow">→</div>
-
-            <div class="s2-step">
-              Communicate
-            </div>
-
-            <div class="s2-arrow">→</div>
-
-            <div class="s2-step">
-              Coordinate
-            </div>
-
-          </div>
-
-          <!-- Key takeaway -->
-
-          <p class="s2-takeaway">
-            Shared information enables
-            cooperative task execution.
-          </p>
-
+          <hr class="content-rule">
+          <div class="section-label">ONE TAKEAWAY</div>
+          <p class="s2-takeaway">Shared information enables coordinated action.</p>
         </aside>
-
       </div>
-
     </main>
-
+    <p class="source-note">Illustrative animation adapted from ReCA Fig. 2</p>
+    <div class="slide-author" aria-label="Presentation authors"><span>Yishan Song &amp; Shurui Hu</span></div>
     <div class="slide-number">2</div>
-
+    <aside hidden aria-label="Presenter notes" lang="zh-CN">
+      <p>讲解约 30–40 秒。动画默认以 1.5 倍速度播放，也可暂停、拖动进度或重新播放。它是根据 ReCA 图 2 制作的教学示意，并非实验录像或实测性能结果。</p>
+      <p>整个任务是把一个梨、两个苹果和一个布丁放到盘子上。Alice 和 Bob 代表两个合作的具身智能体。Alice 在厨房找到盘子，记得 Bob 之前发现过梨，于是把取梨的子任务交给 Bob。Bob 收到消息后走近梨，伸手拿起，再把梨带回场景中央。与此同时，Alice 可以继续探索。注意，Bob 最后只是拿着梨停在盘子附近，没有完成摆盘，也没有找到苹果和布丁。这表示一个子任务取得进展，而不是整个任务结束。信息共享让两个智能体能够协调行动。</p>
+    </aside>
   </section>
-
 </div>
-
-<script>
-(function () {
-  const deck = document.getElementById('deck');
-  const video = document.getElementById('s2-video');
-  const warning = document.getElementById('s2-video-error');
-
-  function resize() {
-    const scale = Math.min(
-      window.innerWidth / 1600,
-      window.innerHeight / 900
-    );
-
-    deck.style.transform =
-      `translate(-50%, -50%) scale(${scale})`;
-  }
-
-  video.addEventListener('error', function () {
-    warning.hidden = false;
-    console.error(
-      'Slide 2 video failed to load:',
-      video.src
-    );
-  });
-
-  video.addEventListener('loadeddata', function () {
-    warning.hidden = true;
-  });
-
-  window.addEventListener('resize', resize);
-  resize();
-
-})();
-</script>
-<script src="video-playback.js"></script>
-
+<script src="runtime.js"></script>
+<script src="animation.js"></script>
+<script src="slide-02.js"></script>
 </body>
 </html>

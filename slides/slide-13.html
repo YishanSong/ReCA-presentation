@@ -6,154 +6,8 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 13</title>
 <link rel="stylesheet" href="slides.css">
-
-<style>
-/* =========================================
-   SLIDE 13 — BOTTLENECK SHIFT
-   ========================================= */
-.slide[data-slide="13"] .slide-content {
-  top: 240px;
-  bottom: 95px;
-}
-
-.s13-layout {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 930px) minmax(0, 1fr);
-  column-gap: 40px;
-  align-items: center;
-}
-
-/* LEFT — VIDEO */
-.s13-figure {
-  margin: 0;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.s13-video-frame {
-  width: 100%;
-  position: relative;
-}
-.s13-video {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 520px;
-  aspect-ratio: 16 / 9;
-  object-fit: contain;
-  background: #fff;
-  border: 0;
-}
-.s13-figure figcaption {
-  margin-top: 12px;
-  color: #8090a3;
-  font-size: 15px;
-  line-height: 1.4;
-  text-align: center;
-}
-.s13-video-notice {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 30px;
-  text-align: center;
-  color: #173d6a;
-  background: rgba(255, 255, 255, 0.96);
-  font-size: 17px;
-  line-height: 1.45;
-  box-sizing: border-box;
-}
-.s13-video-notice[hidden] { display: none; }
-.s13-play-button {
-  cursor: pointer;
-  border: 1px solid #c8d9e9;
-  background: #f6faff;
-  color: #2f70b3;
-  border-radius: 24px;
-  padding: 10px 19px;
-  font: inherit;
-  font-weight: 750;
-}
-
-/* RIGHT — SUMMARY, SAME STYLE AS SLIDE 4 */
-.s13-summary {
-  min-width: 0;
-  padding: 6px 0 6px 30px;
-  border-left: 2px solid #d8e4ef;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.s13-label {
-  margin: 0 0 12px;
-  color: #2f70b3;
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: .08em;
-  line-height: 1.3;
-}
-.s13-question {
-  margin: 0;
-  color: #173d6a;
-  font-size: 28px;
-  font-weight: 750;
-  line-height: 1.32;
-}
-.s13-question em {
-  color: #2f70b3;
-  font-style: normal;
-  font-weight: 800;
-}
-.s13-divider {
-  width: 100%;
-  height: 1px;
-  background: #d8e4ef;
-  margin: 23px 0;
-}
-.s13-metric {
-  margin: 0 0 9px;
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  color: #173d6a;
-  font-size: 43px;
-  font-weight: 800;
-  letter-spacing: -.03em;
-  line-height: 1.15;
-  white-space: nowrap;
-}
-.s13-arrow {
-  color: #94a8ba;
-  font-size: 29px;
-  font-weight: 500;
-}
-.s13-after { color: #218969; }
-.s13-metric-description {
-  margin: 0;
-  color: #53677e;
-  font-size: 18px;
-  line-height: 1.45;
-}
-.s13-finding {
-  margin: 0;
-  color: #173d6a;
-  font-size: 24px;
-  font-weight: 750;
-  line-height: 1.38;
-}
-.s13-finding strong {
-  color: #2f70b3;
-  font-weight: 800;
-}
-</style>
+<link rel="stylesheet" href="animation.css">
+<link rel="stylesheet" href="slide-13.css">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 13">
@@ -163,25 +17,44 @@
 
     <main class="slide-content">
       <div class="s13-layout">
-        <!-- LEFT: ONE VIDEO; NO DUPLICATE CHART -->
+        <!-- LEFT: NATIVE, DETERMINISTIC ANIMATION -->
         <figure class="s13-figure">
-          <div class="s13-video-frame">
-            <video
-              id="s13Video"
-              src="../assets/videos/ReCA_Slide13_Bottleneck_Shift.mp4"
-              class="s13-video"
-              muted
-              playsinline
-              preload="auto"
-              disablepictureinpicture
-              aria-label="Bottleneck shift animation"
-            ></video>
-            <div class="s13-video-notice" id="s13VideoNotice" hidden>
-              <span id="s13VideoNoticeText"></span>
-              <button class="s13-play-button" id="s13VideoPlayButton" type="button" hidden>
-                ▶ Play animation
-              </button>
-            </div>
+          <svg class="s13-scene" id="s13-scene" viewBox="0 0 1920 960" role="img" aria-labelledby="s13-svg-title s13-svg-desc">
+            <title id="s13-svg-title">Bottleneck shift after high-level optimization</title>
+            <desc id="s13-svg-desc">Schematic latency bars on a common horizontal scale. Only LLM-related work shrinks; Other and A-star retain their absolute widths. The completed comparison remains visible.</desc>
+            <text x="160" y="166" class="s13-chart-heading">Before Optimization</text>
+            <g class="s13-components">
+              <rect id="s13-before-llm" x="160" y="220" width="1152" height="156" class="s13-llm"/>
+              <rect x="1312" y="220" width="256" height="156" class="s13-other"/>
+              <rect id="s13-before-astar" x="1568" y="220" width="192" height="156" class="s13-astar"/>
+            </g>
+            <g class="s13-chart-labels">
+              <text x="736" y="313">LLM-related</text><text x="1440" y="313">Other</text><text x="1664" y="313" class="s13-star-label">A*</text>
+            </g>
+            <rect id="s13-llm-focus" x="166" y="226" width="1140" height="144" fill="none" stroke="#2f70b3" stroke-width="4" opacity="0"/>
+            <g id="s13-after" opacity="0">
+              <text x="160" y="556" class="s13-chart-heading">After High-Level Optimization</text>
+              <g class="s13-components">
+                <rect id="s13-after-llm" x="160" y="610" width="1152" height="156" class="s13-llm"/>
+                <rect id="s13-after-other" x="1312" y="610" width="256" height="156" class="s13-other"/>
+                <rect id="s13-after-astar" x="1568" y="610" width="192" height="156" class="s13-astar"/>
+              </g>
+              <g class="s13-chart-labels">
+                <text id="s13-llm-label" x="736" y="703">LLM-related</text>
+                <text id="s13-other-label" x="1440" y="703">Other</text>
+                <text id="s13-astar-label" x="1664" y="703" class="s13-star-label">A*</text>
+              </g>
+              <rect id="s13-astar-focus" x="1574" y="616" width="180" height="144" fill="none" stroke="#369A8C" stroke-width="4" opacity="0"/>
+            </g>
+          </svg>
+
+          <div class="s13-scrubber" id="s13-scrubber">
+            <div class="s13-range-rail" aria-hidden="true"></div>
+            <input class="s13-range" id="s13-time" type="range" min="0" max="100" step="0.01" value="0" aria-label="Animation progress" aria-valuetext="0% complete">
+          </div>
+          <div class="animation-controls s13-controls" role="group" aria-label="Animation playback">
+            <button class="animation-control" id="s13-speed" type="button">1×</button>
+            <button class="animation-control" id="s13-toggle" type="button">Play</button>
           </div>
           <figcaption>Schematic illustration · ReCA §6.2</figcaption>
         </figure>
@@ -216,51 +89,13 @@
       </div>
     </main>
 
+    <div class="slide-author" aria-label="Presentation authors"><span>Yishan Song &amp; Shurui Hu</span></div>
     <div class="slide-number">13</div>
   </section>
 </div>
 
-<script>
-(function () {
-  'use strict';
-  const deck = document.getElementById('deck');
-  const video = document.getElementById('s13Video');
-  const notice = document.getElementById('s13VideoNotice');
-  const noticeText = document.getElementById('s13VideoNoticeText');
-  const playButton = document.getElementById('s13VideoPlayButton');
-
-  function resize() {
-    const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900);
-    deck.style.transform = `translate(-50%, -50%) scale(${scale})`;
-  }
-
-  function hideNotice() {
-    notice.hidden = true;
-    playButton.hidden = true;
-  }
-
-  video.addEventListener('playing', hideNotice);
-  video.addEventListener('loadeddata', hideNotice);
-  video.addEventListener('error', function () {
-    noticeText.textContent = 'Video could not be loaded. Please check the MP4 file path.';
-    notice.hidden = false;
-    playButton.hidden = true;
-    console.error('Slide 13 video failed to load:', video.currentSrc);
-  });
-  video.addEventListener('reca:playback-error', function () {
-    noticeText.textContent = 'Click to start the animation.';
-    notice.hidden = false;
-    playButton.hidden = false;
-  });
-  playButton.addEventListener('click', function (event) {
-    event.stopPropagation();
-    window.ReCASlideVideo.replay();
-  });
-
-  window.addEventListener('resize', resize);
-  resize();
-})();
-</script>
-<script src="video-playback.js"></script>
+<script src="runtime.js"></script>
+<script src="animation.js"></script>
+<script src="slide-13.js"></script>
 </body>
 </html>

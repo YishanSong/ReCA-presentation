@@ -74,7 +74,9 @@
     makeTrack('s10-baseline-blocks', baselineSequence, 410),
     makeTrack('s10-reca-blocks', recaSequence, 472)
   ];
-  const multiStepStart = tracks[1][3].start;
+  const newCycle = tracks[1][3];
+  const cycleNote = document.getElementById('s10-new-cycle');
+  const multiStepStart = tracks[1][4].start;
 
   function render(state) {
     const elapsed = state.progress * totalUnits;
@@ -113,9 +115,11 @@
     toggle.setAttribute('aria-label', (state.playing ? 'Pause' : state.finished ? 'Replay' : 'Play') + ' the animation');
     speed.textContent = state.rate + '\u00d7';
     speed.setAttribute('aria-label', `Playback speed: ${state.rate} times. Click to change speed.`);
+    cycleNote.dataset.active = String(activeReca === newCycle);
     if (state.finished) caption.textContent = 'Same four steps \u00b7 Fewer LLM calls';
     else if (!activeReca) caption.textContent = 'ReCA is done \u00b7 Baseline keeps calling the LLM';
-    else if (elapsed >= multiStepStart) caption.textContent = 'One plan \u00b7 Consecutive low-level actions';
+    else if (activeReca === newCycle) caption.textContent = 'New planning cycle \u00b7 Re-plan if needed';
+    else if (elapsed >= multiStepStart) caption.textContent = 'One plan guides multiple actions';
     else if (activeReca.module === 'reca-communication') caption.textContent = 'Generate a message only when needed';
     else if (activeReca.module === 'reca-send') caption.textContent = 'Execute the communication action';
     else caption.textContent = 'Plan first \u00b7 Decide whether to communicate';

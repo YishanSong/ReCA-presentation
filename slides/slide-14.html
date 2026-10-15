@@ -6,54 +6,8 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 14</title>
 <link rel="stylesheet" href="slides.css">
-<style>
-/* Slide 13's figure and research-summary layout; all new styling is scoped. */
-.slide[data-slide="14"] .slide-content { top: 240px; bottom: 95px; }
-.s14-layout {
-  width: 100%; height: 100%; display: grid;
-  grid-template-columns: minmax(0, 930px) minmax(0, 1fr);
-  column-gap: 40px; align-items: center;
-}
-.s14-figure {
-  margin: 0; min-width: 0; display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-}
-.s14-video-frame { width: 100%; position: relative; }
-.s14-video {
-  display: block; width: 100%; height: auto; max-height: 520px;
-  aspect-ratio: 16 / 9; object-fit: contain; background: #fff; border: 0;
-}
-.s14-figure figcaption {
-  margin-top: 12px; color: #8090a3; font-size: 15px; line-height: 1.4; text-align: center;
-}
-.s14-video-notice {
-  position: absolute; inset: 0; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 12px; padding: 30px;
-  text-align: center; color: var(--navy); background: rgba(255,255,255,.96);
-  font-size: 17px; line-height: 1.45;
-}
-.s14-video-notice[hidden] { display: none; }
-.s14-play-button {
-  cursor: pointer; border: 1px solid #c8d9e9; background: #f6faff;
-  color: var(--blue); border-radius: 24px; padding: 10px 19px; font: inherit; font-weight: 750;
-}
-.s14-summary {
-  min-width: 0; padding: 6px 0 6px 30px; border-left: 2px solid #d8e4ef;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.s14-label {
-  margin: 0 0 12px; color: var(--blue); font-size: 17px; font-weight: 800;
-  letter-spacing: .08em; line-height: 1.3;
-}
-.s14-question { margin: 0; color: var(--navy); font-size: 28px; font-weight: 750; line-height: 1.32; }
-.s14-question em { color: var(--blue); font-style: normal; font-weight: 800; }
-.s14-divider { width: 100%; height: 1px; background: #d8e4ef; margin: 14px 0; }
-.s14-challenges { display: flex; flex-direction: column; gap: 14px; }
-.s14-challenge-title { margin: 0 0 4px; color: var(--navy); font-size: 21px; font-weight: 750; line-height: 1.3; }
-.s14-description { margin: 0; color: #53677e; font-size: 18px; line-height: 1.45; }
-.s14-finding { margin: 0; color: var(--navy); font-size: 24px; font-weight: 750; line-height: 1.38; }
-.s14-finding strong { color: var(--blue); font-weight: 800; }
-</style>
+<link rel="stylesheet" href="animation.css">
+<link rel="stylesheet" href="slide-14.css">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 14">
@@ -63,15 +17,46 @@
     <main class="slide-content">
       <div class="s14-layout">
         <figure class="s14-figure">
-          <div class="s14-video-frame">
-            <video id="s14Video" class="s14-video"
-              src="../assets/videos/ReCA_Slide14_AStar_Search.mp4"
-              muted playsinline preload="auto" disablepictureinpicture
-              aria-label="A-star search computes a route for Bob, with synchronized priority queue selections, neighbor expansion, and heap updates. Bob remains at the start while the path is computed."></video>
-            <div class="s14-video-notice" id="s14VideoNotice" hidden>
-              <span id="s14VideoNoticeText"></span>
-              <button class="s14-play-button" id="s14VideoPlayButton" type="button" hidden>▶ Play animation</button>
-            </div>
+          <svg class="s14-scene" id="s14-scene" viewBox="0 0 1000 525" role="img" aria-labelledby="s14-svg-title s14-svg-desc">
+            <title id="s14-svg-title">A-star grid search and binary min heap</title>
+            <desc id="s14-svg-desc">Bob stays at B5 while A-star computes a ten-move route to G2. A binary min heap selects the next node, neighbors receive actual costs, and insertions and swaps update the frontier. Search stops when the goal is popped, leaving other frontier nodes unexpanded.</desc>
+            <defs>
+              <marker id="s14-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#91a9bd"/></marker>
+            </defs>
+            <text x="20" y="30" class="s14-chart-heading">A* Path Planning</text>
+            <text x="20" y="61" class="s14-chart-small">4-way moves · Manhattan h</text>
+            <g id="s14-grid"></g>
+            <path id="s14-path" fill="none" stroke="#218F7C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="s14-endpoints"></g>
+            <text x="55" y="408" class="s14-chart-label">S (Bob)</text>
+            <text x="419" y="408" text-anchor="end" class="s14-chart-label">G (Goal)</text>
+            <text id="s14-length" x="237" y="408" text-anchor="middle" class="s14-chart-label s14-success" opacity="0">10 moves</text>
+            <g class="s14-legend">
+              <rect x="55" y="429" width="15" height="15" fill="#D0EAE4" stroke="#A1C6BB"/><text x="78" y="442">Frontier</text>
+              <rect x="190" y="429" width="15" height="15" fill="#B3CFE9"/><text x="213" y="442">Expanded</text>
+              <rect x="339" y="429" width="15" height="15" fill="#8193A4"/><text x="362" y="442">Blocked</text>
+            </g>
+            <text x="510" y="30" class="s14-formula">f(n) = g(n) + h(n)</text>
+            <text id="s14-cost-node" x="510" y="65" class="s14-cost-detail"></text>
+            <text id="s14-cost-value" x="510" y="97" class="s14-cost-value"></text>
+            <text x="510" y="134" class="s14-chart-heading">Min Heap / Priority Queue</text>
+            <g id="s14-heap-edges"></g>
+            <g id="s14-heap-nodes"></g>
+            <text id="s14-heap-count" x="750" y="391" text-anchor="middle" class="s14-chart-small"></text>
+            <text id="s14-operation" x="750" y="422" text-anchor="middle" class="s14-operation"></text>
+            <text id="s14-completion" x="750" y="449" text-anchor="middle" class="s14-completion" opacity="0">Goal popped → Path found</text>
+            <text id="s14-remaining" x="750" y="471" text-anchor="middle" class="s14-remaining" opacity="0">Remaining frontier nodes are not expanded</text>
+            <path d="M919 501H978V477H10V501H20" fill="none" stroke="#d8e4ef" stroke-width="1.5" marker-end="url(#s14-arrow)"/>
+            <g id="s14-workflow"></g>
+          </svg>
+
+          <div class="s14-scrubber" id="s14-scrubber">
+            <div class="s14-range-rail" aria-hidden="true"></div>
+            <input class="s14-range" id="s14-time" type="range" min="0" max="100" step="0.01" value="0" aria-label="Animation progress" aria-valuetext="0% complete">
+          </div>
+          <div class="animation-controls s14-controls" role="group" aria-label="Animation playback">
+            <button class="animation-control" id="s14-speed" type="button">1.5×</button>
+            <button class="animation-control" id="s14-toggle" type="button">Play</button>
           </div>
           <figcaption>Schematic A* search visualization · ReCA §§6.2–6.3</figcaption>
         </figure>
@@ -96,40 +81,12 @@
         </aside>
       </div>
     </main>
+    <div class="slide-author" aria-label="Presentation authors"><span>Yishan Song &amp; Shurui Hu</span></div>
     <div class="slide-number">14</div>
   </section>
 </div>
-<script>
-(function () {
-  'use strict';
-  const deck = document.getElementById('deck');
-  const video = document.getElementById('s14Video');
-  const notice = document.getElementById('s14VideoNotice');
-  const noticeText = document.getElementById('s14VideoNoticeText');
-  const playButton = document.getElementById('s14VideoPlayButton');
-  function resize() {
-    const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900);
-    deck.style.transform = `translate(-50%, -50%) scale(${scale})`;
-  }
-  function hideNotice() { notice.hidden = true; playButton.hidden = true; }
-  video.addEventListener('playing', hideNotice);
-  video.addEventListener('loadeddata', hideNotice);
-  video.addEventListener('error', function () {
-    noticeText.textContent = 'Video could not be loaded. Please check the MP4 file path.';
-    notice.hidden = false; playButton.hidden = true;
-    console.error('Slide 14 video failed to load:', video.currentSrc);
-  });
-  video.addEventListener('reca:playback-error', function () {
-    noticeText.textContent = 'Click to start the animation.';
-    notice.hidden = false; playButton.hidden = false;
-  });
-  playButton.addEventListener('click', function (event) {
-    event.stopPropagation(); window.ReCASlideVideo.replay();
-  });
-  window.addEventListener('resize', resize);
-  resize();
-})();
-</script>
-<script src="video-playback.js"></script>
+<script src="runtime.js"></script>
+<script src="animation.js"></script>
+<script src="slide-14.js"></script>
 </body>
 </html>

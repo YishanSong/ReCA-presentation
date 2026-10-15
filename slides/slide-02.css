@@ -1,0 +1,60 @@
+.s2-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 860px) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+  height: 100%;
+  padding-top: 20px;
+}
+.s2-mission { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 8px; }
+.s2-mission h2 { margin: 7px 0 0; font-size: 29px; font-weight: 750; line-height: 1.3; }
+.s2-status { flex: 0 0 185px; margin: 0; color: var(--muted); font-size: 17px; line-height: 1.35; text-align: right; }
+.s2-scene { display: block; width: 100%; height: auto; overflow: visible; }
+.s2-scene text { font-family: inherit; }
+.s2-architecture { fill: none; stroke: #D1DFEA; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.s2-furniture { fill: #F1F6FB; stroke: #B5CCDE; stroke-width: 2; }
+.s2-furniture path { fill: none; }
+.s2-focus { fill: none; stroke: #5B91C7; stroke-width: 2; }
+.s2-association { fill: none; stroke: #95AFC4; stroke-width: 1.8; stroke-dasharray: 5 6; stroke-linecap: round; }
+#s2-link { fill: none; stroke: #5B91C7; stroke-width: 2; stroke-dasharray: 7 7; }
+.s2-agent { color: #32B9DC; }
+.s2-bob { color: #8C92E8; }
+.s2-link-under { fill: none; stroke: #173D70; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+.s2-link { fill: none; stroke: #EAF2FA; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.s2-joint, .s2-hand { fill: #fff; stroke: #173D70; stroke-width: 1.8; }
+.s2-foot { fill: currentColor; stroke: #173D70; stroke-width: 1.8; }
+.s2-side-pieces { fill: #EAF2FA; stroke: currentColor; stroke-width: 1.8; }
+.s2-eyes, .s2-indicator, .s2-accent-fill { fill: currentColor; }
+.s2-mouth, .s2-accent-line { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.s2-antenna { fill: none; stroke: #173D70; stroke-width: 1.8; stroke-linecap: round; }
+.s2-agent-label { text-anchor: middle; fill: #53677E; font-size: 26px; font-weight: 550; }
+.s2-check circle { fill: #fff; stroke: #98B8C6; stroke-width: 1.6; }
+.s2-check path { fill: none; stroke: #398277; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+.s2-grip-outline, .s2-grip-fingers { fill: none; stroke: #173D70; stroke-width: 5.5; stroke-linecap: round; }
+.s2-grip-fingers { stroke: #fff; stroke-width: 2.5; }
+.s2-figure figcaption { display: flex; justify-content: flex-end; margin-top: 8px; }
+#s2-toggle { min-width: 76px; }
+#s2-speed { min-width: 48px; }
+.s2-summary { padding-left: 28px; }
+.s2-summary .content-heading { margin-bottom: 10px; }
+.s2-summary .s2-goal { font-size: 34px; margin-bottom: 6px; }
+.s2-goal-items { margin: 0; color: var(--muted); font-size: 21px; line-height: 1.4; }
+.s2-description { margin: 0; color: var(--muted); font-size: 20px; line-height: 1.4; }
+.s2-summary .content-rule { margin: 22px 0; }
+.s2-cooperation { margin-top: 24px; }
+.s2-flow { display: flex; align-items: center; gap: 12px; margin-top: 10px; color: #245F9C; font-size: 21px; font-weight: 650; line-height: 1.4; }
+.s2-flow [aria-hidden] { color: #8BABC8; font-weight: 500; }
+.s2-takeaway { margin: 12px 0 0; color: var(--blue); font-size: 28px; font-weight: 800; line-height: 1.25; letter-spacing: -.025em; }
+
+/* Same rail, thumb, ticks and keyboard focus treatment as Slide 06. */
+.s2-scrubber { position: relative; height: 26px; margin-top: 14px; --progress: 0%; }
+.s2-range-rail { position: absolute; top: 11px; inset-inline: 0; height: 4px; border-radius: 2px; background: linear-gradient(to right, #2F70B3 0 var(--progress), #D8E4EF var(--progress) 100%); }
+.s2-range { appearance: none; -webkit-appearance: none; position: absolute; top: 0; left: -9px; width: calc(100% + 18px); height: 26px; margin: 0; padding: 0; background: transparent; cursor: pointer; z-index: 1; }
+.s2-range::-webkit-slider-runnable-track { height: 4px; background: transparent; }
+.s2-range::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; margin-top: -7px; border: 3px solid #fff; border-radius: 50%; background: #2F70B3; box-shadow: 0 0 0 1.5px #2F70B3; }
+.s2-range::-moz-range-track { height: 4px; background: transparent; }
+.s2-range::-moz-range-thumb { width: 12px; height: 12px; border: 3px solid #fff; border-radius: 50%; background: #2F70B3; box-shadow: 0 0 0 1.5px #2F70B3; }
+.s2-range:focus-visible { outline: 2px solid #2F70B3; outline-offset: 5px; border-radius: 3px; }
+.s2-range-ticks { position: relative; pointer-events: none; }
+.s2-range-ticks span { position: absolute; top: 9.5px; width: 7px; height: 7px; transform: translateX(-50%); border: 2px solid #fff; border-radius: 50%; background: #90A8BE; box-shadow: 0 0 0 1px #90A8BE; }
+@media print { .s2-scrubber, .s2-status { display: none; } }

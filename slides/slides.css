@@ -118,3 +118,17 @@ body {
 @media print {
   .source-note a, .figure-caption a { text-decoration: none; }
 }
+
+/* Presenters share the page-number baseline; citations get their own row. */
+.slide-author {
+  position: absolute;
+  left: 90px;
+  bottom: 41px;
+  color: #647b93;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+.slide-author span { font-size: 18px; line-height: 1; vertical-align: baseline; }
+.slide > .source-note, .slide > .s6-source { bottom: 72px; }
