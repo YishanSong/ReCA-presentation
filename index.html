@@ -51,7 +51,7 @@ body { background: #e5ebf2; }
   <iframe class="slide" src="slides/slide-08.html" title="ReCA slide 8" aria-hidden="true" inert></iframe>
   <iframe class="slide" src="slides/slide-09.html" title="ReCA slide 9" aria-hidden="true" inert></iframe>
   <iframe class="slide" src="slides/slide-10.html" title="ReCA slide 10" aria-hidden="true" inert></iframe>
-  <iframe class="slide" src="slides/slide-11.html" title="ReCA slide 11" aria-hidden="true" inert></iframe>
+  <!-- The former slide 11 is merged into slide 10; its file is retained. -->
   <iframe class="slide" src="slides/slide-12.html" title="ReCA slide 12" aria-hidden="true" inert></iframe>
   <iframe class="slide" src="slides/slide-13.html" title="ReCA slide 13" aria-hidden="true" inert></iframe>
   <iframe class="slide" src="slides/slide-14.html" title="ReCA slide 14" aria-hidden="true" inert></iframe>
@@ -122,7 +122,7 @@ body { background: #e5ebf2; }
     showSlide(next);
   }
 
-  slides.forEach(function (slide) {
+  slides.forEach(function (slide, index) {
     slide.addEventListener('load', function () {
       // Keyboard events inside an iframe do not bubble to its parent window.
       try {
@@ -132,6 +132,9 @@ body { background: #e5ebf2; }
         page.addEventListener('keydown', onKeyDown);
         const title = page.querySelector('.slide-title');
         if (title) slide.title = title.textContent.trim();
+        // Source filenames stay stable when a page is merged or archived.
+        const number = page.querySelector('.slide-number');
+        if (number) number.textContent = String(index + 1);
       } catch (error) {
         // Some browsers isolate file:// pages; serve over HTTP for iframe keys.
       }

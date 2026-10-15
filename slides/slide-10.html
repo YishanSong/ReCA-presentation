@@ -6,18 +6,143 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 10</title>
 <link rel="stylesheet" href="slides.css">
+<link rel="stylesheet" href="animation.css">
+<link rel="stylesheet" href="slide-10.css">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 10">
-  <section class="slide active" data-slide="10" data-owner="B" aria-hidden="false">
-    <div class="kicker">04 / EFFICIENT EXECUTION · COMMUNICATION</div>
+  <section class="slide active" data-slide="10" data-owner="A" data-phase="complete" aria-hidden="false">
+    <div class="kicker">04 / EFFICIENT EXECUTION · EXECUTION PIPELINE</div>
     <h1 class="slide-title">Plan First. Communicate When Needed.</h1>
-    <main class="slide-content">
-      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
+    <main class="slide-content content-area">
+      <div class="s10-layout">
+        <figure class="slide-figure s10-figure">
+          <div class="s10-legend" aria-label="Figure colors">
+            <span class="s10-communication">Communication</span>
+            <span class="s10-planning">Planning</span>
+            <span class="s10-execution">Execution</span>
+          </div>
+          <svg class="s10-diagram" viewBox="0 0 1000 552" role="img" aria-labelledby="s10-figure-title s10-figure-desc">
+            <title id="s10-figure-title">Planning-guided execution, redrawn from ReCA Figure 9</title>
+            <desc id="s10-figure-desc">The baseline generates a message before planning each step. ReCA plans first, generates messages only when needed, and lets a high-level plan guide multiple low-level actions. Below the pipelines, the two schematic timelines show the same four steps. The current module and its corresponding timeline block are highlighted steadily. Future blocks are faded, completed blocks stay solid, and the complete diagram is visible at the end. Schematic lengths are not measured timings.</desc>
+            <defs>
+              <marker id="s10-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#91a6b9"/></marker>
+            </defs>
+            <text class="s10-row-label" x="60" y="22">BASELINE</text>
+            <g class="s10-connectors" aria-hidden="true">
+              <path d="M265 75H375"/>
+              <path d="M580 75H690"/>
+              <path d="M895 75H945V133H26V75H60"/>
+            </g>
+            <g class="s10-module" data-module="baseline-communication" data-kind="communication">
+              <rect x="60" y="43" width="205" height="64" rx="6"/>
+              <text class="s10-module-title" x="162.5" y="71">Communication</text>
+              <text class="s10-module-detail" x="162.5" y="93">generate message</text>
+            </g>
+            <g class="s10-module" data-module="baseline-planning" data-kind="planning">
+              <rect x="375" y="43" width="205" height="64" rx="6"/>
+              <text class="s10-module-title" x="477.5" y="71">Planning</text>
+              <text class="s10-module-detail" x="477.5" y="93">high-level plan</text>
+            </g>
+            <g class="s10-module" data-module="baseline-execution" data-kind="execution">
+              <rect x="690" y="43" width="205" height="64" rx="6"/>
+              <text class="s10-module-title" x="792.5" y="71">Execution</text>
+              <text class="s10-module-detail" x="792.5" y="93">low-level action</text>
+            </g>
+            <text class="s10-flow-note" x="500" y="127">Repeat after each action</text>
+            <text class="s10-row-label" x="60" y="174">RECA</text>
+            <g class="s10-connectors" aria-hidden="true">
+              <path d="M265 246H326V215H434"/>
+              <path d="M326 246V299H434"/>
+              <path d="M639 215H727"/>
+              <path d="M895 215H945V150H26V246H60"/>
+              <path d="M554 299H604"/>
+              <path d="M724 299H774"/>
+              <path d="M894 299H945V352H26V246H60"/>
+            </g>
+            <text class="s10-branch-label" x="377" y="204">if needed</text>
+            <g class="s10-module" data-module="reca-planning" data-kind="planning">
+              <rect x="60" y="214" width="205" height="64" rx="6"/>
+              <text class="s10-module-title" x="162.5" y="242">Planning</text>
+              <text class="s10-module-detail" x="162.5" y="264">high-level plan</text>
+            </g>
+            <g class="s10-module" data-module="reca-communication" data-kind="communication">
+              <rect x="434" y="183" width="205" height="64" rx="6"/>
+              <text class="s10-module-title" x="536.5" y="211">Communication</text>
+              <text class="s10-module-detail" x="536.5" y="233">generate message</text>
+            </g>
+            <g class="s10-module" data-module="reca-send" data-kind="execution">
+              <rect x="727" y="193" width="168" height="44" rx="6"/>
+              <text class="s10-action-label" x="811" y="222">Send message</text>
+            </g>
+            <g class="s10-module" data-module="reca-execution-1" data-kind="execution">
+              <rect x="434" y="277" width="120" height="44" rx="6"/>
+              <text class="s10-action-label" x="494" y="306">Execute</text>
+            </g>
+            <g class="s10-module" data-module="reca-execution-2" data-kind="execution">
+              <rect x="604" y="277" width="120" height="44" rx="6"/>
+              <text class="s10-action-label" x="664" y="306">Execute</text>
+            </g>
+            <g class="s10-module" data-module="reca-execution-3" data-kind="execution">
+              <rect x="774" y="277" width="120" height="44" rx="6"/>
+              <text class="s10-action-label" x="834" y="306">Execute</text>
+            </g>
+            <text class="s10-flow-note" x="500" y="345">Monitor status · Re-plan when needed</text>
+            <path class="s10-separator" d="M0 376H1000"/>
+            <text class="s10-timeline-label" x="170" y="399">Same four steps</text>
+            <text class="s10-track-label" x="150" y="432">Baseline</text>
+            <text class="s10-track-label" x="150" y="494">ReCA</text>
+            <g id="s10-baseline-blocks"></g>
+            <g id="s10-reca-blocks"></g>
+            <path class="s10-time-axis" d="M170 407V526H960"/>
+            <text class="s10-time-label" x="940" y="550">Time</text>
+          </svg>
+          <div class="s10-scrubber" id="s10-scrubber">
+            <div class="s10-range-rail" aria-hidden="true"></div>
+            <input class="s10-range" id="s10-progress" type="range" min="0" max="100" step="0.1" value="100" aria-label="Execution animation progress">
+            <div class="s10-range-ticks" aria-hidden="true">
+              <span style="left:0%"></span><span style="left:25%"></span><span style="left:50%"></span><span style="left:75%"></span><span style="left:100%"></span>
+            </div>
+          </div>
+          <figcaption class="s10-transport">
+            <span id="s10-caption">Same four steps · Fewer LLM calls</span>
+            <div class="animation-controls">
+              <button class="animation-control" id="s10-speed" type="button" aria-label="Playback speed: 3 times. Click to change speed.">3×</button>
+              <button class="animation-control" id="s10-toggle" type="button">Replay</button>
+            </div>
+          </figcaption>
+        </figure>
+        <aside class="slide-summary s10-summary">
+          <section class="s10-point" id="s10-communication-point">
+            <p class="section-label s10-communication">PLAN → COMMUNICATE</p>
+            <h2 class="content-heading">Generate messages on demand.</h2>
+            <p class="body-copy">Only when the plan requires coordination.</p>
+          </section>
+          <hr class="content-rule">
+          <section class="s10-point" id="s10-execution-point">
+            <p class="section-label s10-execution">PLAN → ACT → ACT</p>
+            <h2 class="content-heading">One plan. Multiple actions.</h2>
+            <p class="body-copy">Reuse a high-level plan across consecutive low-level actions.</p>
+          </section>
+          <hr class="content-rule">
+          <p class="takeaway">Fewer LLM calls.<br><strong>A shorter critical path.</strong></p>
+          <p class="s10-safeguard">Monitor execution; re-plan when needed.</p>
+        </aside>
+      </div>
     </main>
+    <p class="source-note">ReCA §5.4 · Redrawn from <a href="../assets/images/execution-pipeline-fig9.svg" target="_blank" rel="noreferrer">Fig. 9, p. 989</a> · Author slides pp. 39–40 · Schematic lengths, not measured timings.</p>
+    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
     <div class="slide-number">10</div>
+    <aside hidden aria-label="Presenter notes" lang="zh-CN">
+      <p>本页合并原第10页的planning-then-communication和第11页的planning-guided multi-step execution。两者均来自论文§5.4、Fig.9（PDF第8页，印刷页989），对应作者slides第39–40页。第9页Cluster Size不变。</p>
+      <p>动画依据原论文Fig.9重绘为原生SVG，统一使用slides的无衬线字体、圆角和低饱和浅红、浅蓝、浅绿；原始矢量图保留在页脚链接中供核对。上下两种策略共用时间轴；上方当前流程模块和下方对应色块保持高亮，不使用闪烁、光晕或循环脉冲。已执行部分保持实色，未来部分淡化，结束后显示完整示意图。动画速度和长度只是教学示意，不代表实测速率或加速比。</p>
+      <p>先看(a)：基线每一步都先生成消息，再做高层规划，最后执行。再看(b)：ReCA先规划，只有需要通信时才生成消息；同一个高层计划也可以连续指导多个低层动作。Fig.9(c)示意四步中基线重复四次消息生成和规划；ReCA展示两次规划、一次消息生成和四步执行。两行示例含不同的分支选择，不应声称一次计划永远覆盖全部任务或固定能获得某个加速比。</p>
+      <p>论文的约20%是预生成消息最终被使用的稀疏性观察，不是本动画中消息数的比例。多步执行可能累积误差，系统部署前要选择合适的多步长度，运行时通过self-reflection监测状态，必要时触发重规划并更新记忆。讲解最后过渡到后续低层执行：高层LLM开销降低后，低层路径规划成为更值得优化的部分。</p>
+    </aside>
   </section>
 </div>
-<script>(function () { const deck = document.getElementById('deck'); function resize() { const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900); deck.style.transform = `translate(-50%, -50%) scale(${scale})`; } window.addEventListener('resize', resize); resize(); })();</script>
+<script src="runtime.js"></script>
+<script src="animation.js"></script>
+<script src="slide-10.js"></script>
 </body>
 </html>
