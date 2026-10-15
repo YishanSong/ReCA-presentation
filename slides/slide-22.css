@@ -1,2 +1,8 @@
 /* Reuse the paired slides’ common card and control design without changing shared CSS. */
 @import url("slide-21.css");
+
+.beyond-slide[data-slide="22"] #remac-runtime-label { fill: var(--blue); }
+.beyond-slide[data-slide="22"] #remac-training-label { font-size: 19px; }
+.beyond-slide[data-slide="22"] #remac-note-a,
+.beyond-slide[data-slide="22"] #remac-note-b { font-size: 19px; }
+.beyond-slide[data-slide="22"] #remac-delay-label { font-size: 18px; }
