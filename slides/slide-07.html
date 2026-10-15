@@ -22,18 +22,18 @@
             <span class="s7-memory-region animation-stage" data-stage="long-term" aria-hidden="true"></span>
             <span class="s7-memory-region animation-stage" data-stage="short-term" aria-hidden="true"></span>
           </div>
-          <figcaption class="figure-caption">Original paper figure · persistent knowledge + current task state</figcaption>
+          <!-- <figcaption class="figure-caption">Original paper figure · persistent knowledge + current task state</figcaption> -->
         </figure>
         <aside class="slide-summary s7-summary">
+          <h2 class="s7-summary-title">Dual Memory Structure</h2>
           <p class="section-label">LONG-TERM / PERSISTENT</p>
-          <h2 class="content-heading">Remember the environment</h2>
-          <p class="body-copy">Spatial relationships, object locations, and subtasks.</p>
+          <p class="body-copy">Expand the <strong>hierarchical graph</strong> as new areas are explored; serialize it into <strong>structured text</strong> for the LLM planner.</p>
           <hr class="content-rule">
           <p class="section-label">SHORT-TERM / DYNAMIC</p>
-          <h2 class="content-heading">Track what just changed</h2>
-          <p class="body-copy">Object and agent states, recent actions, and dialogue.</p>
+          <p class="body-copy">Replace <strong>least recently used data</strong> with recent information; prioritize <strong>task-relevant details</strong> to prevent <strong>context dilution</strong>.</p>
           <hr class="content-rule">
-          <p class="takeaway">Reuse knowledge.<br><strong>Avoid redundant exploration.</strong></p>
+          <p class="section-label">TAKEAWAY</p>
+          <p class="takeaway"><strong>Minimize redundant exploration.</strong></p>
         </aside>
       </div>
     </main>
@@ -43,7 +43,7 @@
     <div class="slide-number">7</div>
     <aside hidden aria-label="Presenter notes" lang="zh-CN">
       <p>这一页承接第6页：规划质量还取决于给模型什么上下文。长期记忆保留环境图、物体位置与子任务；短期记忆保留当前状态、最近动作与对话。例子是已经见过梨的位置，就不必重新探索。注意长期记忆也会随新区域探索更新，并非永久不变。</p>
-      <p>图像直接提取自论文PDF第7页、印刷页988的Fig.7，文字与线条保留原始矢量；图中环境截图为论文内嵌位图。对应作者slides第36页。正文只讲两类记忆的区别和减少重复探索的效果，序列化、LRU细节留作问答。</p>
+      <p>图像直接提取自论文PDF第7页、印刷页988的Fig.7，文字与线条保留原始矢量；图中环境截图为论文内嵌位图。对应作者slides第36页。右侧补充论文§5.2中原图未展开的机制：长期记忆图随新区域探索扩展，并序列化成供LLM规划器解析的structured text；短期记忆替换least recently used data，并优先保留task-relevant details以防止context dilution。右侧为使用论文术语的压缩说明，并非整段逐字引文。</p>
       <p>动画设计占位：保留当前完整静态图。后续可依次高亮原图左下长期记忆区域、右下短期记忆区域，最后同时高亮并指向规划。只做独立SVG蒙版/描边的透明度切换，不改写原图、不生成视频。</p>
     </aside>
   </section>
