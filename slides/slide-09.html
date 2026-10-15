@@ -6,42 +6,44 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 09</title>
 <link rel="stylesheet" href="slides.css">
-<link rel="stylesheet" href="slide-09.css">
+<link rel="stylesheet" href="slide-09.css?v=best-overall">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 9">
   <section class="slide active" data-slide="9" data-owner="B" aria-hidden="false">
-    <div class="kicker">03 / SYSTEM · CLUSTER SIZE TRADE-OFF</div>
+    <div class="kicker">2.2 / SYSTEM · CLUSTER SIZE TRADE-OFF</div>
     <h1 class="slide-title">How Large Should a Cluster Be?</h1>
     <main class="slide-content content-area">
       <div class="content-grid s9-layout">
         <figure class="slide-figure">
           <img class="figure-image" src="../assets/images/pb-cluster-sensitivity-fig16.svg" alt="Original ReCA sensitivity plots for CoELA, COMBO and MindAgent, showing task success rate and latency as the number of agents per cluster varies from two to eight. Intermediate cluster sizes provide the favorable tradeoff.">
-          <figcaption class="figure-caption">Original measured results · success rate ↑ and task latency ↓</figcaption>
-          <div class="s9-scale" aria-label="Cluster-size tradeoff: too few behaves more decentralized, five per cluster is the tested best, too many behaves more centralized.">
-            <div><strong>Too few</strong>More decentralized</div>
-            <div><strong>5 per cluster</strong>Author's summary</div>
-            <div><strong>Too many</strong>More centralized</div>
-          </div>
+          <figcaption class="s9-takeaway">
+            <p class="section-label">TAKEAWAY</p>
+            <p class="takeaway">Too few or too many agents per cluster negatively impact <strong>task success rates</strong> and increase <strong>end-to-end latency</strong>, particularly in large-scale systems.</p>
+          </figcaption>
         </figure>
         <aside class="slide-summary s9-summary">
-          <p class="section-label">AUTHOR'S SUMMARY</p>
-          <span class="stat-value">5</span>
-          <p class="s9-unit">agents per cluster</p>
+          <p class="section-label">ReCA · Best Overall Performance</p>
+          <div class="s9-stat">
+            <span class="stat-value">5</span>
+            <p class="s9-unit">agents per cluster</p>
+          </div>
           <hr class="content-rule">
-          <p class="body-copy">Both extremes reduce success rate and increase latency.</p>
+          <p class="section-label">SMALL CLUSTERS</p>
+          <p class="body-copy">Having too few agents makes the system<br>behave like a <strong>decentralized architecture</strong>.</p>
           <hr class="content-rule">
-          <p class="takeaway">Cluster size balances<br><strong>coordination and planning.</strong></p>
+          <p class="section-label">LARGE CLUSTERS</p>
+          <p class="body-copy">Having too many agents leads to<br><strong>centralized behavior</strong>.</p>
         </aside>
       </div>
     </main>
-    <p class="source-note">ReCA §7.3 · Fig. 16, p. 994 · Five agents/cluster: author's summary on presentation slide 52.</p>
-    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
+    <p class="source-note">ReCA §7.3 · Fig. 16, pp. 993–994</p>
+    <!-- <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div> -->
     <div class="slide-author" aria-label="Presentation authors"><span>Shurui Hu</span></div>
     <div class="slide-number">9</div>
     <aside hidden aria-label="Presenter notes" lang="zh-CN">
       <p>上一页说明分层合作，这一页只回答每簇多大。读原图时看红色成功率与蓝色延迟两种趋势：簇太小，更接近全分散系统；簇太大，更接近全中心系统。论文报告两端都会损害成功率并增加延迟，作者slides第52页总结其测试中5个代理一簇表现最好。</p>
-      <p>Fig.16直接提取自论文PDF第13页、印刷页994，曲线、坐标与图例均保留原始矢量，不重新绘制实测数据。讨论见§7.3，始于印刷页993。下方尺度条只是机制说明，不是额外实测数据。5是论文测试工作点，不能推广为所有任务的最佳簇大小。</p>
+      <p>Fig.16直接提取自论文PDF第13页、印刷页994，曲线、坐标与图例均保留原始矢量，不重新绘制实测数据。讨论见§7.3，始于印刷页993。左图下方takeaway删除原句引导语并修正both与or的搭配，保留task success rates、end-to-end latency及large-scale systems。右侧依照SMALL CLUSTERS和LARGE CLUSTERS标题精简对应句子，保留decentralized architecture和centralized behavior，均为原文的精简表述而非逐字引用。5来自作者slides52的实验总结，不能推广为所有任务的最佳簇大小。</p>
       <p>本页静态原始实测图足够，不安排动画。若后续需要强调，可仅为三个面板x=5的位置叠加竖向浅蓝色高亮，不移动或插值任何实测曲线。</p>
     </aside>
   </section>

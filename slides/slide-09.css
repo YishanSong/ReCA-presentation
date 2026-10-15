@@ -1,13 +1,8 @@
 .s9-layout { grid-template-columns: minmax(0, 890px) minmax(0, 1fr); gap: 38px; }
-.s9-scale { position: relative; display: grid; grid-template-columns: 1fr 1fr 1fr; margin: 48px 18px 0; padding-top: 25px; border-top: 2px solid #d8e4ef; }
-.s9-scale > div { position: relative; color: #647b93; font-size: 18px; line-height: 1.35; }
-.s9-scale > div::before { position: absolute; content: ''; top: -32px; width: 12px; height: 12px; border-radius: 50%; background: #d8e4ef; }
-.s9-scale > div:first-child::before { left: 0; }
-.s9-scale > div:nth-child(2) { color: var(--blue); text-align: center; font-weight: 750; }
-.s9-scale > div:nth-child(2)::before { left: calc(50% - 6px); background: var(--blue); box-shadow: 0 0 0 7px #edf4fb; }
-.s9-scale > div:last-child { text-align: right; }
-.s9-scale > div:last-child::before { right: 0; }
-.s9-scale strong { display: block; margin-bottom: 6px; color: var(--navy); font-size: 22px; }
-.s9-summary .stat-value { font-size: 80px; margin: 10px 0 3px; }
-.s9-unit { margin: 0; font-size: 27px; font-weight: 750; }
-.s9-summary .body-copy { font-size: 22px; }
+.s9-takeaway { margin-top: 28px; padding-top: 21px; border-top: 1px solid #d8e4ef; }
+.s9-takeaway .takeaway { margin-top: 10px; color: #53677e; font-size: 24px; font-weight: 500; line-height: 1.42; letter-spacing: 0; }
+.s9-stat { display: flex; align-items: baseline; gap: 16px; margin: 10px 0 3px; }
+.s9-summary .stat-value { font-size: 80px; margin: 0; }
+.s9-unit { position: relative; top: -7px; margin: 0; color: #53677e; font-size: 27px; font-weight: 400; }
+.s9-summary .body-copy { margin-top: 10px; font-size: 22px; line-height: 1.44; }
+.s9-summary .content-rule { margin: 17px 0; }
