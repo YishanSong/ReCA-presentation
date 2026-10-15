@@ -13,13 +13,18 @@
 .s10-diagram text { font-family: inherit; fill: var(--navy); }
 .s10-row-label { font-size: 18px; font-weight: 750; letter-spacing: 1.4px; }
 .s10-connectors { fill: none; stroke: #91a6b9; stroke-width: 1.8; stroke-linejoin: round; marker-end: url(#s10-arrow); }
-.s10-module rect, .s10-block rect { stroke-width: 1.4; }
 .s10-module[data-kind="communication"], .s10-block[data-kind="communication"] { --block-fill: #efdee1; --block-stroke: #d0b6bd; --active-fill: #e2c9cf; --active-stroke: #a9828c; }
 .s10-module[data-kind="planning"], .s10-block[data-kind="planning"] { --block-fill: #dce7f2; --block-stroke: #b4c8dc; --active-fill: #c6d8e9; --active-stroke: #7797b7; }
 .s10-module[data-kind="execution"], .s10-block[data-kind="execution"] { --block-fill: #e1ebdf; --block-stroke: #bbcdb7; --active-fill: #cedec9; --active-stroke: #87a082; }
-.s10-module rect, .s10-block rect { fill: var(--block-fill); stroke: var(--block-stroke); }
-.s10-module[data-state="future"], .s10-block[data-state="future"] { opacity: .28; }
-.s10-module[data-state="active"] rect, .s10-block[data-state="active"] rect { fill: var(--active-fill); stroke: var(--active-stroke); stroke-width: 2.4; }
+.s10-module-base { fill: var(--block-fill); stroke: var(--block-stroke); stroke-width: 1.4; }
+.s10-module[data-state="active"] .s10-module-base { stroke: var(--active-stroke); stroke-width: 2.4; }
+.s10-module-pending, .s10-module-progress { display: none; fill: var(--active-fill); stroke: none; }
+.s10-module-pending { opacity: .28; }
+.s10-module[data-state="active"] .s10-module-pending, .s10-module[data-state="active"] .s10-module-progress { display: block; }
+.s10-block-base, .s10-block-progress { fill: var(--active-fill); stroke: var(--block-stroke); stroke-width: 1.4; }
+.s10-block-base { opacity: .5; }
+.s10-block-focus { display: none; fill: none; stroke: var(--active-stroke); stroke-width: 1.8; }
+.s10-block[data-state="active"] .s10-block-focus { display: block; }
 .s10-module-title { font-size: 23px; font-weight: 700; text-anchor: middle; }
 .s10-module-detail { font-size: 17px; text-anchor: middle; }
 .s10-action-label { font-size: 21px; font-weight: 650; text-anchor: middle; }
@@ -28,8 +33,8 @@
 .s10-separator { stroke: #d8e4ef; stroke-width: 1.2; }
 .s10-diagram .s10-timeline-label { fill: #647b93; font-size: 18px; }
 .s10-track-label { font-size: 22px; font-weight: 650; text-anchor: end; }
-.s10-time-axis { fill: none; stroke: #91a6b9; stroke-width: 1.8; marker-end: url(#s10-arrow); }
-.s10-diagram .s10-time-label { fill: #647b93; font-size: 17px; text-anchor: end; }
+.s10-playhead { fill: none; stroke: #2f70b3; stroke-width: 2; opacity: .55; }
+.slide[data-slide="10"][data-phase="complete"] .s10-playhead { opacity: 0; }
 .s10-scrubber { position: relative; width: 77%; height: 22px; margin: 8px 0 0 17%; --progress: 100%; }
 .s10-range-rail { position: absolute; top: 9px; left: 0; right: 0; height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--blue) 0 var(--progress), #d8e4ef var(--progress) 100%); }
 .s10-range { appearance: none; -webkit-appearance: none; position: absolute; top: 0; left: -9px; width: calc(100% + 18px); height: 22px; margin: 0; padding: 0; background: transparent; cursor: pointer; z-index: 1; }
@@ -49,4 +54,7 @@
 .s10-summary .content-rule { margin: 23px 0; }
 .s10-summary .takeaway { font-size: 30px; }
 .s10-safeguard { margin: 17px 0 0; color: #647b93; font-size: 18px; line-height: 1.4; }
-@media print { .s10-scrubber { display: none; } .s10-module, .s10-block { opacity: 1 !important; } }
+@media print {
+  .s10-scrubber, .s10-playhead, .s10-module-pending, .s10-module-progress, .s10-block-focus { display: none !important; }
+  .s10-block-base { opacity: 1 !important; }
+}
