@@ -18,10 +18,11 @@
 .s10-module-base { fill: var(--block-fill); stroke: var(--block-stroke); stroke-width: 1.4; }
 .s10-module[data-state="active"] .s10-module-base { stroke: var(--active-stroke); stroke-width: 2.4; }
 .s10-module-pending, .s10-module-progress { display: none; fill: var(--active-fill); stroke: none; }
-.s10-module-pending { opacity: .28; }
+.s10-module-pending { opacity: .15; }
 .s10-module[data-state="active"] .s10-module-pending, .s10-module[data-state="active"] .s10-module-progress { display: block; }
 .s10-block-base, .s10-block-progress { fill: var(--active-fill); stroke: var(--block-stroke); stroke-width: 1.4; }
 .s10-block-base { opacity: .5; }
+.s10-block[data-state="future"] .s10-block-base, .s10-block[data-state="active"] .s10-block-base { opacity: .25; }
 .s10-block-focus { display: none; fill: none; stroke: var(--active-stroke); stroke-width: 1.8; }
 .s10-block[data-state="active"] .s10-block-focus { display: block; }
 .s10-module-title { font-size: 23px; font-weight: 700; text-anchor: middle; }
