@@ -118,7 +118,7 @@
     cycleNote.dataset.active = String(activeReca === newCycle);
     if (state.finished) caption.textContent = 'Same four steps \u00b7 Fewer LLM calls';
     else if (!activeReca) caption.textContent = 'ReCA is done \u00b7 Baseline keeps calling the LLM';
-    else if (activeReca === newCycle) caption.textContent = 'New planning cycle \u00b7 Re-plan if needed';
+    else if (activeReca === newCycle) caption.textContent = 'New plan after the message is sent';
     else if (elapsed >= multiStepStart) caption.textContent = 'One plan guides multiple actions';
     else if (activeReca.module === 'reca-communication') caption.textContent = 'Generate a message only when needed';
     else if (activeReca.module === 'reca-send') caption.textContent = 'Execute the communication action';
