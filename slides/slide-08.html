@@ -7,7 +7,7 @@
 <title>ReCA · Slide 08</title>
 <link rel="stylesheet" href="slides.css">
 <link rel="stylesheet" href="animation.css">
-<link rel="stylesheet" href="slide-08.css?v=hierarchy-tradeoffs">
+<link rel="stylesheet" href="slide-08.css?v=hierarchy-packets">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 8">
@@ -18,7 +18,7 @@
       <figure class="slide-figure s8-figure">
         <svg id="s8-diagram" class="s8-diagram" viewBox="0 0 1420 492" role="img" aria-labelledby="s8-title s8-desc">
           <title id="s8-title">Hierarchical cooperative planning</title>
-          <desc id="s8-desc">Four large agents exchange messages at the center. Child agents are revealed, showing decentralized cooperation between clusters. The network moves left, and the upper-right cluster C expands into centralized cooperation on the right: a parent plans and children return feasibility feedback. A No triggers replanning. Finally, the hierarchical network remains on the left. The right compares decentralized communication overhead, centralized planning difficulty as teams grow, and ReCA's distribution of planning across cluster parents. Dots represent messages, and agent artwork comes from ReCA Fig. 8.</desc>
+          <desc id="s8-desc">Four large agents exchange messages at the center, then finish moving left before Inter-cluster appears and Decentralized cooperation shrinks into a subtitle. Children are revealed, and cluster C expands into a parent planning for its children. The plan examples are explore cabinet and fetch an apple, from the original figure. A No triggers replanning. The final hierarchy keeps all agent figures fully visible while message bubbles loop between parents and between parents and children. Bubbles on the parent-child links are smaller and more translucent than the inter-cluster bubbles. The right compares the two architectures and ReCA's approach. The loop illustrates communication, not measured message frequencies.</desc>
           <defs>
             <!-- Reuse Fig. 8's vector paths, without its labels or ground bars. -->
             <symbol id="s8-parent-art" viewBox="0 0 54 69">
@@ -45,11 +45,13 @@
               <circle class="s8-parent-disc" cx="177" cy="57" r="43"/>
               <use href="#s8-parent-art" x="148" y="19" width="58" height="70"/>
               <g class="s8-cluster-children">
-                <path class="s8-internal-links" d="M151 91L27 113M151 91L60 113M151 91L93 113M151 91L126 113"/>
-                <use href="#s8-child-1-art" x="12" y="114" width="31" height="28"/>
-                <use href="#s8-child-2-art" x="45" y="114" width="31" height="28"/>
-                <use href="#s8-child-3-art" x="78" y="114" width="31" height="28"/>
-                <use href="#s8-child-4-art" x="111" y="114" width="31" height="28"/>
+                <path class="s8-internal-links" d="M151 91L27.5 128M151 91L60.5 128M151 91L93.5 128M151 91L126.5 128"/>
+                <g class="s8-child-figures">
+                  <use href="#s8-child-1-art" x="12" y="114" width="31" height="28"/>
+                  <use href="#s8-child-2-art" x="45" y="114" width="31" height="28"/>
+                  <use href="#s8-child-3-art" x="78" y="114" width="31" height="28"/>
+                  <use href="#s8-child-4-art" x="111" y="114" width="31" height="28"/>
+                </g>
               </g>
             </symbol>
             <marker id="s8-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -59,7 +61,10 @@
 
           <text id="s8-inter-heading" class="s8-mode-title" x="4" y="29" opacity="0">Inter-cluster</text>
           <text id="s8-network-heading" class="s8-heading s8-subheading" x="4" y="64" opacity="0">Decentralized cooperation</text>
-          <text id="s8-hierarchy-heading" class="s8-heading" x="4" y="48">Hierarchical cooperative planning</text>
+          <g id="s8-hierarchy-heading">
+            <text class="s8-reca-title" x="4" y="24">ReCA’s</text>
+            <text class="s8-hierarchy-subtitle" x="4" y="62">Hierarchical Cooperative Planning</text>
+          </g>
           <g id="s8-network">
             <g id="s8-cluster-a" class="s8-cluster" data-cluster="A">
               <use href="#s8-cluster-art" x="4" y="100" width="230" height="168"/>
@@ -92,6 +97,7 @@
               <circle data-parent="D" cx="533" cy="359" r="46"/>
             </g>
             <g id="s8-network-messages" aria-hidden="true"></g>
+            <g id="s8-summary-messages" aria-hidden="true"></g>
           </g>
 
           <g id="s8-zoom" class="s8-zoom" opacity="0" aria-hidden="true">
@@ -110,9 +116,11 @@
               <path id="s8-link-child-4" d="M1093 211C1128 250 1354 254 1354 346"/>
             </g>
             <g id="s8-plan" class="s8-plan">
-              <path class="s8-plan-paper" d="M815 133H965V195H815ZM965 171L984 180L965 184"/>
-              <text class="s8-plan-label" x="835" y="159">Plan</text>
-              <path class="s8-plan-lines" d="M835 173H865M873 173H944M835 183H880M888 183H928"/>
+              <path class="s8-plan-paper" d="M750 123H1007V171L1022 181L1007 191V240H750Z"/>
+              <text class="s8-plan-label" x="769" y="149">Plan</text>
+              <text class="s8-plan-example" x="769" y="179">Agent 1: &lt;explore cabinet&gt;</text>
+              <text class="s8-plan-example" x="769" y="206">Agent 2: &lt;fetch an apple&gt;</text>
+              <text class="s8-plan-example" x="769" y="228">…</text>
             </g>
             <g id="s8-local-parent" class="s8-agent-node" data-state="planned">
               <circle cx="1070" cy="168" r="46"/>
@@ -148,18 +156,15 @@
           <section class="s8-point s8-point-decentralized">
             <h2 class="s8-point-heading">Decentralized</h2>
             <p class="s8-capability">Each agent plans and communicates.</p>
-            <p class="s8-limit"><span class="s8-limit-label">AT SCALE</span>Repetitive dialogue → higher latency and context dilution.</p>
+            <p class="s8-limit">Repetitive dialogue → higher latency and context dilution.</p>
           </section>
           <section class="s8-point s8-point-centralized">
             <h2 class="s8-point-heading">Centralized</h2>
             <p class="s8-capability">One LLM planner coordinates the team.</p>
-            <p class="s8-limit"><span class="s8-limit-label">AT SCALE</span>Larger teams → lower task success rates.</p>
+            <p class="s8-limit">Larger teams → lower task success rates.</p>
           </section>
           <section class="s8-point s8-point-hierarchical">
-            <div class="s8-reca-heading">
-              <h2 class="s8-point-heading">Hierarchical</h2>
-              <span class="s8-reca-label">ReCA</span>
-            </div>
+            <h2 class="s8-point-heading">Hierarchical</h2>
             <p class="s8-solution">Cluster parents <strong>distribute planning workload.</strong><br>Parents exchange progress across clusters,<br>reducing <strong>communication overhead</strong> and <strong>context dilution.</strong></p>
           </section>
         </aside>
@@ -177,12 +182,13 @@
         </figcaption>
       </figure>
     </main>
-    <p class="source-note">ReCA §3.3, p. 986 · §5.3 / Fig. 8, pp. 988–989 · Author slides 37–38</p>
-    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
+    <p class="source-note">ReCA §3.3, p. 986</p>
+    <!-- <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div> -->
     <div class="slide-author" aria-label="Presentation authors"><span>Shurui Hu</span></div>
     <div class="slide-number">8</div>
     <aside hidden aria-label="Presenter notes" lang="zh-CN">
-      <p>20秒原速叙事：0–2.7秒，中央四个大agent快速交换消息，不显示children；2.7–3.7秒，Decentralized cooperation缩为子标题，上方出现Inter-cluster；3.7–4.7秒，每个parent左下方出现children，揭示原有层级；4.7–6.2秒，整图左移，框选右上C簇，向右展开Intra-cluster centralized cooperation；6.5–12秒，下发Plan、检查可行性、返回Yes/No，不可行则重新规划；13–14.2秒收起右侧局部放大图和Inter-cluster标题；14.2–20秒，左侧保留Hierarchical cooperative planning，右侧显示三个论文要点。完成后保留此画面。</p>
+      <p>20秒原速叙事：0–2.6秒，中央四个大agent快速交换消息，不显示children；2.6–3.75秒，先缩小网络并整体移到左侧，Decentralized cooperation此时仍是大标题；3.95–4.55秒，在左侧同步出现Inter-cluster并缩小副标题；4.6–5.35秒，parent左下方显现children；5.6–6.4秒框选C簇，向右展开Intra-cluster centralized cooperation；6.5–12秒，Plan下发、Yes/No可行性反馈与重规划；13–14.2秒转入结尾，左侧显示绿色ReCA’s及下一行Hierarchical Cooperative Planning，右侧三个要点均为纯文字。</p>
+      <p>Plan示例直接使用原图的Agent 1: &lt;explore cabinet&gt;和Agent 2: &lt;fetch an apple&gt;，省略号表示其余动作。结尾所有parent和child都保持完整、实色的agent图形。parent间与parent-child间的信息泡泡持续往返循环；父子链路的消息泡泡更小、更透明，节点本身不淡化，也不替换成小圆点。循环仅为信息流示意，不代表每步都通信，也不代表全局同步；暂停、切页、减少动态效果与打印会停止相应运动。</p>
       <p>讲稿：分散式允许各agent自己规划与通信，但团队扩大后，重复对话带来延迟和上下文稀释。集中式由一个规划器协调团队，但规模变大、规划变复杂时，成功率下降。ReCA在簇内集中规划、检查可行性，在簇间只由parents交换进展，分担规划工作并减少通信开销。</p>
       <p>右侧前两点先描述架构能力，再给出论文§3.3（印刷页986）观察到的规模化代价；不把容错性或全局最优等论文未讨论的性质当作优势。最后一点对应§5.3（988–989页）：多个cluster parents分担planning workload，簇间update task progress以减少communication overhead与context dilution。它是机制说明，不声称消除所有规模化问题或保证最优成功率。</p>
       <p>图标直接裁自论文Fig.8矢量图，结构按作者slides37–38重新排版。parent是已有embodied agent承担的规划角色，不是额外增加的机器人或独立软件模块。四个示例簇及children数量不代表固定配置。图中的Yes/No是动作可行性反馈，不是任务完成或发送成功。消息路径为叙事演示，时间不代表论文测量结果；先介绍簇间再展开簇内，是讲述顺序而不是运行依赖。</p>
@@ -192,6 +198,6 @@
 </div>
 <script src="runtime.js"></script>
 <script src="animation.js"></script>
-<script src="slide-08.js?v=hierarchy-tradeoffs"></script>
+<script src="slide-08.js?v=hierarchy-packets"></script>
 </body>
 </html>
