@@ -1,6 +1,11 @@
+.s16-content { display: flex; align-items: center; }
+.s16-layout { width: 100%; height: auto; align-items: stretch; }
+.s16-layout .slide-summary { display: flex; flex-direction: column; }
+.s16-layout .content-rule { flex: none; width: 100%; margin: auto 0 24px; }
 .s16-figure-labels { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 0 0 17px; }
 .s16-figure-labels p { margin: 0; color: var(--navy); font-size: 23px; font-weight: 750; }
 .s16-figure-labels span { display: block; margin-top: 4px; color: #647b93; font-size: 17px; font-weight: 500; }
-.s16-metric { margin: 4px 0 2px; color: var(--blue); font-size: 82px; font-weight: 800; line-height: 1.1; letter-spacing: -.045em; }
-.s16-metric-label { margin: 0 0 23px; color: var(--navy); font-size: 25px; font-weight: 750; }
+.s16-stat { display: flex; align-items: flex-end; gap: 16px; margin: 4px 0 23px; }
+.s16-metric { flex: none; margin: 0; color: var(--blue); font-size: 82px; font-weight: 800; line-height: 1.1; letter-spacing: -.045em; }
+.s16-metric-label { min-width: 0; margin: 0; padding-bottom: 7px; color: #53677e; font-size: 25px; font-weight: 750; line-height: 1.2; }
 .s16-note { margin: 12px 0 0; color: #8090a3; font-size: 17px; line-height: 1.4; }

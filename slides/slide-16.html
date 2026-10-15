@@ -6,36 +6,38 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 16</title>
 <link rel="stylesheet" href="slides.css">
-<link rel="stylesheet" href="slide-16.css">
+<link rel="stylesheet" href="slide-16.css?v=column-balance">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 16">
   <section class="slide active" data-slide="16" data-owner="B" aria-hidden="false">
     <div class="kicker">03 / EVALUATION · END-TO-END</div>
     <h1 class="slide-title">Does ReCA Actually Speed Up the Mission?</h1>
-    <main class="slide-content content-area">
-      <div class="content-grid">
+    <main class="slide-content content-area s16-content">
+      <div class="content-grid s16-layout">
         <figure class="slide-figure">
           <div class="s16-figure-labels" aria-hidden="true">
             <p>Task success<span>Higher is better</span></p>
             <p>End-to-end runtime<span>Lower is better · dots show task steps</span></p>
           </div>
           <img class="figure-image" src="../assets/images/pb-fig12-end-to-end.svg" alt="Original ReCA paper Figure 12. Across six benchmarks, blue ReCA bars show higher task success and lower runtime than pink baseline bars; the dots show average task steps.">
-          <figcaption class="figure-caption">Original paper Fig. 12 · Six benchmarks, three systems, four agents.</figcaption>
+          <figcaption class="figure-caption">Six benchmarks, three systems, four agents. Runtime and steps are measured on successful missions.</figcaption>
         </figure>
         <aside class="slide-summary">
-          <p class="section-label">PAPER RESULT</p>
-          <p class="s16-metric">10.2×</p>
-          <p class="s16-metric-label">average end-to-end speedup</p>
-          <p class="body-copy"><strong>4.3% improvement</strong> in task success rate, with only <strong>3.2% more steps</strong>.</p>
-          <p class="s16-note">Runtime and steps are measured on successful missions.</p>
+          <p class="section-label">ReCA ACHIEVED</p>
+          <div class="s16-stat">
+            <p class="s16-metric">10.2×</p>
+            <p class="s16-metric-label">average <br> end-to-end speedup</p>
+          </div>
+          <p class="body-copy">ReCA achieves a <strong>4.3% improvement</strong> in task success rate with only <strong>3.2% more steps</strong>.</p>
           <hr class="content-rule">
+          <p class="section-label">TAKEAWAY</p>
           <p class="takeaway">The mission is faster because <strong>each step costs less.</strong></p>
         </aside>
       </div>
     </main>
-    <p class="source-note">Source: Wan et al., ReCA (ASPLOS ’25), §7.1–7.2, Fig. 12, pp. 992–993. Values follow the paper.</p>
-    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
+    <p class="source-note">ReCA, §7.1–7.2, Fig. 12, p992-993.</p>
+    <!-- <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div> -->
     <div class="slide-author" aria-label="Presentation authors"><span>Shurui Hu</span></div>
     <div class="slide-number">16</div>
     <aside hidden aria-label="Presenter notes" lang="zh-CN">

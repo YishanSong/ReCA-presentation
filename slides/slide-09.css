@@ -3,6 +3,6 @@
 .s9-takeaway .takeaway { margin-top: 10px; color: #53677e; font-size: 24px; font-weight: 500; line-height: 1.42; letter-spacing: 0; }
 .s9-stat { display: flex; align-items: baseline; gap: 16px; margin: 10px 0 3px; }
 .s9-summary .stat-value { font-size: 80px; margin: 0; }
-.s9-unit { position: relative; top: -7px; margin: 0; color: #53677e; font-size: 27px; font-weight: 400; }
+.s9-unit { position: relative; top: -7px; margin: 0; color: #53677e; font-size: 27px; font-weight: 750; }
 .s9-summary .body-copy { margin-top: 10px; font-size: 22px; line-height: 1.44; }
 .s9-summary .content-rule { margin: 17px 0; }
