@@ -1,24 +1,284 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
-<title>ReCA · Slide 21</title>
-<link rel="stylesheet" href="slides.css">
-</head>
-<body>
-<div id="deck" role="group" aria-label="ReCA slide 21">
-  <section class="slide active" data-slide="21" data-owner="A" aria-hidden="false">
-    <div class="kicker">07 / BEYOND RECA · FLASH · WA-SPECDEC · DELTORIS</div>
-    <h1 class="slide-title">Beyond ReCA: Faster, World-Aware Inference</h1>
-    <main class="slide-content">
-      <!-- ADD YOUR TEXT, FIGURES, ANIMATIONS, OR LAYOUT HERE. -->
-    </main>
-    <div class="slide-author" aria-label="Presentation authors"><span>Yishan Song</span></div>
-    <div class="slide-number">21</div>
-  </section>
-</div>
-<script>(function () { const deck = document.getElementById('deck'); function resize() { const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900); deck.style.transform = `translate(-50%, -50%) scale(${scale})`; } window.addEventListener('resize', resize); resize(); })();</script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>ReCA · Slide 21</title>
+    <link rel="stylesheet" href="slides.css">
+    <link rel="stylesheet" href="animation.css">
+    <link rel="stylesheet" href="slide-21.css">
+  </head>
+  <body>
+    <div id="deck" role="group" aria-label="ReCA slide 21">
+      <section class="slide active beyond-slide" data-slide="21" data-owner="A" aria-hidden="false">
+        <div class="kicker">07 / BEYOND RECA · FLASH · WA-SPECDEC · DELTORIS</div>
+        <h1 class="slide-title">Beyond ReCA: Faster, World-Aware Inference</h1>
+        <main class="slide-content">
+          <div class="beyond-question">
+            <span class="section-label">RESEARCH QUESTION</span>
+            <p>How can robots generate actions faster without sacrificing task reliability?</p>
+          </div>
+          <div class="beyond-cards">
+            <article class="beyond-card" data-paper="flash" data-state="pending">
+              <header>
+                <p class="beyond-category">SPECULATIVE INFERENCE</p>
+                <h2>FLASH</h2>
+              </header>
+              <svg viewBox="0 0 400 250" role="img" aria-labelledby="flash-title flash-desc">
+                <title id="flash-title">FLASH: proposed actions are verified before execution</title>
+                <desc id="flash-desc">Four illustrative candidates are checked by the Action Expert. The first three form an accepted prefix; the fourth is rejected. Full inference is available if no prefix survives or the task enters a fine-adjustment phase. Counts are schematic.</desc>
+                <defs>
+                  <marker id="flash-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+                    <path d="M0 0L8 4L0 8Z" fill="#91a9bd"/>
+                  </marker>
+                </defs>
+                <text class="b-core" x="200" y="19" text-anchor="middle">Draft → Verify → Accepted Prefix</text>
+                <g id="flash-draft">
+                  <rect class="b-node" x="15" y="42" width="140" height="40" rx="5"/>
+                  <text x="85.0" y="68.0" text-anchor="middle">Draft model</text>
+                </g>
+                <path class="b-line" d="M158 62H206" marker-end="url(#flash-arrow)" />
+                <g id="flash-expert">
+                  <rect class="b-node" x="212" y="42" width="175" height="40" rx="5"/>
+                  <text x="299.5" y="68.0" text-anchor="middle">Action Expert</text>
+                </g>
+                <path class="b-line" d="M85 83V96H302V100"/>
+                <path id="flash-fallback" class="b-line" d="M387 62H395V232H363" stroke-dasharray="4 4"/>
+                <g id="flash-action-0" data-result="proposal">
+                  <rect x="25" y="105" width="57" height="36" rx="4" class="b-node"/>
+                  <text x="53.5" y="129" text-anchor="middle">a1</text>
+                </g>
+                <g id="flash-action-1" data-result="proposal">
+                  <rect x="105" y="105" width="57" height="36" rx="4" class="b-node"/>
+                  <text x="133.5" y="129" text-anchor="middle">a2</text>
+                </g>
+                <g id="flash-action-2" data-result="proposal">
+                  <rect x="185" y="105" width="57" height="36" rx="4" class="b-node"/>
+                  <text x="213.5" y="129" text-anchor="middle">a3</text>
+                </g>
+                <g id="flash-action-3" data-result="proposal">
+                  <rect x="265" y="105" width="57" height="36" rx="4" class="b-node"/>
+                  <text x="293.5" y="129" text-anchor="middle">a4</text>
+                </g>
+                <g id="flash-checks">
+                  <text x="53.5" y="157" text-anchor="middle" class="b-success">✓</text>
+                  <text x="133.5" y="157" text-anchor="middle" class="b-success">✓</text>
+                  <text x="213.5" y="157" text-anchor="middle" class="b-success">✓</text>
+                  <text x="293.5" y="157" text-anchor="middle" class="b-warning">×</text>
+                </g>
+                <text id="flash-prefix" x="153" y="177" text-anchor="middle" class="b-success">Accepted prefix → Execute</text>
+                <text id="flash-full-note" x="200" y="244" text-anchor="middle" class="b-small">Full path if no prefix / phase change</text>
+              </svg>
+              <p class="beyond-description">Use a lightweight draft model and parallel verification to reduce expensive full inference.</p>
+            </article>
+            <article class="beyond-card" data-paper="wa" data-state="pending">
+              <header>
+                <p class="beyond-category">WORLD AWARENESS</p>
+                <h2>WA-SpecDec</h2>
+              </header>
+              <svg viewBox="0 0 400 250" role="img" aria-labelledby="wa-title wa-desc">
+                <title id="wa-title">WA-SpecDec: shared physical context for draft and target</title>
+                <desc id="wa-desc">A spatial bias derived from the current scene modulates existing visual tokens before prefill. Both draft proposal and target verification use the resulting shared hidden states. The acceptance rule is unchanged, and inference does not predict a future image.</desc>
+                <defs>
+                  <marker id="wa-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+                    <path d="M0 0L8 4L0 8Z" fill="#91a9bd"/>
+                  </marker>
+                </defs>
+                <text class="b-core" x="200" y="19" text-anchor="middle">Scene Context → World-Aware Prefill</text>
+                <g id="wa-scene">
+                  <rect x="15" y="42" width="115" height="78" rx="5" fill="#f8fafc" stroke="#d8e4ef"/>
+                  <path d="M28 106H116M38 103V79L68 56L99 78" class="b-line" stroke-width="5"/>
+                  <path d="M94 77L99 88L105 79" class="b-line"/>
+                  <rect x="93" y="94" width="17" height="12" rx="2" class="b-green"/>
+                  <circle id="wa-contact" cx="101" cy="95" r="20" fill="none" stroke="#77ad9e" stroke-width="2"/>
+                </g>
+                <path class="b-line" d="M135 80H166" marker-end="url(#wa-arrow)" />
+                <text x="274" y="51" text-anchor="middle">Visual tokens</text>
+                <rect id="wa-patch-0" x="184" y="64" width="18" height="22" rx="2" class="b-node"/>
+                <rect id="wa-patch-1" x="207" y="64" width="18" height="22" rx="2" class="b-node"/>
+                <rect id="wa-patch-2" x="230" y="64" width="18" height="22" rx="2" class="b-node"/>
+                <rect id="wa-patch-3" x="253" y="64" width="18" height="22" rx="2" class="b-node"/>
+                <rect id="wa-patch-4" x="276" y="64" width="18" height="22" rx="2" class="b-node"/>
+                <rect id="wa-patch-5" x="299" y="64" width="18" height="22" rx="2" class="b-node"/>
+                <rect id="wa-patch-6" x="322" y="64" width="18" height="22" rx="2" class="b-node"/>
+                <rect id="wa-patch-7" x="345" y="64" width="18" height="22" rx="2" class="b-node"/>
+                <text id="wa-bias" x="274" y="113" text-anchor="middle" class="b-success">+ Spatial world bias</text>
+                <text x="72" y="141" text-anchor="middle" class="b-small">Current scene</text>
+                <path class="b-line" d="M274 119V149" marker-end="url(#wa-arrow)" />
+                <g id="wa-prefill">
+                  <rect class="b-node" x="95" y="154" width="245" height="37" rx="5"/>
+                  <text x="217.5" y="178.5" text-anchor="middle">World-aware prefill</text>
+                </g>
+                <path class="b-line" d="M216 192V203H98V212" marker-end="url(#wa-arrow)" />
+                <path class="b-line" d="M216 203H302V212" marker-end="url(#wa-arrow)" />
+                <g id="wa-draft">
+                  <rect class="b-node" x="17" y="215" width="164" height="33" rx="5"/>
+                  <text x="99.0" y="237.5" text-anchor="middle">Draft proposal</text>
+                </g>
+                <g id="wa-target">
+                  <rect class="b-node" x="219" y="215" width="164" height="33" rx="5"/>
+                  <text x="301.0" y="237.5" text-anchor="middle">Target verify</text>
+                </g>
+                <circle id="wa-signal" cx="274" cy="123" r="4.5" fill="#2f70b3" opacity="0"/>
+              </svg>
+              <p class="beyond-description">Inject physical scene context into draft generation and verification.</p>
+            </article>
+            <article class="beyond-card" data-paper="delta" data-state="pending">
+              <header>
+                <p class="beyond-category">HARDWARE CO-DESIGN</p>
+                <h2>Deltoris</h2>
+              </header>
+              <svg viewBox="0 0 400 250" role="img" aria-labelledby="delta-title delta-desc">
+                <title id="delta-title">Deltoris: sparse differences and batched speculative verification</title>
+                <desc id="delta-desc">Small activation differences expose sparse bits for specialized processing elements. A lightweight VLA proposes future states, which a larger VLA verifies together to amortize weight and activation traffic. This does not mean skipping whole video frames or eliminating all memory access.</desc>
+                <defs>
+                  <marker id="delta-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+                    <path d="M0 0L8 4L0 8Z" fill="#91a9bd"/>
+                  </marker>
+                </defs>
+                <text class="b-core" x="200" y="19" text-anchor="middle">Temporal Reuse + Batched Verification</text>
+                <text x="89" y="49" text-anchor="middle">Previous</text>
+                <text x="294" y="49" text-anchor="middle">Current</text>
+                <rect id="delta-value-0-0" x="18" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-0-1" x="38" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-0-2" x="58" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-0-3" x="78" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-0-4" x="98" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-0-5" x="118" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-0-6" x="138" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-0-7" x="158" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-1-0" x="223" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-1-1" x="243" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-1-2" x="263" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-1-3" x="283" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-1-4" x="303" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-1-5" x="323" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-1-6" x="343" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <rect id="delta-value-1-7" x="363" y="61" width="16" height="24" rx="2" class="b-node"/>
+                <path class="b-line" d="M96 88V97H294V88M195 97V108"/>
+                <g id="delta-bit-0" data-nonzero="false">
+                  <rect x="30" y="118" width="18" height="19" rx="2" class="b-bit"/>
+                  <text x="39" y="133" text-anchor="middle" class="b-code">0</text>
+                </g>
+                <g id="delta-bit-1" data-nonzero="false">
+                  <rect x="52" y="118" width="18" height="19" rx="2" class="b-bit"/>
+                  <text x="61" y="133" text-anchor="middle" class="b-code">0</text>
+                </g>
+                <g id="delta-bit-2" data-nonzero="false">
+                  <rect x="74" y="118" width="18" height="19" rx="2" class="b-bit"/>
+                  <text x="83" y="133" text-anchor="middle" class="b-code">0</text>
+                </g>
+                <g id="delta-bit-3" data-nonzero="true">
+                  <rect x="96" y="118" width="18" height="19" rx="2" class="b-bit"/>
+                  <text x="105" y="133" text-anchor="middle" class="b-code">1</text>
+                </g>
+                <g id="delta-bit-4" data-nonzero="false">
+                  <rect x="118" y="118" width="18" height="19" rx="2" class="b-bit"/>
+                  <text x="127" y="133" text-anchor="middle" class="b-code">0</text>
+                </g>
+                <g id="delta-bit-5" data-nonzero="false">
+                  <rect x="140" y="118" width="18" height="19" rx="2" class="b-bit"/>
+                  <text x="149" y="133" text-anchor="middle" class="b-code">0</text>
+                </g>
+                <g id="delta-bit-6" data-nonzero="false">
+                  <rect x="30" y="141" width="18" height="19" rx="2" class="b-bit"/>
+                  <text x="39" y="156" text-anchor="middle" class="b-code">0</text>
+                </g>
+                <g id="delta-bit-7" data-nonzero="false">
+                  <rect x="52" y="141" width="18" height="19" rx="2" class="b-bit"/>
+                  <text x="61" y="156" text-anchor="middle" class="b-code">0</text>
+                </g>
+                <g id="delta-bit-8" data-nonzero="false">
+                  <rect x="74" y="141" width="18" height="19" rx="2" class="b-bit"/>
+                  <text x="83" y="156" text-anchor="middle" class="b-code">0</text>
+                </g>
+                <g id="delta-bit-9" data-nonzero="true">
+                  <rect x="96" y="141" width="18" height="19" rx="2" class="b-bit"/>
+                  <text x="105" y="156" text-anchor="middle" class="b-code">1</text>
+                </g>
+                <g id="delta-bit-10" data-nonzero="false">
+                  <rect x="118" y="141" width="18" height="19" rx="2" class="b-bit"/>
+                  <text x="127" y="156" text-anchor="middle" class="b-code">0</text>
+                </g>
+                <g id="delta-bit-11" data-nonzero="false">
+                  <rect x="140" y="141" width="18" height="19" rx="2" class="b-bit"/>
+                  <text x="149" y="156" text-anchor="middle" class="b-code">0</text>
+                </g>
+                <path class="b-line" d="M164 137H191" marker-end="url(#delta-arrow)" />
+                <g id="delta-pe">
+                  <rect class="b-node" x="198" y="116" width="184" height="40" rx="5"/>
+                  <text x="290.0" y="142.0" text-anchor="middle">Bit-sparse PEs</text>
+                </g>
+                <text x="96" y="176" text-anchor="middle" class="b-small">Δ activations</text>
+                <path class="b-line" d="M15 187H385"/>
+                <text x="77" y="207" text-anchor="middle" class="b-small">Small VLA drafts</text>
+                <g id="delta-candidate-0">
+                  <rect x="20" y="218" width="32" height="29" rx="3" class="b-node"/>
+                  <text class="b-code" x="36" y="238" text-anchor="middle">s1</text>
+                </g>
+                <g id="delta-candidate-1">
+                  <rect x="59" y="218" width="32" height="29" rx="3" class="b-node"/>
+                  <text class="b-code" x="75" y="238" text-anchor="middle">s2</text>
+                </g>
+                <g id="delta-candidate-2">
+                  <rect x="98" y="218" width="32" height="29" rx="3" class="b-node"/>
+                  <text class="b-code" x="114" y="238" text-anchor="middle">s3</text>
+                </g>
+                <path class="b-line" d="M139 233H193" marker-end="url(#delta-arrow)" />
+                <g id="delta-batch">
+                  <rect x="201" y="205" width="181" height="44" rx="5" class="b-node"/>
+                  <text x="292" y="225" text-anchor="middle">Batched verify</text>
+                  <text x="292" y="243" text-anchor="middle" class="b-small">Reuse loaded data</text>
+                </g>
+              </svg>
+              <p class="beyond-description">Exploit temporal redundancy and specialized hardware to reduce inference costs.</p>
+            </article>
+          </div>
+          <div class="beyond-scrubber">
+            <div class="beyond-rail" aria-hidden="true">
+            </div>
+            <input class="beyond-progress" type="range" min="0" max="100" step="0.01" value="0" aria-label="Related-work animation progress">
+            <div class="beyond-ticks" aria-hidden="true">
+              <i style="left:0%"></i>
+              <i style="left:28.5714%"></i>
+              <i style="left:57.1429%"></i>
+              <i style="left:85.7143%"></i>
+              <i style="left:100%"></i>
+            </div>
+          </div>
+          <div class="beyond-transport">
+            <p class="beyond-status" aria-live="off">FLASH · Mechanism overview</p>
+            <div class="animation-controls">
+              <button class="animation-control beyond-speed" type="button" aria-label="Playback speed: 1 times. Click to change speed.">1×</button>
+              <button class="animation-control beyond-toggle" type="button">Play</button>
+            </div>
+          </div>
+          <div class="beyond-lesson">
+            <span class="section-label">DESIGN LESSON</span>
+            <p>Faster inference requires <strong>efficient computation, informed predictions, and verification.</strong>
+            </p>
+          </div>
+        </main>
+        <p class="source-note">Teaching schematics · <a href="https://arxiv.org/abs/2605.13778" target="_blank" rel="noreferrer">FLASH (2026), §3 / Figs. 3–4</a> · <a href="https://arxiv.org/abs/2608.08725" target="_blank" rel="noreferrer">WA-SpecDec (2026), §3 / Fig. 2</a> · <a href="https://arxiv.org/abs/2608.04428" target="_blank" rel="noreferrer">Deltoris (2026), §§4–6 / Figs. 6, 12–13</a>
+        </p>
+        <div class="slide-author" aria-label="Presentation authors">
+          <span>Yishan Song</span>
+        </div>
+        <div class="slide-number">21</div>
+        <aside hidden aria-label="Presenter notes" lang="zh-CN">
+          <p>三张卡依次播放，各约六秒，最后三秒停留。研究的是VLA推理效率，与ReCA高层LLM加A*的工作负载不同，均未在ReCA中集成或作直接性能对比。原生图为教学重绘，不是原论文图或实测数据。</p>
+          <p>FLASH §3、图3–4：当前图像仍编码；轻量草稿模型提出动作块，主模型Action Expert用最近一次完整路径的视觉KV缓存并行核验，取所有核验分支都通过的最长前缀。示意三接受一拒绝并非实验统计；零接受前缀或精细操作阶段可回退完整推理，不是物理安全证明。</p>
+          <p>WA-SpecDec §3、图2：当前场景经WAB得到空间对齐偏置，叠加既有视觉patch后进行prefill；共享隐状态供草稿提议与目标核验。接受规则未改变，也非基于距离临时调阈值。未来帧辅助头仅用于训练，推理不预测未来图像。</p>
+          <p>Deltoris §§4–6、图6、12–13：相邻激活差分暴露位级稀疏，由专用PE处理；小VLA预测未来观测/状态，大VLA批量核验以摊销权重与激活访问。不是整帧丢弃，也没有消除全部访存；非线性处仍需恢复完整值。没有展示商业芯片实测或跨论文加速比。</p>
+        </aside>
+      </section>
+    </div>
+    <script src="runtime.js">
+    </script>
+    <script src="animation.js">
+    </script>
+    <script src="slide-21.js">
+    </script>
+  </body>
 </html>
