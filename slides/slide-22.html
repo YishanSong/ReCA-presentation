@@ -223,12 +223,6 @@
           <span>Yishan Song</span>
         </div>
         <div class="slide-number">22</div>
-        <aside hidden aria-label="Presenter notes" lang="zh-CN">
-          <p>本页为独立可靠性研究方向，不是集成到ReCA的统一系统，也未直接比较不同基准结果。借Alice和Bob可说明协作与反馈的重要性，但不要将教学例子的角色当作这些论文的实验平台。</p>
-          <p>DynaHMRC §3、图2和附录图11–12：先自述能力、提出协作计划并竞选，再一次性选出领导者。领导身份在任务执行期固定；机器人仍根据本地观测、记忆、反馈产生动作。环境或目标变化时，反思更新任务分配。图中导航、操作、两者兼具的机器人及任务是简化示意，不表示反复选主或总LLM调用必然更少。</p>
-          <p>Thea §4.1–4.2、图6–7：Scene Graph as Context提供世界状态，工具调用后独立评估器只读当前观察与工具后置条件，返回process、success或failure及证据/原因。此处演示失败后更新状态再决定恢复；对象留在桌面，不以模型自报当作成功。评估器也可能出错。ReCA本身已有状态监控与重规划，Thea突出结构化执行接口。</p>
-          <p>REMAC为ICLR 2026的Real-Time Robot Execution with Masked Action Chunking，非同名多智能体论文。§3–4、图1区分推理延迟引起的块内观察/执行不一致与块间轨迹跳变。训练时按延迟掩蔽未实际执行的前缀损失，并用自条件课程和残差对齐适配策略；采样时保留既有重叠前缀，仅生成余下后缀。示意块数和时间间距不代表实验参数，也非所有失败或安全风险都消除。</p>
-        </aside>
       </section>
     </div>
     <script src="runtime.js">
