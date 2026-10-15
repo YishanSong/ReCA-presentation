@@ -26,13 +26,15 @@
             <span class="s10-planning">Planning</span>
             <span class="s10-execution">Execution</span>
           </div>
-          <svg class="s10-diagram" viewBox="0 0 1000 550" role="img" aria-labelledby="s10-figure-title s10-figure-desc">
+          <svg class="s10-diagram" viewBox="0 0 1000 588" role="img" aria-labelledby="s10-figure-title s10-figure-desc">
             <title id="s10-figure-title">Planning-guided execution, redrawn from ReCA Figure 9</title>
             <desc id="s10-figure-desc">The baseline generates a message before planning each step. ReCA plans first, generates messages only when needed, and lets a high-level plan guide multiple low-level actions. All pipeline modules stay fully visible. A thin line scans the timelines below: future regions are translucent and elapsed regions stay solid. The current module fills from left to right in sync with its timeline block, then returns to its normal appearance. Execution blocks are slightly wider for readability. Schematic lengths are not measured timings.</desc>
             <defs>
               <marker id="s10-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#91a6b9"/></marker>
               <clipPath id="s10-elapsed" clipPathUnits="userSpaceOnUse"><rect id="s10-elapsed-clip" x="170" y="400" width="770" height="114"/></clipPath>
             </defs>
+            <text class="s10-row-label" x="50" y="22">Baseline</text>
+            <g id="s10-baseline-pipeline">
             <g class="s10-connectors" aria-hidden="true">
               <path d="M245 75H365"/>
               <path d="M560 75H710"/>
@@ -56,6 +58,10 @@
             <text class="s10-arrow-label" x="305" y="65"><tspan x="305">Generate</tspan><tspan x="305" y="95">a message</tspan></text>
             <text class="s10-arrow-label" x="635" y="65"><tspan x="635">Make a</tspan><tspan x="635" y="95">high-level plan</tspan></text>
             <text class="s10-flow-note" x="500" y="127">Translate high-level plan into low-level action and execute</text>
+            </g>
+            <path class="s10-separator" d="M0 158H1000"/>
+            <text class="s10-row-label" x="50" y="186">ReCA</text>
+            <g id="s10-reca-pipeline" transform="translate(0 38)">
             <g class="s10-connectors" aria-hidden="true">
               <path d="M245 246H420V215H480"/>
               <path d="M420 246V299H480"/>
@@ -95,6 +101,8 @@
               <text class="s10-action-label" x="890" y="306">Execution</text>
             </g>
             <text class="s10-flow-note" x="500" y="345">Translate high-level plan into low-level action and execute</text>
+            </g>
+            <g id="s10-timeline" transform="translate(0 38)">
             <path class="s10-separator" d="M0 376H1000"/>
             <text class="s10-track-label" x="150" y="421"><tspan x="150">Traditional</tspan><tspan x="150" y="444">Strategy</tspan></text>
             <text class="s10-track-label" x="150" y="483"><tspan x="150">ReCA</tspan><tspan x="150" y="506">Strategy</tspan></text>
@@ -103,6 +111,7 @@
             <text class="s10-timeline-label" x="555" y="539">Latency of 4 steps in different strategies</text>
             <text class="s10-time-label" x="940" y="539">Time</text>
             <path id="s10-playhead" class="s10-playhead" d="M940 404V450M940 466V512" aria-hidden="true"/>
+            </g>
           </svg>
           <div class="s10-scrubber" id="s10-scrubber">
             <div class="s10-range-rail" aria-hidden="true"></div>
