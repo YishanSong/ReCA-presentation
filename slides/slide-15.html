@@ -1,376 +1,122 @@
-
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-
 <title>ReCA · Slide 15</title>
-
 <link rel="stylesheet" href="slides.css">
-
-<style>
-/* =========================================
-   SLIDE 15 — HETEROGENEOUS CO-DESIGN
-   ========================================= */
-
-.slide[data-slide="15"] .slide-content {
-  top: 240px;
-  bottom: 95px;
-}
-
-/* =========================================
-   MAIN TWO-COLUMN LAYOUT
-   ========================================= */
-
-.s15-layout {
-  width: 100%;
-  height: 100%;
-
-  display: grid;
-  grid-template-columns:
-    minmax(0, 930px) minmax(0, 1fr);
-
-  column-gap: 40px;
-  align-items: center;
-}
-
-/* =========================================
-   LEFT — ORIGINAL PAPER FIGURE
-   ========================================= */
-
-.s15-figure {
-  --s15-figure-shift: -12px;
-
-  margin: 0;
-  min-width: 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  transform: translateX(var(--s15-figure-shift));
-}
-
-.s15-figure img {
-  display: block;
-
-  width: 100%;
-  max-width: 100%;
-  max-height: 490px;
-  height: auto;
-
-  object-fit: contain;
-}
-
-.s15-figure figcaption {
-  margin-top: 15px;
-
-  color: #8090a3;
-  font-size: 15px;
-  line-height: 1.4;
-  text-align: center;
-}
-
-/* =========================================
-   RIGHT — RESEARCH SUMMARY
-   ========================================= */
-
-.s15-summary {
-  min-width: 0;
-
-  padding: 6px 0 6px 30px;
-  border-left: 2px solid #d8e4ef;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* SECTION LABELS */
-
-.s15-label {
-  margin: 0 0 12px;
-
-  color: #2f70b3;
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  line-height: 1.3;
-}
-
-/* =========================================
-   RESEARCH QUESTION
-   ========================================= */
-
-.s15-question {
-  margin: 0;
-
-  color: #173d6a;
-  font-size: 28px;
-  font-weight: 750;
-  line-height: 1.32;
-}
-
-.s15-question em {
-  color: #2f70b3;
-  font-style: normal;
-  font-weight: 800;
-}
-
-/* =========================================
-   SECTION DIVIDERS
-   ========================================= */
-
-.s15-divider {
-  width: 100%;
-  height: 1px;
-
-  background: #d8e4ef;
-  margin: 23px 0;
-}
-
-/* =========================================
-   HARDWARE DESIGN
-   ========================================= */
-
-.s15-hardware {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.s15-hardware-item {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.s15-hardware-name {
-  margin: 0;
-
-  color: #173d6a;
-  font-size: 23px;
-  font-weight: 800;
-  line-height: 1.25;
-}
-
-.s15-hardware-name strong {
-  color: #2f70b3;
-  font-weight: 800;
-}
-
-.s15-hardware-description {
-  margin: 0;
-
-  color: #53677e;
-  font-size: 18px;
-  font-weight: 450;
-  line-height: 1.4;
-}
-
-.s15-memory-note {
-  margin: 14px 0 0;
-
-  color: #687f99;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-/* =========================================
-   KEY FINDING
-   ========================================= */
-
-.s15-finding {
-  margin: 0;
-
-  color: #173d6a;
-  font-size: 24px;
-  font-weight: 750;
-  line-height: 1.38;
-}
-
-.s15-finding strong {
-  color: #2f70b3;
-  font-weight: 800;
-}
-</style>
+<link rel="stylesheet" href="animation.css">
+<link rel="stylesheet" href="slide-15.css">
 </head>
-
 <body>
-
-<div
-  id="deck"
-  role="group"
-  aria-label="ReCA slide 15"
->
-
-  <section
-    class="slide active"
-    data-slide="15"
-    data-owner="A"
-    aria-hidden="false"
-  >
-
-    <!-- =========================
-         SECTION HEADING
-         ========================= -->
-
-    <div class="kicker">
-      2.4 / HARDWARE · HETEROGENEOUS CO-DESIGN
-    </div>
-
-    <!-- =========================
-         MAIN TITLE
-         ========================= -->
-
-    <h1 class="slide-title">
-      Matching LLMs and A* to the Right Hardware
-    </h1>
-
+<div id="deck" role="group" aria-label="ReCA slide 15">
+  <section class="slide active" data-slide="15" data-owner="A" data-phase="complete" aria-hidden="false">
+    <div class="kicker">2.4 / HARDWARE · HETEROGENEOUS CO-DESIGN</div>
+    <h1 class="slide-title">Matching LLMs and A* to the Right Hardware</h1>
     <main class="slide-content">
-
       <div class="s15-layout">
-
-        <!-- =========================
-             LEFT — PAPER FIGURE
-             ========================= -->
-
-        <figure class="s15-figure">
-
-          <img
-            src="../assets/images/ReCA_Fig10a.svg"
-            alt="ReCA Figure 10(a): Heterogeneous architecture with an A-star subsystem containing APUs and shared scratchpad, an LLM subsystem containing GPU blocks and L2 cache, and shared global DRAM."
-          >
-
-          <figcaption>
-            ReCA, Fig. 10(a) · Integrated Hardware Architecture
-          </figcaption>
-
+        <div class="s15-overview">
+          <p class="s15-system-role"><strong>GPU</strong> for LLM inference <span>·</span> <strong>APU</strong> for A* search</p>
+          <figure class="s15-figure">
+            <!-- The original file is embedded unchanged. Small mask holes remove only
+                 cross-panel callout tails from Fig. 10(b/c), preserving block borders. -->
+            <svg class="s15-system" viewBox="62 64 148.3 91.5" role="img" aria-labelledby="s15-system-title s15-system-desc">
+              <title id="s15-system-title">Original ReCA Figure 10(a), integrated hardware architecture</title>
+              <desc id="s15-system-desc">The A-star subsystem has a host CPU, multiple APUs and a shared scratchpad. The LLM subsystem has its own host CPU, GPU blocks and L2 cache. Both subsystems interface through global DRAM. Only outgoing callout tails for other figure panels are masked.</desc>
+              <defs>
+                <mask id="s15-callout-mask" maskUnits="userSpaceOnUse" x="62" y="64" width="148.3" height="91.5">
+                  <rect x="62" y="64" width="148.3" height="91.5" fill="white"/>
+                  <g fill="black">
+                    <rect x="72.3" y="138.47" width="1.2" height="17.03"/>
+                    <rect x="106.83" y="138.47" width="1.2" height="17.03"/>
+                    <rect x="201.72" y="100.8" width="8.58" height="1.1"/>
+                    <rect x="201.72" y="111.3" width="8.58" height="1.1"/>
+                  </g>
+                  <!-- Re-expose the exact original boundary strokes where a tail
+                       crosses them. These paths affect the mask only. -->
+                  <g fill="none" stroke="white" transform="matrix(.304871 0 0 -.304871 57.924332 411.723923)">
+                    <path stroke-width="2.0004" d="M37.123474 1097.075645C37.123474 1106.903073 45.080231 1114.872643 54.907659 1114.872643H203.843797C213.671225 1114.872643 221.627982 1106.903073 221.627982 1097.075645V877.592158C221.627982 867.76473 213.671225 859.807973 203.843797 859.807973H54.907659C45.080231 859.807973 37.123474 867.76473 37.123474 877.592158Z"/>
+                    <path stroke-width="2.0004" d="M298.876432 1097.075645C298.876432 1106.903073 306.833189 1114.872643 316.647803 1114.872643H465.596755C475.424183 1114.872643 483.380939 1106.903073 483.380939 1097.075645V877.592158C483.380939 867.76473 475.424183 859.807973 465.596755 859.807973H316.647803C306.833189 859.807973 298.876432 867.76473 298.876432 877.592158Z"/>
+                    <path stroke-width="2.5005" d="M29.627978 846.316081H493.118677V1120.869039H29.627978Z"/>
+                  </g>
+                </mask>
+                <clipPath id="s15-system-crop"><rect x="66.5" y="69.55" width="142.2" height="84.6"/></clipPath>
+              </defs>
+              <image href="../assets/images/ReCA_Fig10a.svg" x="62" y="64" width="148.3" height="91.5" mask="url(#s15-callout-mask)" clip-path="url(#s15-system-crop)"/>
+              <g class="s15-system-focus" fill="none" stroke="#2f70b3" stroke-width=".75">
+                <rect id="s15-focus-llm" x="148.1" y="71.3" width="57.8" height="79" rx="5.5"/>
+                <rect id="s15-focus-search" x="68.6" y="71.3" width="57.8" height="79" rx="5.5"/>
+                <rect id="s15-focus-apu" x="72.3" y="100.8" width="35.8" height="11.6" rx=".6"/>
+                <rect id="s15-focus-dram" x="131.1" y="71.4" width="11.8" height="80.6"/>
+              </g>
+            </svg>
+            <figcaption>ReCA, Fig. 10(a) · Integrated Hardware Architecture</figcaption>
+          </figure>
+          <p class="s15-memory"><strong>Shared DRAM</strong> exchanges plans and search feedback.</p>
+          <p class="s15-memory"><strong>Shared scratchpad</strong> keeps search state across iterations and links APUs with their host.</p>
+        </div>
+        <figure class="s15-apu" aria-labelledby="s15-mechanism-title">
+          <div class="s15-panel-head">
+            <div><p class="section-label">INSIDE ONE APU</p><h2 id="s15-mechanism-title">One A* Iteration</h2></div>
+            <p class="s15-example">Unit-cost search<br>Current cell C5</p>
+          </div>
+          <svg id="s15-scene" class="s15-scene" viewBox="0 0 780 354" role="img" aria-labelledby="s15-scene-title s15-scene-desc">
+            <title id="s15-scene-title">One APU accelerates a valid A-star iteration</title>
+            <desc id="s15-scene-desc">The Heap Unit extracts C5, restores heap order, then the controller selects eligible neighbors C4 and C6. Local scratchpad data feeds parallel CCU computations: C4 has g two, h six, f eight; C6 has g two, h eight, f ten. The controller directs cost storage and valid heap insertions. A heap orders parents before children rather than sorting all nodes.</desc>
+            <defs><marker id="s15-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="context-stroke"/></marker></defs>
+            <rect class="s15-controller" x="0" y="0" width="780" height="39" rx="5"/>
+            <text x="390" y="26" class="s15-controller-label">APU controller coordinates the iteration</text>
+            <g class="s15-unit" id="s15-hu">
+              <rect class="s15-unit-box" x="0" y="64" width="310" height="282" rx="6"/>
+              <text x="155" y="92" class="s15-unit-title">Heap Unit (HU)</text>
+              <text x="155" y="116" class="s15-small">Frontier min heap</text>
+            </g>
+            <g class="s15-unit" id="s15-sp">
+              <rect class="s15-unit-box" x="337" y="64" width="184" height="282" rx="6"/>
+              <text x="429" y="92" class="s15-unit-title s15-sp-title">Local scratchpad</text>
+              <text x="429" y="120" class="s15-small">Current node</text>
+              <rect class="s15-current-slot" x="359" y="136" width="140" height="51" rx="5"/>
+              <text x="429" y="211" class="s15-small">Neighbor data</text>
+              <g id="s15-neighbor-c4" class="s15-neighbor"><rect x="359" y="222" width="140" height="44" rx="5"/><text x="429" y="250">C4</text></g>
+              <g id="s15-neighbor-c6" class="s15-neighbor"><rect x="359" y="280" width="140" height="44" rx="5"/><text x="429" y="308">C6</text></g>
+              <text id="s15-stored" x="429" y="338" class="s15-stored">costs stored</text>
+            </g>
+            <g class="s15-unit" id="s15-ccu">
+              <rect class="s15-unit-box" x="548" y="64" width="232" height="282" rx="6"/>
+              <text x="664" y="92" class="s15-unit-title">Cost Compute Unit</text>
+              <text x="664" y="116" class="s15-small">(CCU)</text>
+              <text x="664" y="162" class="s15-formula">f(n) = g(n) + h(n)</text>
+              <text id="s15-parallel" x="664" y="202" class="s15-small s15-parallel">Both neighbors in parallel</text>
+              <g id="s15-cost-c4" class="s15-cost"><rect x="562" y="222" width="204" height="44" rx="5"/><text x="664" y="250">2 + 6 = 8</text></g>
+              <g id="s15-cost-c6" class="s15-cost"><rect x="562" y="280" width="204" height="44" rx="5"/><text x="664" y="308">2 + 8 = 10</text></g>
+            </g>
+            <g id="s15-heap-edges"></g><g id="s15-heap-nodes"></g>
+            <g id="s15-data-paths" fill="none" stroke="#2f70b3" stroke-width="2.5" marker-end="url(#s15-arrow)">
+              <path id="s15-read-c4" d="M501 244H556"/><path id="s15-read-c6" d="M501 302H556"/>
+              <path id="s15-return" d="M660 64V50H155V64"/>
+            </g>
+            <g id="s15-current" class="s15-current"><rect x="-70" y="-25.5" width="140" height="51" rx="5"/><text x="0" y="-2">C5</text><text x="0" y="18" class="s15-current-g">g = 1</text></g>
+          </svg>
+          <div class="s15-explanation" aria-live="off">
+            <p id="s15-operation" class="s15-operation"></p>
+            <p id="s15-detail" class="s15-detail"></p>
+          </div>
+          <div class="s15-playback">
+            <div class="s15-scrubber" id="s15-scrubber">
+              <div class="s15-range-rail" aria-hidden="true"></div>
+              <input id="s15-time" type="range" min="0" max="100" step="0.1" value="100" aria-label="APU animation progress">
+              <div class="s15-range-ticks" aria-hidden="true"><i style="left:0%"></i><i style="left:20%"></i><i style="left:40%"></i><i style="left:60%"></i><i style="left:80%"></i><i style="left:100%"></i></div>
+            </div>
+            <div class="animation-controls"><button class="animation-control" id="s15-speed" type="button">1×</button><button class="animation-control" id="s15-toggle" type="button">Replay</button></div>
+          </div>
         </figure>
-
-        <!-- =========================
-             RIGHT — RESEARCH SUMMARY
-             ========================= -->
-
-        <aside class="s15-summary">
-
-          <!-- RESEARCH QUESTION -->
-
-          <div class="s15-label">
-            RESEARCH QUESTION
-          </div>
-
-          <h2 class="s15-question">
-            What hardware can help Bob
-            <em>plan his path faster?</em>
-          </h2>
-
-          <div class="s15-divider"></div>
-
-          <!-- HARDWARE DESIGN -->
-
-          <div class="s15-label">
-            HARDWARE DESIGN
-          </div>
-
-          <div class="s15-hardware">
-
-            <!-- GPU -->
-
-            <div class="s15-hardware-item">
-
-              <p class="s15-hardware-name">
-                <strong>GPU</strong> — LLM Inference
-              </p>
-
-              <p class="s15-hardware-description">
-                High-level planning and reasoning.
-              </p>
-
-            </div>
-
-            <!-- APU -->
-
-            <div class="s15-hardware-item">
-
-              <p class="s15-hardware-name">
-                <strong>APU</strong> — A* Acceleration
-              </p>
-
-              <p class="s15-hardware-description">
-                Low-level path planning and search.
-              </p>
-
-            </div>
-
-          </div>
-
-          <p class="s15-memory-note">
-            Both subsystems communicate through shared global DRAM.
-          </p>
-
-          <div class="s15-divider"></div>
-
-          <!-- KEY FINDING -->
-
-          <div class="s15-label">
-            KEY FINDING
-          </div>
-
-          <p class="s15-finding">
-            Match each workload to
-            <strong>specialized hardware.</strong>
-          </p>
-
-        </aside>
-
       </div>
-
     </main>
-
-    <!-- =========================
-         PAGE NUMBER
-         ========================= -->
-
-    <div class="slide-author" aria-label="Presentation authors"><span>Yishan Song</span></div>
-    <div class="slide-number">15</div>
-
+    <p class="source-note s15-source">ReCA, Fig. 10(a) · APU mechanism adapted from Figs. 10(b), 11(c), §§6.1–6.4 · <a href="https://doi.org/10.1145/3676641.3716016">ASPLOS ’25</a></p>
+    <div class="slide-author" aria-label="Presentation authors"><span>Yishan Song</span></div><div class="slide-number">15</div>
   </section>
-
 </div>
-
-<script>
-(function () {
-  'use strict';
-
-  const deck = document.getElementById('deck');
-
-  /* =========================================
-     SCALE SLIDE TO WINDOW
-     ========================================= */
-
-  function resize() {
-
-    const scale = Math.min(
-      window.innerWidth / 1600,
-      window.innerHeight / 900
-    );
-
-    deck.style.transform =
-      `translate(-50%, -50%) scale(${scale})`;
-
-  }
-
-  window.addEventListener('resize', resize);
-
-  resize();
-
-})();
-</script>
-
+<script src="runtime.js"></script><script src="animation.js"></script><script src="slide-15.js"></script>
 </body>
 </html>

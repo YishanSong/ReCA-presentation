@@ -116,7 +116,7 @@
     opacity('remac-note-b', ease(t, 6.5, 8));
     get('remac-note-a').style.fill = '#b56166';
     get('remac-note-b').style.fill = '#328576';
-    return t < 2.5 ? 'Predict the next chunk during execution' : t < 4.5 ? 'Expose delay mismatch and boundary jumps' : t < 6.5 ? 'Separate offline concept: mask prefix loss' : 'Runtime: preserve the overlap, predict the suffix';
+    return t < 2.5 ? 'Predict the next chunk during execution' : t < 4.5 ? 'Expose delay mismatch and boundary jumps' : t < 6.5 ? 'Offline training: mask prefix loss' : 'Runtime: preserve the overlap, predict the suffix';
   }
 
   function renderAt(time) {
@@ -128,7 +128,7 @@
       card.dataset.localTime = local[i].toFixed(3);
     });
     const active = Math.min(2, Math.floor(time / 10));
-    status.textContent = time >= 30 ? 'Three independent directions — not integrated into ReCA' : names[active] + ' · ' + messages[active];
+    status.textContent = time >= 30 ? 'DynaHMRC · Thea · REMAC' : names[active] + ' · ' + messages[active];
   }
 
   function render(state) {

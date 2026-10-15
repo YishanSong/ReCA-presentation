@@ -124,7 +124,7 @@
       card.dataset.localTime = local[i].toFixed(3);
     });
     const active = Math.min(2, Math.floor(time / 10));
-    status.textContent = time >= 30 ? 'Three independent directions — not integrated into ReCA' : names[active] + ' · ' + messages[active];
+    status.textContent = time >= 30 ? 'FLASH · WA-SpecDec · Deltoris' : names[active] + ' · ' + messages[active];
   }
 
   function render(state) {

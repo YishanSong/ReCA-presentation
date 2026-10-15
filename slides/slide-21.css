@@ -49,3 +49,11 @@
 .beyond-slide > .source-note { font-size: 14px; }
 .beyond-slide .source-note a { text-underline-offset: 3px; }
 @media print { .beyond-scrubber, .beyond-transport { display: none; } .beyond-card { border-color: #d8e4ef; } }
+
+/* Slide 21 alone introduces the model interface before the three mechanisms. */
+.beyond-slide[data-slide="21"] .slide-content { top: 185px; }
+.s21-context { margin: 4px 0 0; color: #53677e; font-size: 19px; line-height: 26px; }
+.s21-context strong { color: #173d6a; font-weight: 750; }
+.s21-context span { color: #647b93; }
+.beyond-slide[data-slide="21"] .beyond-card { height: 412px; }
+.beyond-slide[data-slide="21"] .beyond-card svg { height: 236px; }

@@ -149,9 +149,31 @@
       searchEnd: cursor, reconstructionDuration, duration: cursor + reconstructionDuration + finalHold });
   }
 
+  // Labels describe a proposed route separately from the best route already stored.
+  // A rejected proposal never changes the frontier entry or its priority.
+  function presentCost(event, rejectedRoute) {
+    const candidate = event.candidate, current = event.current;
+    const cost = event.goal ? current : candidate || current;
+    const value = `g = ${cost.g} · h = ${cost.h} → f = ${cost.f}`;
+    if (!current) return { node: cost.id + ' · start cell', value, decision: 'Initialize the frontier with this route', kind: 'new' };
+    if (candidate && !event.goal) {
+      const storedG = event.best[candidate.id], storedF = storedG + candidate.h;
+      const node = `${candidate.id} via ${current.id} · ${event.phase === 'cost' ? 'proposed' : 'accepted'} route`;
+      if (event.phase === 'cost') {
+        if (storedG === undefined) return { node, value, decision: 'New frontier cell → insert this route', kind: 'new' };
+        if (candidate.g >= storedG) return { node, value, decision: `Keep stored g = ${storedG}, f = ${storedF} · ignore ${candidate.g > storedG ? 'worse' : 'equal'} route`, kind: 'keep' };
+        return { node, value, decision: `Stored g = ${storedG}, f = ${storedF} → improve this route`, kind: 'improve' };
+      }
+      return { node, value, decision: event.kind === 'decrease' ? 'Better route accepted → decrease heap priority' : `Stored best: g = ${storedG}, f = ${storedF}`, kind: 'stored' };
+    }
+    return { node: cost.id + ' · stored best route', value,
+      decision: rejectedRoute ? `Earlier route via ${rejectedRoute.via} had g = ${rejectedRoute.g} · ignored` : event.goal ? 'Goal popped → reconstruct the stored route' : 'Pop Min uses the stored frontier priority',
+      kind: rejectedRoute ? 'keep' : 'stored' };
+  }
+
   // The same production algorithm is independently testable without a DOM.
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = Object.freeze({ MinHeap, buildSearch, buildSchedule, compare, BLOCKED, START, GOAL, point, heuristic });
+    module.exports = Object.freeze({ MinHeap, buildSearch, buildSchedule, presentCost, compare, BLOCKED, START, GOAL, point, heuristic });
     return;
   }
 
@@ -159,6 +181,13 @@
   const pacing = buildSchedule(search);
   const { duration, initialDuration, searchEnd, reconstructionDuration } = pacing;
   const schedule = pacing.segments;
+  // Carry a rejection explanation into that cell's later extraction. Build this
+  // once from immutable events so reverse seeking renders the same explanation.
+  const rejectedRoutes = new Map(), rejectionAtEvent = new Map();
+  search.events.forEach(event => {
+    if (event.kind === 'keep') rejectedRoutes.set(event.candidate.id, { via: event.current.id, g: event.candidate.g });
+    if (!event.candidate && event.current && rejectedRoutes.has(event.current.id)) rejectionAtEvent.set(event, rejectedRoutes.get(event.current.id));
+  });
   const get = id => document.getElementById('s14-' + id);
   const svgNS = 'http://www.w3.org/2000/svg';
   function element(tag, attrs, parent, text) {
@@ -204,8 +233,8 @@
 
   // Rendering reads the same immutable search events at a more readable pace.
   // Seeking never reruns or mutates A*, and later iterations are not fast-forwarded.
-  const slots = [{ x: 750, y: 183 }, { x: 640, y: 258 }, { x: 860, y: 258 },
-    { x: 585, y: 333 }, { x: 695, y: 333 }, { x: 805, y: 333 }, { x: 915, y: 333 }];
+  const slots = [{ x: 750, y: 214 }, { x: 640, y: 283 }, { x: 860, y: 283 },
+    { x: 585, y: 352 }, { x: 695, y: 352 }, { x: 805, y: 352 }, { x: 915, y: 352 }];
   const heapNodes = new Map();
   // Allocate each discovered node once. No element accumulation during replay/seek.
   const discovered = new Map();
@@ -235,7 +264,8 @@
     if (event.kind === 'extract' && removed && !event.heap.some(e => e.id === removed.id) && u < 1) {
       const node = heapNodes.get(removed.id).node;
       node.setAttribute('visibility', 'visible'); node.setAttribute('opacity', 1 - u);
-      node.setAttribute('transform', `translate(750 ${183 - 30 * u})`);
+      // A small lift keeps the fading glyph below the heap heading.
+      node.setAttribute('transform', `translate(${slots[0].x} ${slots[0].y - 6 * u})`);
       node.dataset.focus = 'true'; node.dataset.min = 'false';
     }
     entries.forEach((entry, index) => {
@@ -286,9 +316,11 @@
       cell.setAttribute('stroke', focus ? '#2f70b3' : '#d8e4ef'); cell.setAttribute('stroke-width', focus ? 3 : 1.5);
     });
     drawHeap(event, old, progress);
-    const cost = event.goal ? current : candidate || current || search.initial.candidate;
-    get('cost-node').textContent = `${cost.id} · g = ${cost.g} · h = ${cost.h}`;
-    get('cost-value').textContent = `f = ${cost.g} + ${cost.h} = ${cost.f}`;
+    const cost = presentCost(event, rejectionAtEvent.get(event));
+    get('cost-node').textContent = cost.node;
+    get('cost-value').textContent = cost.value;
+    get('cost-decision').textContent = cost.decision;
+    get('cost-decision').dataset.decision = cost.kind;
     get('operation').textContent = time < initialDuration ? 'Initialize · insert B5' : event.goal ? 'Stop after goal extraction' : event.detail;
     get('completion').setAttribute('opacity', event.goal ? 1 : 0);
     get('remaining').setAttribute('opacity', event.goal && event.heap.length ? 1 : 0);

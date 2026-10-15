@@ -1,5 +1,5 @@
 
-/* Slide 13's figure and research-summary layout; all new styling is scoped. */
+/* A* figure and research-summary layout; all styling is slide-specific. */
 .slide[data-slide="14"] .slide-content { top: 240px; bottom: 95px; }
 .s14-layout {
   width: 100%; height: 100%; display: grid;
@@ -27,7 +27,8 @@
 .s14-challenges { display: flex; flex-direction: column; gap: 12px; }
 .s14-challenge-title { margin: 0 0 4px; color: var(--navy); font-size: 21px; font-weight: 750; line-height: 1.3; }
 .s14-description { margin: 0; color: #53677e; font-size: 18px; line-height: 1.45; }
-.s14-finding { margin: 0; color: var(--navy); font-size: 24px; font-weight: 750; line-height: 1.38; }
+.s14-finding { margin: 0; color: var(--navy); display: grid; gap: 8px; font-size: 22px; font-weight: 750; line-height: 1.34; }
+.s14-finding p { margin: 0; }
 .s14-finding strong { color: var(--blue); font-weight: 800; }
 
 
@@ -80,8 +81,11 @@
 .s14-chart-small { font-size: 17px; fill: #647b93 !important; }
 .s14-chart-label { font-size: 22px; font-weight: 700; }
 .s14-formula { font-size: 27px; font-weight: 750; }
+.s14-cost-guide { font-size: 17px; fill: #647b93 !important; }
 .s14-cost-detail { font-size: 22px; }
 .s14-cost-value { font-size: 25px; font-weight: 750; fill: #2f70b3 !important; }
+.s14-cost-decision { font-size: 20px; font-weight: 650; fill: #647b93 !important; }
+.s14-cost-decision[data-decision="keep"] { fill: #218f7c !important; }
 .s14-legend { font-size: 17px; }
 .s14-legend text { fill: #647b93; }
 .s14-axis { font-size: 19px; fill: #647b93 !important; text-anchor: middle; }
