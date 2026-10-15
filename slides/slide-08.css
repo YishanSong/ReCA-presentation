@@ -1,13 +1,18 @@
+.slide[data-slide="8"] { --s8-decentralized: #7e719a; --s8-centralized: #557c9e; --s8-hierarchical: #397e74; }
+.slide[data-slide="8"] .slide-title { font-size: 55px; letter-spacing: -.025em; }
+.s8-title-accent { color: var(--blue); }
 .slide[data-slide="8"] .slide-content { top: 220px; bottom: 108px; }
 .s8-diagram { display: block; width: 100%; height: auto; overflow: visible; }
 .s8-diagram text { fill: var(--navy); font-family: inherit; }
-.s8-diagram .s8-mode-title { fill: var(--blue); font-size: 30px; font-weight: 750; letter-spacing: -.4px; }
+.s8-diagram .s8-mode-title { fill: var(--s8-centralized); font-size: 30px; font-weight: 750; letter-spacing: -.4px; }
+.s8-diagram #s8-inter-heading { fill: var(--s8-decentralized); }
+.s8-diagram #s8-hierarchy-heading { fill: var(--s8-hierarchical); font-size: 28px; font-weight: 700; }
 .s8-heading { font-size: 30px; font-weight: 750; letter-spacing: -.4px; }
-.s8-subheading { font-size: 24px; font-weight: 650; }
-.s8-cluster-box { fill: #f8fafc; stroke: #d8e4ef; stroke-width: 1.4; opacity: var(--cluster-opacity, 1); }
+.s8-diagram .s8-subheading { fill: #647b93; font-size: 23px; font-weight: 600; }
+.s8-cluster-box { fill: #f9fafc; stroke: #d7e2ec; stroke-width: 1.4; opacity: var(--cluster-opacity, 1); }
 .s8-cluster-children { opacity: var(--children-opacity, 1); transform: translateY(var(--children-offset, 0px)); }
 .s8-internal-links { fill: none; stroke: #bdcfdf; stroke-width: 1; }
-.s8-parent-disc { fill: #eaf1f8; }
+.s8-parent-disc { fill: #eeedf5; }
 .s8-cluster-letter { text-anchor: middle; font-size: 17px; font-weight: 750; }
 .s8-child-number { text-anchor: middle; font-size: 16px; font-weight: 650; }
 .s8-links { fill: none; stroke: #a9b9c8; stroke-width: 1.7; stroke-linecap: round; marker-start: url(#s8-arrow); marker-end: url(#s8-arrow); }
@@ -39,11 +44,20 @@
 .s8-message[data-kind="plan"] { fill: #7c9fbe; }
 .s8-message[data-kind="yes"] { fill: #8da986; }
 .s8-message[data-kind="no"] { fill: #b9848d; }
-.s8-summary { position: absolute; top: 27px; left: 744px; right: 0; padding-left: 32px; border-left: 2px solid #d8e4ef; pointer-events: none; }
-.s8-point-heading { margin: 0 0 10px; color: var(--navy); font-size: 28px; font-weight: 750; line-height: 1.25; letter-spacing: -.4px; }
-.s8-point-heading strong { color: var(--blue); font-weight: 800; }
-.s8-summary .body-copy { font-size: 23px; line-height: 1.42; }
-.s8-summary .content-rule { margin: 23px 0; }
+.s8-summary { position: absolute; top: 5px; left: 738px; right: 0; padding-left: 34px; border-left: 1px solid #dce5ed; pointer-events: none; }
+.s8-summary-label { margin: 0 0 17px; color: #7c8d9f; font-size: 14px; font-weight: 700; letter-spacing: .11em; line-height: 1.3; }
+.s8-point { --point-color: var(--s8-decentralized); padding: 0 0 15px; margin: 0 0 15px; border-bottom: 1px solid #e2e9f0; }
+.s8-point-centralized { --point-color: var(--s8-centralized); }
+.s8-point-heading { margin: 0 0 8px; color: var(--point-color); font-size: 27px; font-weight: 700; line-height: 1.2; letter-spacing: -.4px; }
+.s8-capability { margin: 0 0 7px; color: #50647c; font-size: 22px; line-height: 1.3; }
+.s8-limit { margin: 0; color: #8d6870; font-size: 20px; line-height: 1.45; }
+.s8-limit-label { display: inline-block; vertical-align: 1px; margin-right: 9px; padding: 3px 6px; border-radius: 3px; background: #f6edef; color: #9b737b; font-size: 12px; font-weight: 750; letter-spacing: .07em; line-height: 1.2; }
+.s8-point-hierarchical { --point-color: var(--s8-hierarchical); margin: 0; padding: 17px 20px 18px; border: 1px solid #dce9e5; border-radius: 8px; background: #f3f8f6; }
+.s8-reca-heading { display: flex; align-items: center; gap: 13px; margin-bottom: 11px; }
+.s8-reca-heading .s8-point-heading { margin: 0; }
+.s8-reca-label { padding: 4px 7px; border-radius: 4px; background: #e1eeea; color: var(--s8-hierarchical); font-size: 12px; font-weight: 750; letter-spacing: .045em; line-height: 1; }
+.s8-solution { margin: 0; color: #546e69; font-size: 21px; line-height: 1.42; }
+.s8-solution strong { color: #356c63; font-weight: 650; }
 .s8-scrubber { position: relative; height: 24px; margin-top: 12px; --progress: 100%; }
 .s8-range-rail { position: absolute; top: 10px; inset-inline: 0; height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--blue) 0 var(--progress), #d8e4ef var(--progress) 100%); }
 .s8-range { appearance: none; -webkit-appearance: none; position: absolute; top: 0; left: -9px; width: calc(100% + 18px); height: 24px; margin: 0; padding: 0; background: transparent; cursor: pointer; z-index: 1; }

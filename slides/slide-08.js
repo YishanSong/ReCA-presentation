@@ -95,6 +95,7 @@
     const headingSize = 42 - 18 * compact;
     const headingX = (710 - headingWidth * headingSize / (2 * headingBaseSize)) * (1 - shift) + 4 * shift;
     networkHeading.style.fontSize = headingSize.toFixed(3) + 'px';
+    networkHeading.style.fill = `rgb(${Math.round(126 - 26 * compact)}, ${Math.round(113 + 10 * compact)}, ${Math.round(154 - 7 * compact)})`;
     networkHeading.setAttribute('x', headingX.toFixed(3));
     networkHeading.setAttribute('y', (44 + 20 * compact).toFixed(3));
     networkHeading.style.opacity = oldHeading.toFixed(3);
