@@ -44,7 +44,7 @@
     <p class="source-note">Source: <a href="https://arxiv.org/abs/2609.13420" target="_blank" rel="noreferrer">Liu et al., Arborist: Algorithm-Hardware Co-Design for Fast and Efficient Motion Planning (2026)</a>, §§III, IV-D; Fig. 9.</p>
     <aside hidden class="speaker-notes" lang="zh-CN">Arborist 是独立的后续相关研究，2026年MICRO接收，作者为Yaotian Liu、Lingyi Huang、Zishen Wan、Bo Yuan、Cheng Tan和Jeff (Jun) Zhang。来源版本为arXiv:2609.13420v1，2026-09-11；原始矢量图为PDF第8页图9。它研究FMT*采样式运动规划，不是ReCA多智能体系统中的已实现模块，也没有与ReCA的端到端任务运行时间直接比较。本页只讲可迁移的设计思想：通过安全的多树展开以及树内前瞻计算暴露并行性；前瞻阶段提前做只读的邻居查询，重排序缓冲区按序提交，在提交时重新校验父节点选择和当前树状态，若失配则清除较年轻的投机结果。原始图9显示Issue、Execution、Complete、Commit四阶段。未来动画仅需高亮这些现有基础元素，无需视频或重新画复杂算法。结论是加速不应破坏规划语义。</aside>
     <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
-    <div class="slide-author" aria-label="Presentation authors"><span>Yishan Song &amp; Shurui Hu</span></div>
+    <div class="slide-author" aria-label="Presentation authors"><span>Shurui Hu</span></div>
     <div class="slide-number">20</div>
   </section>
 </div>
