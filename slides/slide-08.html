@@ -7,7 +7,7 @@
 <title>ReCA · Slide 08</title>
 <link rel="stylesheet" href="slides.css">
 <link rel="stylesheet" href="animation.css">
-<link rel="stylesheet" href="slide-08.css">
+<link rel="stylesheet" href="slide-08.css?v=hierarchy-20s">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 8">
@@ -18,7 +18,7 @@
       <figure class="slide-figure s8-figure">
         <svg id="s8-diagram" class="s8-diagram" viewBox="0 0 1420 492" role="img" aria-labelledby="s8-title s8-desc">
           <title id="s8-title">Hierarchical cooperative planning</title>
-          <desc id="s8-desc">Four clusters exchange progress through their parent agents. Cluster C is expanded to show its parent planning for itself and four children. Children return feasibility feedback; a No triggers replanning and another feasibility check. Moving dots represent messages. Agent drawings are extracted from the original vector figure.</desc>
+          <desc id="s8-desc">Four large agents exchange messages at the center. Child agents are revealed, showing decentralized cooperation between clusters. The network moves left, and the upper-right cluster C expands into centralized cooperation on the right: a parent plans and children return feasibility feedback. A No triggers replanning. Finally, the hierarchical network remains on the left, with three benefits on the right. Dots represent messages, and agent artwork comes from ReCA Fig. 8.</desc>
           <defs>
             <!-- Reuse Fig. 8's vector paths, without its labels or ground bars. -->
             <symbol id="s8-parent-art" viewBox="0 0 54 69">
@@ -44,19 +44,23 @@
               <rect class="s8-cluster-box" x="1" y="1" width="228" height="166" rx="12"/>
               <circle class="s8-parent-disc" cx="177" cy="57" r="43"/>
               <use href="#s8-parent-art" x="148" y="19" width="58" height="70"/>
-              <use href="#s8-child-1-art" x="12" y="114" width="31" height="28"/>
-              <use href="#s8-child-2-art" x="45" y="114" width="31" height="28"/>
-              <use href="#s8-child-3-art" x="78" y="114" width="31" height="28"/>
-              <use href="#s8-child-4-art" x="111" y="114" width="31" height="28"/>
+              <g class="s8-cluster-children">
+                <path class="s8-internal-links" d="M151 91L27 113M151 91L60 113M151 91L93 113M151 91L126 113"/>
+                <use href="#s8-child-1-art" x="12" y="114" width="31" height="28"/>
+                <use href="#s8-child-2-art" x="45" y="114" width="31" height="28"/>
+                <use href="#s8-child-3-art" x="78" y="114" width="31" height="28"/>
+                <use href="#s8-child-4-art" x="111" y="114" width="31" height="28"/>
+              </g>
             </symbol>
             <marker id="s8-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M1 1L9 5L1 9" fill="none" stroke="#9aaec0" stroke-width="1.5"/>
             </marker>
           </defs>
 
+          <text id="s8-inter-heading" class="s8-mode-title" x="4" y="29" opacity="0">Inter-cluster</text>
+          <text id="s8-network-heading" class="s8-heading s8-subheading" x="4" y="64" opacity="0">Decentralized cooperation</text>
+          <text id="s8-hierarchy-heading" class="s8-heading" x="4" y="48">Hierarchical cooperative planning</text>
           <g id="s8-network">
-            <text class="s8-eyebrow" x="4" y="22">INTER-CLUSTER</text>
-            <text class="s8-heading" x="4" y="61">Decentralized cooperation</text>
             <g id="s8-cluster-a" class="s8-cluster" data-cluster="A">
               <use href="#s8-cluster-art" x="4" y="100" width="230" height="168"/>
               <text class="s8-cluster-letter" x="185" y="152">A</text>
@@ -87,16 +91,17 @@
               <circle data-parent="C" cx="533" cy="157" r="46"/>
               <circle data-parent="D" cx="533" cy="359" r="46"/>
             </g>
+            <g id="s8-network-messages" aria-hidden="true"></g>
           </g>
 
-          <g id="s8-zoom" class="s8-zoom" aria-hidden="true">
+          <g id="s8-zoom" class="s8-zoom" opacity="0" aria-hidden="true">
             <path d="M590 98L716 94M590 272L716 470"/>
             <rect x="352" y="96" width="238" height="176" rx="14"/>
           </g>
 
-          <g id="s8-local">
-            <text class="s8-eyebrow" x="756" y="22">INTRA-CLUSTER</text>
-            <text class="s8-heading" x="756" y="61">Centralized cooperation</text>
+          <g id="s8-local" opacity="0">
+            <text class="s8-mode-title" x="756" y="29">Intra-cluster</text>
+            <text class="s8-heading s8-subheading" x="756" y="64">Centralized cooperation</text>
             <text class="s8-role" x="1070" y="111">Parent Agent</text>
             <g class="s8-links">
               <path id="s8-link-child-1" d="M1047 211C1012 250 820 254 820 346"/>
@@ -135,9 +140,25 @@
               <text class="s8-feedback-label" x="1354" y="455">Yes</text>
             </g>
             <text class="s8-role" x="1087" y="487">Child Agents</text>
+            <g id="s8-local-messages" aria-hidden="true"></g>
           </g>
-          <g id="s8-messages" aria-hidden="true"></g>
         </svg>
+        <aside id="s8-summary" class="s8-summary" aria-label="Why hierarchical cooperative planning">
+          <section>
+            <h2 class="s8-point-heading"><strong>Centralized</strong> within clusters</h2>
+            <p class="body-copy">Parent plans; child feedback<br>helps eliminate invalid actions.</p>
+          </section>
+          <hr class="content-rule">
+          <section>
+            <h2 class="s8-point-heading"><strong>Decentralized</strong> across clusters</h2>
+            <p class="body-copy">Parents exchange progress, limiting<br>communication overhead and context dilution.</p>
+          </section>
+          <hr class="content-rule">
+          <section>
+            <h2 class="s8-point-heading"><strong>Hierarchical</strong> cooperative planning</h2>
+            <p class="body-copy">Distribute planning workload.<br>Avoid global synchronization overhead.</p>
+          </section>
+        </aside>
         <div class="s8-scrubber" id="s8-scrubber">
           <div class="s8-range-rail" aria-hidden="true"></div>
           <input class="s8-range" id="s8-progress" type="range" min="0" max="100" step="0.1" value="100" aria-label="Animation progress" aria-valuetext="100% complete">
@@ -157,8 +178,8 @@
     <div class="slide-author" aria-label="Presentation authors"><span>Shurui Hu</span></div>
     <div class="slide-number">8</div>
     <aside hidden aria-label="Presenter notes" lang="zh-CN">
-      <p>28秒原速叙事，沿用作者slides37到38的讲述顺序：0–7秒，四个簇的parent互相交换进展，这是簇间分散协作；7–10秒，展开C簇；10–16秒，簇内parent利用自己的LLM，为自己和children规划并下发动作；16–20秒，children检查可行性并返回Yes/No；20–25秒，不可行的动作触发重新规划，再次检查；25–28秒，保留两层完整图。</p>
-      <p>讲稿：团队先按交互距离分簇。簇与簇之间，由各自的parent交换任务进展，不需要一个全局规划者。放大其中一个簇，parent为自己和children安排动作；children检查能不能执行，不能就反馈，parent重新规划。因此，簇内集中规划，簇间分散协作。</p>
+      <p>20秒原速叙事：0–2.7秒，中央四个大agent快速交换消息，不显示children；2.7–3.7秒，Decentralized cooperation缩为子标题，上方出现Inter-cluster；3.7–4.7秒，每个parent左下方出现children，揭示原有层级；4.7–6.2秒，整图左移，框选右上C簇，向右展开Intra-cluster centralized cooperation；6.5–12秒，下发Plan、检查可行性、返回Yes/No，不可行则重新规划；13–14.2秒收起右侧局部放大图和Inter-cluster标题；14.2–20秒，左侧保留Hierarchical cooperative planning，右侧显示三个论文要点。完成后保留此画面。</p>
+      <p>讲稿：agent之间可以分散通信。ReCA把它用于簇间协作，每个parent背后还有自己的children。放大C簇，簇内由parent规划，children检查动作、反馈并触发重规划。这样的层级协作既分担规划工作，也减少通信与全局同步开销。</p>
       <p>图标直接裁自论文Fig.8矢量图，结构按作者slides37–38重新排版。parent是已有embodied agent承担的规划角色，不是额外增加的机器人或独立软件模块。四个示例簇及children数量不代表固定配置。图中的Yes/No是动作可行性反馈，不是任务完成或发送成功。消息路径为叙事演示，时间不代表论文测量结果；先介绍簇间再展开簇内，是讲述顺序而不是运行依赖。</p>
       <p>执行是异步的，动作轮次结束后进行簇内同步；不存在本动画暗示的全局同步屏障。聚类根据交互距离动态调整，本页不额外演示重分簇。承接第2页的协作任务概念，不把Alice/Bob固定对应为parent/child。</p>
     </aside>
@@ -166,6 +187,6 @@
 </div>
 <script src="runtime.js"></script>
 <script src="animation.js"></script>
-<script src="slide-08.js"></script>
+<script src="slide-08.js?v=hierarchy-20s"></script>
 </body>
 </html>
