@@ -6,41 +6,64 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 17</title>
 <link rel="stylesheet" href="slides.css">
-<link rel="stylesheet" href="slide-17.css">
+<link rel="stylesheet" href="slide-17.css?v=scalability-comparison">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 17">
   <section class="slide active" data-slide="17" data-owner="B" aria-hidden="false">
     <div class="kicker">03 / EVALUATION · SCALABILITY</div>
-    <h1 class="slide-title">Can ReCA Scale to More Agents?</h1>
-    <main class="slide-content content-area">
-      <div class="content-grid">
-        <figure class="slide-figure">
-          <p class="s17-chart-title">More agents: success rate above, task latency below</p>
-          <img class="figure-image" src="../assets/images/pb-fig13-scalability.svg" alt="Original ReCA paper Figure 13. With 2 to 12 agents, ReCA maintains high task success and low task latency across CoELA, COMBO and MindAgent, while baseline success falls and latency increases.">
-          <figcaption class="figure-caption">ReCA improves the system scalability with improved task success rates and reduced end-to-end latency under large-scale cooperative embodied agent systems.</figcaption>
-        </figure>
-        <aside class="slide-summary">
-          <p class="section-label">AT 12 AGENTS</p>
-          <h2 class="content-heading">Success holds as<br>the team grows.</h2>
-          <div class="s17-result">
-            <div><strong>≈90%</strong><span>task success</span></div>
-            <div><strong>≤20 min</strong><span>task runtime</span></div>
+    <h1 class="slide-title">Scalability with More Agents</h1>
+    <main class="slide-content content-area s17-content">
+      <div class="content-grid s17-layout">
+        <div class="slide-figure s17-charts" role="group" aria-label="Scalability from 2 to 12 agents across CoELA, COMBO and MindAgent">
+          <figure class="s17-panel">
+            <figcaption class="s17-panel-heading">
+              <h2>Task Success Rate</h2>
+              <span>Higher is better</span>
+            </figcaption>
+            <div class="s17-plot s17-plot-success">
+              <img class="figure-image" src="../assets/images/pb-fig13-scalability.svg" alt="Original Figure 13, panels a–c: task success rate with 2 to 12 agents in CoELA, COMBO and MindAgent. ReCA remains above the baseline curves as team size increases.">
+            </div>
+          </figure>
+          <figure class="s17-panel">
+            <figcaption class="s17-panel-heading">
+              <h2>End-to-End Latency</h2>
+              <span>Lower is better</span>
+            </figcaption>
+            <div class="s17-plot s17-plot-latency">
+              <img class="figure-image" src="../assets/images/pb-fig13-scalability.svg" alt="Original Figure 13, panels d–f: task latency with 2 to 12 agents in CoELA, COMBO and MindAgent. ReCA remains below the baseline curves as team size increases.">
+            </div>
+          </figure>
+        </div>
+        <aside class="slide-summary s17-summary">
+          <p class="section-label">AS THE NUMBER OF AGENTS INCREASES</p>
+          <h2 class="content-heading">ReCA maintains higher task success rates and lower latency than the baselines.</h2>
+          <div class="s17-comparison">
+            <p class="section-label" id="s17-comparison-title">AT 12 AGENTS</p>
+            <table aria-labelledby="s17-comparison-title">
+              <thead>
+                <tr><th scope="col">Metric</th><th scope="col">Baseline</th><th scope="col">ReCA</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Task success rate</th><td>&lt;70%</td><td class="s17-reca">≈90%</td></tr>
+                <tr><th scope="row">End-to-end latency</th><td>≈1 hour</td><td class="s17-reca">≤20 min</td></tr>
+              </tbody>
+            </table>
           </div>
-          <p class="s17-context">Across decentralized <strong>CoELA / COMBO</strong> and centralized <strong>MindAgent</strong>.</p>
           <hr class="content-rule">
-          <p class="takeaway">ReCA improves <strong>both quality and efficiency at scale.</strong></p>
+          <p class="section-label">TAKEAWAY</p>
+          <p class="takeaway">ReCA maintains <strong>task performance and efficiency</strong> with more agents.</p>
         </aside>
       </div>
     </main>
     <p class="source-note">ReCA §7.2, Fig. 13, p. 993.</p>
-    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
+    <!-- <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div> -->
     <div class="slide-author" aria-label="Presentation authors"><span>Shurui Hu</span></div>
     <div class="slide-number">17</div>
     <aside hidden aria-label="Presenter notes" lang="zh-CN">
       <p>约 55 秒。对应老师 slides 第 50 页。上排看成功率，下排看完成时间；三列分别是 CoELA、COMBO、MindAgent，横轴从 2 个增加到 12 个 agent。粉红圆点为原始系统，蓝色菱形为 ReCA。原始分散式系统的沟通开销随规模扩大，而集中式系统的规划质量下降；ReCA 在两类系统中均保持较好的成功率与时间。</p>
-      <p>右侧采用论文 §7.2 的文字总结：12 个 agent 时保持约 90% 成功率，20 分钟内完成。它是跨系统的概括，并非每一条曲线在 12 个 agent 时都恰好为 90% 或 20 分钟。原文还概括 baseline 通常需要约一小时且成功率不足 70%；正文只保留 ReCA 的核心结果，以免把近似概括当成所有系统的精确数据。</p>
-      <p>这一页展示的是整体 ReCA 的规模扩展结果，不能单独用它量化层次合作一个组件的因果贡献。图覆盖最多 12 个 agent，不表示已验证任意规模。原图从论文 PDF 第 12 页（印刷页 993）直接裁取，保留六个 panel、原坐标轴和原图例，不重画数据。</p>
+      <p>右侧表格采用论文 §7.2 的文字总结：12 个 agent 时，baseline 通常需要约一小时且成功率不足 70%；ReCA 保持约 90% 成功率并在 20 分钟内完成。这是跨系统的概括，并非每一条曲线在 12 个 agent 时都恰好为 90% 或 20 分钟。叙事重点是增加 agent 数量后的可扩展性，以及相同规模下 ReCA 与 baseline 的对照，不表示 ReCA 自身成功率随 agent 数量单调上升。</p>
+      <p>这一页展示的是整体 ReCA 的规模扩展结果，不能单独用它量化层次合作一个组件的因果贡献。图覆盖最多 12 个 agent，不表示已验证任意规模。原图从论文 PDF 第 12 页（印刷页 993）直接裁取；成功率与延迟分别使用原 SVG 的上下视口，保留六个 panel、原坐标轴和原图例，不重画数据。</p>
     </aside>
   </section>
 </div>

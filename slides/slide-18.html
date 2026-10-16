@@ -6,47 +6,101 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 18</title>
 <link rel="stylesheet" href="slides.css">
-<link rel="stylesheet" href="slide-18.css">
+<link rel="stylesheet" href="animation.css">
+<link rel="stylesheet" href="slide-18.css?v=two-row-legend">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 18">
   <section class="slide active" data-slide="18" data-owner="B" aria-hidden="false">
     <div class="kicker">03 / EVALUATION · ABLATION</div>
-    <h1 class="slide-title">Why Does ReCA Need the Full Co-Design?</h1>
-    <main class="slide-content content-area">
-      <div class="content-grid">
-        <figure class="slide-figure">
-          <p class="s18-chart-title">Each successive configuration lowers task latency.<span>Normalized to the configuration with all five optimizations removed.</span></p>
-          <img class="figure-image" src="../assets/images/pb-fig17-ablation.svg" alt="Original ReCA paper Figure 17. For CoELA, COMBO and MindAgent, bars show progressively lower normalized task latency as heterogeneous hardware, multi-step execution, hierarchical cooperation, dual memory and the local model are successively included.">
-          <p class="s18-reading"><strong>Read left → right within each group:</strong> more optimizations are enabled. The percentages annotate cumulative runtime reductions.</p>
-          <figcaption class="figure-caption">Lower bars mean lower end-to-end latency.</figcaption>
+    <h1 class="slide-title">Are All ReCA Optimizations Effective?</h1>
+    <main class="slide-content content-area s18-content">
+      <div class="content-grid s18-layout">
+        <figure class="slide-figure s18-figure">
+          <div class="s18-chart-layout">
+            <div class="s18-legend" role="group" aria-label="Original Figure 17 legend">
+              <ul class="s18-legend-row">
+              <li data-s18-legend="0"><span class="s18-swatch s18-color-0" aria-hidden="true"></span><span>ReCA w/o <span class="s18-legend-terms">(LM, DM, HC, MT, HW)</span></span></li>
+              <li data-s18-legend="1"><span class="s18-swatch s18-color-1" aria-hidden="true"></span><span>ReCA w/o <span class="s18-legend-terms">(LM, DM, HC, MT)</span></span></li>
+              </ul>
+              <ul class="s18-legend-row">
+              <li data-s18-legend="2"><span class="s18-swatch s18-color-2" aria-hidden="true"></span><span>ReCA w/o <span class="s18-legend-terms">(LM, DM, HC)</span></span></li>
+              <li data-s18-legend="3"><span class="s18-swatch s18-color-3" aria-hidden="true"></span><span>ReCA w/o <span class="s18-legend-terms">(LM, DM)</span></span></li>
+              <li data-s18-legend="4"><span class="s18-swatch s18-color-4" aria-hidden="true"></span><span>ReCA w/o <span class="s18-legend-terms">(LM)</span></span></li>
+              <li data-s18-legend="5"><span class="s18-swatch s18-color-5" aria-hidden="true"></span><span>ReCA</span></li>
+              </ul>
+            </div>
+          <svg id="s18-chart" class="s18-chart" viewBox="0 0 850 344" role="img" aria-labelledby="s18-chart-title s18-chart-description">
+            <title id="s18-chart-title">Successive ReCA configurations across CoELA, COMBO and MindAgent</title>
+            <desc id="s18-chart-description">Redrawn from Figure 17. Each system is normalized to 100 percent with all five optimizations removed. The original legend is arranged in two rows above the chart; its colors match the bars and added modules. Bar heights show remaining task latency; labels show cumulative runtime reductions from the reference. Values are rounded from the original figure annotations. The animation reveals configurations rather than a runtime sequence.</desc>
+            <g class="s18-grid" aria-hidden="true">
+              <path d="M66 36H824M66 96H824M66 156H824M66 216H824M66 276H824"/>
+              <text x="55" y="41">100</text><text x="55" y="101">75</text>
+              <text x="55" y="161">50</text><text x="55" y="221">25</text><text x="55" y="281">0</text>
+              <text class="s18-y-title" transform="translate(16 156) rotate(-90)">Normalized Task Latency (%)</text>
+            </g>
+            <g id="s18-bars"></g>
+            <g class="s18-system-labels" aria-hidden="true">
+              <text x="202" y="313">CoELA</text>
+              <text x="450" y="313">COMBO</text>
+              <text x="698" y="313">MindAgent</text>
+            </g>
+          </svg>
+          </div>
+          <div class="s18-transport">
+            <div class="animation-controls s18-controls">
+              <button id="s18-speed" class="animation-control" type="button" aria-label="Playback speed: 1 time. Click to change speed.">2x</button>
+              <button id="s18-toggle" class="animation-control" type="button">Replay</button>
+            </div>
+            <div class="s18-scrubber" id="s18-scrubber">
+              <div class="s18-range-rail" aria-hidden="true"></div>
+              <input id="s18-time" class="s18-range" type="range" min="0" max="100" step="0.1" value="100" aria-label="Ablation animation progress">
+            </div>
+          </div>
+          <figcaption class="figure-caption s18-caption">Ablation study on ReCA optimization techniques.</figcaption>
+          <noscript><img class="figure-image" src="../assets/images/pb-fig17-ablation.svg" alt="Original paper Figure 17: normalized latency across six successive configurations."></noscript>
         </figure>
-        <aside class="slide-summary">
+        <aside class="slide-summary s18-summary">
           <p class="section-label">SUCCESSIVE CONFIGURATIONS</p>
-          <h2 class="content-heading">Build the whole stack.</h2>
-          <ol class="s18-stages" aria-label="Order in which optimizations are enabled">
-            <li>GPU / A-star hardware</li>
-            <li>Multi-step execution</li>
-            <li>Hierarchical cooperation</li>
-            <li>Dual memory</li>
-            <li>Local model</li>
+          <div class="s18-equation">
+          <ol class="s18-steps" aria-label="Cumulative order of module additions; select a configuration to inspect it">
+            <li><button class="s18-step s18-step-reference" type="button" data-s18-stage="0">All five optimizations removed</button></li>
+            <li><button class="s18-step s18-step-hw" type="button" data-s18-stage="1"><strong>HW:</strong> A-star/GPU heterogenous hardware system</button></li>
+            <li><button class="s18-step s18-step-mt" type="button" data-s18-stage="2"><strong>MT:</strong> multi-step execution</button></li>
+            <li><button class="s18-step s18-step-hc" type="button" data-s18-stage="3"><strong>HC:</strong> hierarchical cooperation</button></li>
+            <li><button class="s18-step s18-step-dm" type="button" data-s18-stage="4"><strong>DM:</strong> dual memory</button></li>
+            <li><button class="s18-step s18-step-lm" type="button" data-s18-stage="5"><strong>LM:</strong> local model</button></li>
           </ol>
+          <div class="s18-brace s18-brace-hardware" aria-label="Hardware: A-star/GPU heterogenous hardware system">
+            <svg viewBox="0 0 24 100" preserveAspectRatio="none" aria-hidden="true"><path d="M2 2C13 2 13 12 13 24V36Q13 50 22 50Q13 50 13 64V76C13 88 13 98 2 98"/></svg>
+            <span>Hardware</span>
+          </div>
+          <div class="s18-brace s18-brace-software" aria-label="Software: multi-step execution, hierarchical cooperation, dual memory and local model">
+            <svg viewBox="0 0 24 100" preserveAspectRatio="none" aria-hidden="true"><path d="M2 2C13 2 13 12 13 24V36Q13 50 22 50Q13 50 13 64V76C13 88 13 98 2 98"/></svg>
+            <span>Software</span>
+          </div>
+          <p class="s18-equation-result" id="s18-equation-result">= <strong>ReCA</strong></p>
+          </div>
           <hr class="content-rule">
-          <p class="takeaway">The gain comes from <strong>co-design across layers.</strong></p>
+          <p class="section-label">TAKEAWAY</p>
+          <p class="takeaway"><strong class="s18-takeaway-line">Model-system-hardware co-design</strong><br>is important for system performance.</p>
         </aside>
       </div>
     </main>
-    <p class="source-note">ReCA, §7.3, Fig. 17, p. 994.</p>
-    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
+    <p class="source-note">ReCA §7.3 · <a href="../assets/images/pb-fig17-ablation.svg" target="_blank" rel="noreferrer">Fig. 17</a>, p. 994</p>
+    <!-- <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div> -->
     <div class="slide-author" aria-label="Presentation authors"><span>Shurui Hu</span></div>
     <div class="slide-number">18</div>
     <aside hidden aria-label="Presenter notes" lang="zh-CN">
-      <p>约 60 秒。对应老师 slides 第 53 页。这不是五个独立组件各跑一次的 leave-one-out 柱状图。读原图图例：第一根柱去掉 LM、DM、HC、MT、HW，归一化为 100%；第二根只开启硬件；第三根在硬件上叠加 multi-step；随后再叠加 hierarchical cooperation、dual memory，最后是完整 ReCA 加上 local model。因此右侧按照实际叠加顺序排列。</p>
+      <p>对应老师 slides 第 53 页。动画 4 秒、默认 1 倍速，每 0.5 秒加入一项优化，展示逐项开启优化的六种配置。先显示移除全部五项优化的 100% 参照；右侧按全称做模块加法，左侧每次在三组系统中同步加入一根柱，并使新柱从前一配置的高度下降到对应归一化延迟。旧柱保留，最终呈现完整消融对比和 ReCA。右侧可以点击模块直接查看该累计配置，播放结束后使用 Replay 重播。优化的呈现顺序不表示它们在真实运行时依次执行。</p>
       <p>柱边的 23%、40%、62% 等是相对于无五项优化配置的累计时间降低比例，不是每项组件的独立贡献。例如 CoELA 的标注逐步为 23%、40%、62%、82%、91%。不能将这些百分比相加，不能直接把顺序中的差值解释成与配置无关的独立收益，也不能由本图把平均 10.2 倍拆成五个可相加的数字。</p>
-      <p>论文 §7.3 正文概括：仅硬件平均降低 25.3% runtime，逐步引入 multi-step、hierarchical planning、dual memory 后累计降低达到 48.7%、70.7%、82.3%。本页不重复堆叠这组数字，让原图证明三个系统中的相同趋势。结论是跨模型、系统和硬件的完整设计有必要。图从论文 PDF 第 13 页（印刷页 994）直接裁取，原始图例、单位和注释均保留。</p>
+      <p>归一化延迟从 Fig.17 的整数累计降幅反推，CoELA 为 100、77、60、38、18、9%；COMBO 为 100、72、45、24、19、7%；MindAgent 为 100、75、49、26、16、8%。图上文字仍显示原图标注的累计降低比例，而非独立组件收益。每个系统分别归一化，柱高不能比较系统之间的绝对分钟数。过渡柱高仅用于展示配置变化，不是额外实测点。</p>
+      <p>论文 §7.3 正文概括：仅硬件平均降低 25.3% runtime，逐步引入 multi-step、hierarchical planning、dual memory 后累计降低达到 48.7%、70.7%、82.3%。Takeaway 直接采用作者 slide53 的原句。保留原始 Fig.17 的矢量文件，页脚链接可以打开原图；本页按整数标注重绘，未编造新实验或独立消融数据。减少动态效果或打印时显示全部配置。</p>
     </aside>
   </section>
 </div>
 <script src="runtime.js"></script>
+<script src="animation.js"></script>
+<script src="slide-18.js"></script>
 </body>
 </html>

@@ -1,11 +1,28 @@
-.s19-evidence { width: 100%; border-collapse: collapse; table-layout: fixed; }
-.s19-evidence col:first-child { width: 47%; }
-.s19-evidence th { padding: 0 28px 19px 0; text-align: left; color: var(--blue); font-size: 17px; line-height: 1.35; letter-spacing: .08em; }
-.s19-evidence th + th { padding-left: 32px; color: #647b93; }
-.s19-evidence td { height: 128px; border-top: 1px solid #d8e4ef; padding: 19px 30px 20px 0; vertical-align: top; }
-.s19-evidence td + td { padding-left: 32px; padding-right: 0; }
-.s19-topic { display: block; margin-bottom: 7px; font-size: 25px; line-height: 1.25; font-weight: 750; }
-.s19-detail { margin: 0; color: #53677e; font-size: 23px; line-height: 1.38; }
-.s19-detail strong { color: var(--navy); font-weight: 750; }
-.s19-conclusion { margin: 25px 0 0; padding-top: 21px; border-top: 2px solid #d8e4ef; font-size: 28px; line-height: 1.3; font-weight: 750; }
-.s19-conclusion strong { color: var(--blue); }
+.s19-content { display: flex; align-items: center; }
+.s19-layout { display: grid; grid-template-columns: minmax(0, 650px) minmax(0, 1fr); gap: 48px; width: 100%; align-items: stretch; }
+.s19-paper { display: flex; flex-direction: column; }
+.s19-framework { margin: 19px 0 0; color: #53677e; font-size: 24px; font-weight: 500; line-height: 1.4; }
+.s19-paper strong { font-weight: 750; }
+.s19-framework strong { color: var(--navy); }
+.s19-paper-rule { flex: none; width: 100%; height: 1px; margin: 22px 0; border: 0; background: #d8e4ef; }
+.s19-paper-rule:last-of-type { margin-top: auto; }
+.s19-contribution-title { flex: none; margin-bottom: 12px; }
+.s19-mechanisms { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.s19-mechanisms li { display: flex; align-items: center; gap: 16px; min-height: 37px; }
+.s19-mechanisms li > span { flex: 0 0 42px; color: var(--blue); font-size: 29px; font-weight: 750; line-height: 1.15; }
+.s19-mechanisms strong { color: var(--navy); font-size: 23px; line-height: 1.35; }
+.s19-outlook { margin: 0; color: #647b93; font-size: 22px; line-height: 1.4; }
+.s19-outlook p { margin: 0; }
+.s19-outlook strong { color: var(--blue); }
+.s19-related { min-width: 0; padding-left: 32px; border-left: 2px solid #d8e4ef; }
+.s19-references { margin: 18px 0 0; padding: 0; list-style: none; }
+.s19-references li + li { margin-top: 16px; padding-top: 16px; border-top: 1px solid #e1e9f1; }
+.s19-reference-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px 14px; }
+.s19-reference-heading h3 { margin: 0; color: var(--navy); font-size: 25px; font-weight: 750; line-height: 1.3; }
+.s19-reference-heading a { color: inherit; text-decoration: none; }
+.s19-reference-heading a:hover { color: var(--blue); text-decoration: underline; text-underline-offset: 4px; }
+.s19-reference-heading a:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.s19-reference-heading > p { margin: 0; color: #647b93; font-size: 18px; line-height: 1.4; }
+.s19-author { color: #8090a3; font-size: 16px; }
+.s19-reference-description { margin: 7px 0 0; color: #53677e; font-size: 21px; line-height: 1.4; }
+.s19-nowrap { white-space: nowrap; }

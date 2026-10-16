@@ -6,36 +6,69 @@
 <meta name="color-scheme" content="light">
 <title>ReCA · Slide 19</title>
 <link rel="stylesheet" href="slides.css">
-<link rel="stylesheet" href="slide-19.css">
+<link rel="stylesheet" href="slide-19.css?v=contribution-authors">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 19">
   <section class="slide active" data-slide="19" data-owner="B" aria-hidden="false">
     <div class="kicker">04 / CONCLUSION</div>
-    <h1 class="slide-title">Conclusion & Future Work</h1>
-    <main class="slide-content content-area">
-      <table class="s19-evidence" aria-label="Reported experimental evidence and our interpretation of its limits">
-        <colgroup><col><col></colgroup>
-        <thead><tr><th scope="col">REPORTED IN THE PAPER</th><th scope="col">FURTHER IDEAS</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong class="s19-topic">Six benchmark environments</strong><p class="s19-detail">Transport, cooking, housework, and games.</p></td>
-            <td><strong class="s19-topic">Transfer to physical robots?</strong><p class="s19-detail">Test sensing errors, actuation failures, and changing scenes.</p></td>
-          </tr>
-          <tr>
-            <td><strong class="s19-topic">Timing is conditioned on success</strong><p class="s19-detail">Average runtime and steps use <strong>successful missions</strong>.</p></td>
-            <td><strong class="s19-topic">What happens in the slow or failed trials?</strong><p class="s19-detail">Report failure cost and tail latency alongside the mean.</p></td>
-          </tr>
-          <tr>
-            <td><strong class="s19-topic">A specified network and hardware setup</strong><p class="s19-detail">75 ms / 100 Mbps WAN · A6000 + ZC706 FPGA.</p></td>
-            <td><strong class="s19-topic">How sensitive is deployment performance?</strong><p class="s19-detail">Sweep network jitter, link failures, and device budgets.</p></td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="s19-conclusion"><strong>Strong benchmark gains.</strong> Physical deployment still needs validation.</p>
+    <h1 class="slide-title">Conclusion & Related Work</h1>
+    <main class="slide-content content-area s19-content">
+      <div class="s19-layout">
+        <section class="s19-paper" aria-labelledby="s19-paper-title">
+          <h2 class="section-label" id="s19-paper-title">CONCLUSION</h2>
+          <p class="s19-framework">ReCA is an <strong>integrated software-hardware co-design framework</strong> for <strong>efficient and scalable cooperative agent systems</strong>.</p>
+          <hr class="s19-paper-rule">
+          <h3 class="section-label s19-contribution-title" id="s19-contribution-title">MAIN CONTRIBUTION</h3>
+          <ul class="s19-mechanisms" aria-labelledby="s19-contribution-title">
+            <li><span aria-hidden="true">01</span><strong>Dual Memory Structure</strong></li>
+            <li><span aria-hidden="true">02</span><strong>Hierarchical Cooperative Planning</strong></li>
+            <li><span aria-hidden="true">03</span><strong>Planning-Guided <span class="s19-nowrap">Multi-Step</span> Execution</strong></li>
+            <li><span aria-hidden="true">04</span><strong>Scalable A-Star Accelerator</strong></li>
+          </ul>
+          <hr class="s19-paper-rule">
+          <div class="s19-outlook">
+            <p>This paper proposed a new perspective on <strong>scalable and efficient cooperative embodied agent systems</strong>.</p>
+          </div>
+        </section>
+        <section class="s19-related" aria-labelledby="s19-related-title">
+          <h2 class="section-label" id="s19-related-title">RELATED IDEAS</h2>
+          <ol class="s19-references">
+            <li data-paper="arborist">
+              <div class="s19-reference-heading">
+                <h3><a href="https://arxiv.org/abs/2609.13420" target="_blank" rel="noreferrer">Arborist</a></h3>
+                <p>Yaotian Liu et al. · 2026 · MICRO <span class="s19-author">· co-author: Zishen Wan</span></p>
+              </div>
+              <p class="s19-reference-description">Accelerates FMT* using parallel tree expansion and speculative <span class="s19-nowrap">look-ahead</span> with <span class="s19-nowrap">in-order</span> commit.</p>
+            </li>
+            <li data-paper="flash">
+              <div class="s19-reference-heading">
+                <h3><a href="https://arxiv.org/abs/2605.13778" target="_blank" rel="noreferrer">FLASH</a></h3>
+                <p>Jiahui Niu et al. · 2026 · arXiv</p>
+              </div>
+              <p class="s19-reference-description">Uses a lightweight draft model, parallel verification, and phase-aware fallback to accelerate VLA inference.</p>
+            </li>
+            <li data-paper="deltoris">
+              <div class="s19-reference-heading">
+                <h3><a href="https://arxiv.org/abs/2608.04428" target="_blank" rel="noreferrer">Deltoris</a></h3>
+                <p>Zheng Liu et al. · 2026 · arXiv</p>
+              </div>
+              <p class="s19-reference-description">Combines temporal-aware bit-level sparsity and speculative inference to reduce VLA compute and data traffic.</p>
+            </li>
+            <li data-paper="remac">
+              <div class="s19-reference-heading">
+                <h3><a href="https://proceedings.iclr.cc/paper_files/paper/2026/file/c35834443b7881e782e52b3519fe27c7-Paper-Conference.pdf" target="_blank" rel="noreferrer">REMAC</a></h3>
+                <p>Haoxuan Wang et al. · 2026 · ICLR</p>
+              </div>
+              <p class="s19-reference-description">Uses masked action chunking and prefix-preserved sampling for reliable asynchronous robot execution.</p>
+            </li>
+          </ol>
+        </section>
+      </div>
     </main>
-    <aside hidden class="speaker-notes" lang="zh-CN">这一页区分论文已报告的证据和我们的批判性解读。第一，六个基准覆盖不同任务，但这些结果还不能直接证明真实机器人的感知、执行和环境变化鲁棒性。第二，论文第7.1节明确说明，平均步数和端到端运行时间只统计成功任务；成功率另报。因此10.2倍平均加速不等于所有尝试都更快，也不是尾延迟保证。第三，网络假设为75毫秒和100Mbps，硬件为A6000、i7和ZC706 FPGA；需要进一步测试网络抖动、断连和更小设备预算。右栏是我们的后续实验建议，不是论文报告的失败结论。</aside>
-    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
+    <p class="source-note">ReCA §9 · p. 994</p>
+    <aside hidden class="speaker-notes" lang="zh-CN">左侧精简论文第9节Conclusion，保留此前七处加粗术语，按框架、四项加速机制、展望独立排版。右侧选取后续slides已有的四项相关研究，作为Beyond ReCA的引入，不表示它们已集成到ReCA中。Arborist发表于MICRO2026，作者包括Yaotian Liu、Lingyi Huang、Zishen Wan、Bo Yuan、Cheng Tan和Jeff (Jun) Zhang；它研究FMT*的多树并行和有序投机规划。FLASH与Deltoris在核对的arXiv原文中未列出录用会议，因此标注2026 arXiv，不推测会议。REMAC采用ICLR2026官方论文。四条简介为对应原文机制的简短转述，来源链接直接放在论文名称上。</aside>
+    <!-- <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div> -->
     <div class="slide-author" aria-label="Presentation authors"><span>Shurui Hu</span></div>
     <div class="slide-number">19</div>
   </section>

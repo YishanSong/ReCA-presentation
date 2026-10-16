@@ -1,5 +1,26 @@
-.s17-chart-title { margin: 0 0 15px; font-size: 23px; font-weight: 750; line-height: 1.35; }
-.s17-result { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0 23px; }
-.s17-result strong { display: block; color: var(--blue); font-size: 46px; font-weight: 800; line-height: 1.12; letter-spacing: -.035em; white-space: nowrap; }
-.s17-result span { display: block; margin-top: 7px; color: #647b93; font-size: 20px; line-height: 1.35; }
-.s17-context { color: #647b93; font-size: 21px; line-height: 1.45; }
+.s17-content { display: flex; align-items: center; }
+.s17-layout { width: 100%; height: auto; align-items: stretch; }
+.s17-charts { display: grid; gap: 20px; align-content: start; }
+.s17-panel { min-width: 0; margin: 0; }
+.s17-panel-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: 0 0 8px; }
+.s17-panel-heading h2 { margin: 0; color: var(--navy); font-size: 23px; font-weight: 750; line-height: 1.25; }
+.s17-panel-heading span { color: #647b93; font-size: 17px; line-height: 1.35; }
+/* Original Fig. 13 is 241 × 116; its two plot rows meet at y = 59. */
+.s17-plot { position: relative; overflow: hidden; aspect-ratio: 241 / 59; }
+.s17-plot .figure-image { position: absolute; top: 0; left: 0; width: 100%; max-height: none; }
+.s17-plot-latency { aspect-ratio: 241 / 57; }
+.s17-plot-latency .figure-image { transform: translateY(-50.8620689655%); }
+.s17-summary { display: flex; flex-direction: column; }
+.s17-summary > .section-label:first-child { font-size: 16px; letter-spacing: .06em; }
+.s17-summary .content-heading { margin: 10px 0 20px; font-size: 27px; line-height: 1.32; }
+.s17-comparison table { width: 100%; margin-top: 10px; border-collapse: collapse; table-layout: fixed; }
+.s17-comparison th, .s17-comparison td { padding: 12px 8px; border-bottom: 1px solid #e1e9f1; vertical-align: middle; }
+.s17-comparison th:first-child { width: 39%; padding-left: 0; text-align: left; }
+.s17-comparison thead th { padding-top: 0; padding-bottom: 9px; color: #647b93; font-size: 17px; font-weight: 650; text-align: center; }
+.s17-comparison thead th:last-child { color: var(--blue); }
+.s17-comparison tbody th { color: #53677e; font-size: 19px; font-weight: 500; line-height: 1.35; }
+.s17-comparison td { color: #647b93; font-size: 27px; font-weight: 650; text-align: center; white-space: nowrap; }
+.s17-comparison td.s17-reca { color: var(--blue); font-size: 31px; font-weight: 800; letter-spacing: -.025em; }
+.s17-comparison tbody tr:last-child th, .s17-comparison tbody tr:last-child td { border-bottom: 0; }
+.s17-summary .content-rule { flex: none; width: 100%; margin: 22px 0 17px; }
+.s17-summary .takeaway { font-size: 27px; line-height: 1.35; }

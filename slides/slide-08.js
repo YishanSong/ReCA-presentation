@@ -26,7 +26,8 @@
   const children = Array.from({ length: 4 }, (_, i) => document.getElementById('s8-child-' + (i + 1)));
   const clamp = value => Math.max(0, Math.min(1, value));
   const ease = (t, start, end) => { const u = clamp((t - start) / (end - start)); return u * u * (3 - 2 * u); };
-  const duration = 20;
+  const sceneDurationScale = 1.25;
+  const duration = 20 * sceneDurationScale;
   let lastState = null;
   let printing = false;
 
@@ -54,7 +55,9 @@
     token.dataset.kind = event.kind;
     token.style.display = 'none';
     (event.kind === 'progress' ? networkMessages : localMessages).appendChild(token);
-    return { ...event, element: path, length: path.getTotalLength(), token };
+    // Space the narrative out while preserving each packet's travel duration.
+    const start = event.start * sceneDurationScale;
+    return { ...event, start, end: start + event.end - event.start, element: path, length: path.getTotalLength(), token };
   });
 
   function stageAt(t) {
@@ -71,7 +74,7 @@
   }
 
   // A separate clock keeps the final explanation alive without replaying the
-  // 20-second story or moving its scrubber. All routes stay within the hierarchy.
+  // story or moving its scrubber. All routes stay within the hierarchy.
   // Child-link packets are smaller and lighter; the agent figures never fade.
   function flowToken(childLink) {
     const token = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -126,13 +129,13 @@
 
   function syncFlow(state) {
     if (!state) return;
-    const eligible = state.time >= 14.1 && SlideRuntime.active && !SlideRuntime.reducedMotion && !printing;
+    const eligible = state.time >= 14.1 * sceneDurationScale && SlideRuntime.active && !SlideRuntime.reducedMotion && !printing;
     summaryMessages.style.opacity = eligible ? '1' : '0';
     if (flowTimeline.rate !== state.rate) flowTimeline.setRate(state.rate);
     if (eligible && (state.playing || state.finished)) {
       if (!flowTimeline.playing) flowTimeline.play();
     } else if (flowTimeline.playing) flowTimeline.pause();
-    if (state.time < 14.1 && flowTimeline.time !== 0) flowTimeline.seek(0);
+    if (state.time < 14.1 * sceneDurationScale && flowTimeline.time !== 0) flowTimeline.seek(0);
     diagram.dataset.flowState = flowTimeline.playing ? 'playing' : 'paused';
   }
 
@@ -140,7 +143,9 @@
   // plan, feedback, opacity and message positions without resetting side effects.
   function render(state) {
     lastState = state;
-    const t = state.time;
+    // Scene pacing and message travel use separate clocks: longer scenes do
+    // not slow packets or the final, independently looping information flow.
+    const t = state.time / sceneDurationScale;
     const relocate = ease(t, 2.6, 3.75);
     const compact = ease(t, 3.95, 4.55);
     const childrenReveal = ease(t, 4.6, 5.35);
@@ -196,7 +201,7 @@
     parent.dataset.state = stage === 'plan' || stage === 'replan' ? 'planning' : t >= 6.5 ? 'planned' : 'idle';
     plan.dataset.active = stage === 'plan' || stage === 'replan' ? 'true' : 'false';
     children.forEach((child, i) => {
-      const planned = t >= 7.8 + i * .08;
+      const planned = state.time >= (7.05 + i * .08) * sceneDurationScale + .75;
       const reviewed = t >= 8.45 + i * .16;
       const accepted = i !== 2 || t >= 11.1;
       child.dataset.state = reviewed ? accepted ? 'yes' : 'no' : planned ? 'planned' : 'idle';
@@ -204,10 +209,10 @@
     });
 
     events.forEach(event => {
-      const active = t >= event.start && t < event.end;
+      const active = state.time >= event.start && state.time < event.end;
       event.token.style.display = active ? '' : 'none';
       if (!active) return;
-      const u = (t - event.start) / (event.end - event.start);
+      const u = (state.time - event.start) / (event.end - event.start);
       const point = event.element.getPointAtLength(event.length * (event.reverse ? 1 - u : u));
       event.token.setAttribute('cx', point.x.toFixed(3));
       event.token.setAttribute('cy', point.y.toFixed(3));
