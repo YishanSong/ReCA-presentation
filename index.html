@@ -108,6 +108,14 @@ body { background: #e5ebf2; }
     window.focus();
   }
 
+  function onForcedPageKeyDown(event) {
+    if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return;
+    // Capture these keys before focused controls can consume them.
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    showSlide(current + (event.key === 'ArrowDown' ? 1 : -1));
+  }
+
   function onKeyDown(event) {
     if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
     const target = event.target;
@@ -129,6 +137,7 @@ body { background: #e5ebf2; }
         const page = slide.contentDocument;
         if (!page) return;
         setSlideVideoActive(slide, slide.classList.contains('active'));
+        page.defaultView.addEventListener('keydown', onForcedPageKeyDown, true);
         page.addEventListener('keydown', onKeyDown);
         const title = page.querySelector('.slide-title');
         if (title) slide.title = title.textContent.trim();
@@ -140,6 +149,7 @@ body { background: #e5ebf2; }
       }
     });
   });
+  window.addEventListener('keydown', onForcedPageKeyDown, true);
   window.addEventListener('keydown', onKeyDown);
   window.addEventListener('resize', resize);
   resize();
