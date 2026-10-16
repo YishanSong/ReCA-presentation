@@ -4,51 +4,134 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>ReCA · Slide 20</title>
+<title>ReCA &middot; Slide 20</title>
 <link rel="stylesheet" href="slides.css">
 <link rel="stylesheet" href="animation.css">
-<link rel="stylesheet" href="slide-20.css">
+<link rel="stylesheet" href="slide-20.css?v=three-ideas">
 </head>
 <body>
 <div id="deck" role="group" aria-label="ReCA slide 20">
   <section class="slide active" data-slide="20" data-owner="B" aria-hidden="false">
-    <div class="kicker">05 / BEYOND RECA · ARBORIST</div>
-    <h1 class="slide-title">Beyond ReCA: Speculative Motion Planning</h1>
-    <main class="slide-content content-area content-grid">
-      <figure class="slide-figure s20-figure" data-animation-placeholder="ordered-speculation" aria-label="Original Arborist look-ahead planning architecture">
-        <p class="section-label s20-figure-heading">LOOK-AHEAD PLANNING ENGINE · ORIGINAL FIG. 9</p>
-        <div class="s20-diagram animation-diagram">
-          <img class="figure-image" src="../assets/images/pb-arborist-fig9.svg" alt="Arborist's per-tree reorder buffer connects issue, neighbor-query execution, completion, validation and in-order commit, with mismatch recovery.">
-          <span class="s20-stage-region animation-stage" data-stage="issue" aria-hidden="true"></span>
-          <span class="s20-stage-region animation-stage" data-stage="execute" aria-hidden="true"></span>
-          <span class="s20-stage-region animation-stage" data-stage="complete" aria-hidden="true"></span>
-          <span class="s20-stage-region animation-stage" data-stage="commit" aria-hidden="true"></span>
+    <div class="kicker">05 / BEYOND RECA &middot; RELATED IDEAS</div>
+    <h1 class="slide-title">Main Ideas</h1>
+    <main class="slide-content content-area s20-content">
+      <div class="s20-ideas">
+        <article class="s20-idea" data-paper="arborist" data-state="done">
+          <p class="section-label">MOTION PLANNING</p>
+          <h2><a href="https://arxiv.org/abs/2609.13420" target="_blank" rel="noreferrer">Arborist</a></h2>
+          <p class="s20-citation">Yaotian Liu et al. &middot; 2026 &middot; MICRO</p>
+          <svg class="s20-diagram" viewBox="0 0 400 270" role="img" aria-labelledby="s20-arborist-title s20-arborist-desc">
+            <title id="s20-arborist-title">Arborist: main idea</title>
+            <desc id="s20-arborist-desc">Two planning trees expand in parallel. Look-ahead neighbor queries compute together, while updates commit in order. This schematic represents computation, not multiple robots or measured counts.</desc>
+<g id="s20-trees" class="s20-tree" fill="none" stroke="#8ca6bd" stroke-width="2">
+  <path pathLength="1" d="M66 71L94 47L124 71M94 47V24"/>
+  <path pathLength="1" d="M246 71L274 47L304 71M274 47V24"/>
+</g>
+<g class="s20-tree-nodes"><circle cx="94" cy="24" r="6"/><circle cx="66" cy="71" r="6"/><circle cx="124" cy="71" r="6"/><circle cx="274" cy="24" r="6"/><circle cx="246" cy="71" r="6"/><circle cx="304" cy="71" r="6"/></g>
+<text class="s20-diagram-label" x="200" y="104">Parallel tree expansion</text>
+<text class="s20-diagram-small" x="8" y="141">Look-ahead</text>
+<g id="s20-lookahead">
+<g class="s20-block" data-state="ready"><rect x="145" y="119" width="62" height="36" rx="5"/><text x="176" y="143">q&#8321;</text></g>
+<g class="s20-block" data-state="ready"><rect x="221" y="119" width="62" height="36" rx="5"/><text x="252" y="143">q&#8322;</text></g>
+<g class="s20-block" data-state="ready"><rect x="297" y="119" width="62" height="36" rx="5"/><text x="328" y="143">q&#8323;</text></g>
+</g>
+<path class="s20-arrow" d="M252 164V187M247 181L252 187L257 181"/>
+<text class="s20-diagram-small" x="8" y="227">In-order commit</text>
+<g id="s20-commit">
+<g class="s20-block" data-state="accepted"><rect x="145" y="204" width="62" height="36" rx="5"/><text x="176" y="228">1</text></g>
+<g class="s20-block" data-state="accepted"><rect x="221" y="204" width="62" height="36" rx="5"/><text x="252" y="228">2</text></g>
+<g class="s20-block" data-state="accepted"><rect x="297" y="204" width="62" height="36" rx="5"/><text x="328" y="228">3</text></g>
+</g>
+          </svg>
+          <p class="s20-main-idea">Compute ahead in <strong>parallel</strong>;<br>commit updates <strong>in order</strong>.</p>
+        </article>
+        <article class="s20-idea" data-paper="flash" data-state="done">
+          <p class="section-label">VLA INFERENCE</p>
+          <h2><a href="https://arxiv.org/abs/2605.13778" target="_blank" rel="noreferrer">FLASH</a></h2>
+          <p class="s20-citation">Jiahui Niu et al. &middot; 2026 &middot; arXiv</p>
+          <svg class="s20-diagram" viewBox="0 0 400 270" role="img" aria-labelledby="s20-flash-title s20-flash-desc">
+            <title id="s20-flash-title">FLASH: main idea</title>
+            <desc id="s20-flash-desc">A lightweight draft model proposes actions. The main model Action Expert verifies them in parallel; the accepted prefix is kept. Full inference remains available as a fallback. Four actions and one rejection are schematic.</desc>
+<text class="s20-diagram-label" x="200" y="29">Lightweight draft model</text>
+<g id="s20-draft">
+<g class="s20-block" data-state="proposed"><rect x="40" y="48" width="62" height="36" rx="5"/><text x="71" y="72">a&#8321;</text></g>
+<g class="s20-block" data-state="proposed"><rect x="126" y="48" width="62" height="36" rx="5"/><text x="157" y="72">a&#8322;</text></g>
+<g class="s20-block" data-state="proposed"><rect x="212" y="48" width="62" height="36" rx="5"/><text x="243" y="72">a&#8323;</text></g>
+<g class="s20-block" data-state="proposed"><rect x="298" y="48" width="62" height="36" rx="5"/><text x="329" y="72">a&#8324;</text></g>
+</g>
+<path class="s20-arrow" d="M71 90V107M157 90V107M243 90V107M329 90V107"/>
+<g id="s20-verifier">
+  <rect class="s20-verifier-box" x="40" y="111" width="320" height="43" rx="5"/>
+  <text class="s20-diagram-label" x="200" y="138">Action Expert &middot; Parallel verify</text>
+</g>
+<path class="s20-arrow" d="M71 159V176M157 159V176M243 159V176M329 159V176"/>
+<g id="s20-verified">
+<g class="s20-block" data-state="accepted"><rect x="40" y="181" width="62" height="36" rx="5"/><text x="71" y="205">a&#8321;</text></g>
+<g class="s20-block" data-state="accepted"><rect x="126" y="181" width="62" height="36" rx="5"/><text x="157" y="205">a&#8322;</text></g>
+<g class="s20-block" data-state="accepted"><rect x="212" y="181" width="62" height="36" rx="5"/><text x="243" y="205">a&#8323;</text></g>
+<g class="s20-block" data-state="rejected"><rect x="298" y="181" width="62" height="36" rx="5"/><text x="329" y="205">a&#8324;</text></g>
+</g>
+<g id="s20-flash-checks" class="s20-checks"><text x="71" y="242">&#10003;</text><text x="157" y="242">&#10003;</text><text x="243" y="242">&#10003;</text><text class="s20-rejected" x="329" y="242">&times;</text></g>
+<g id="s20-fallback"><path class="s20-arrow" d="M361 133H389V256H336" stroke-dasharray="3 4"/><text class="s20-fallback-label" x="332" y="261">If needed: full inference</text></g>
+          </svg>
+          <p class="s20-main-idea"><strong>Draft actions cheaply</strong>;<br>verify them <strong>in parallel</strong>.</p>
+        </article>
+        <article class="s20-idea" data-paper="remac" data-state="done">
+          <p class="section-label">ASYNCHRONOUS EXECUTION</p>
+          <h2><a href="https://proceedings.iclr.cc/paper_files/paper/2026/file/c35834443b7881e782e52b3519fe27c7-Paper-Conference.pdf" target="_blank" rel="noreferrer">REMAC</a></h2>
+          <p class="s20-citation">Haoxuan Wang et al. &middot; 2026 &middot; ICLR</p>
+          <svg class="s20-diagram" viewBox="0 0 400 270" role="img" aria-labelledby="s20-remac-title s20-remac-desc">
+            <title id="s20-remac-title">REMAC: main idea</title>
+            <desc id="s20-remac-desc">The training diagram masks prefix loss, supervising corrective suffix actions. The separate runtime diagram keeps the already executed prefix and generates the remaining suffix. Masking is a training operation, not deletion of live actions. Block counts are schematic.</desc>
+<text class="s20-diagram-label" x="200" y="29">Masked action chunking</text>
+<text class="s20-diagram-small" x="12" y="65">Train</text>
+<g id="s20-mask">
+  <rect class="s20-masked" x="82" y="44" width="47" height="36" rx="4"/><rect class="s20-masked" x="139" y="44" width="47" height="36" rx="4"/>
+  <path class="s20-mask-cross" d="M94 53L117 72M117 53L94 72M151 53L174 72M174 53L151 72"/>
+  <text class="s20-note" x="134" y="108">Masked prefix loss</text>
+</g>
+<g id="s20-training-suffix">
+<g class="s20-block" data-state="proposed"><rect x="196" y="44" width="47" height="36" rx="5"/></g>
+<g class="s20-block" data-state="proposed"><rect x="253" y="44" width="47" height="36" rx="5"/></g>
+<g class="s20-block" data-state="proposed"><rect x="310" y="44" width="47" height="36" rx="5"/></g>
+</g>
+<text class="s20-note" x="277" y="108">Corrective suffix</text>
+<path class="s20-separator" d="M12 137H388"/>
+<text class="s20-diagram-label" x="200" y="171">Prefix-preserved sampling</text>
+<text class="s20-diagram-small" x="12" y="209">Run</text>
+<g id="s20-preserved">
+<g class="s20-block" data-state="accepted"><rect x="82" y="188" width="47" height="36" rx="5"/></g>
+<g class="s20-block" data-state="accepted"><rect x="139" y="188" width="47" height="36" rx="5"/></g>
+</g>
+<g id="s20-suffix">
+<g class="s20-block" data-state="proposed"><rect x="196" y="188" width="47" height="36" rx="5"/></g>
+<g class="s20-block" data-state="proposed"><rect x="253" y="188" width="47" height="36" rx="5"/></g>
+<g class="s20-block" data-state="proposed"><rect x="310" y="188" width="47" height="36" rx="5"/></g>
+</g>
+<text class="s20-note" x="134" y="252">Keep executed prefix</text>
+<text class="s20-note" x="277" y="252">Predict suffix</text>
+          </svg>
+          <p class="s20-main-idea">Learn <strong>corrective actions</strong>;<br>preserve the <strong>executed prefix</strong>.</p>
+        </article>
+      </div>
+      <div class="s20-playback">
+        <div class="s20-scrubber" id="s20-scrubber">
+          <div class="s20-rail" aria-hidden="true"></div>
+          <input id="s20-progress" type="range" min="0" max="100" step="0.1" value="100" aria-label="Related ideas animation progress">
+          <div class="s20-ticks" aria-hidden="true"><i style="left:0%"></i><i style="left:30%"></i><i style="left:60%"></i><i style="left:90%"></i><i style="left:100%"></i></div>
         </div>
-        <figcaption class="figure-caption">Original vector figure extracted from Liu et al., Arborist, Fig. 9.<br>A per-tree reorder buffer separates early computation from committed updates.</figcaption>
-        <!-- Animation foundation only: highlight issue → neighbor-query execution → READY → ordered commit.
-             Later show a validation mismatch flushing younger entries. Keep the original vector diagram static until implemented. -->
-      </figure>
-      <div class="slide-summary s20-summary">
-        <p class="section-label">RELATED WORK · MICRO 2026</p>
-        <h2 class="content-heading">Expose more parallel work</h2>
-        <p class="body-copy">FMT* <strong>multi-tree expansion</strong> plus speculative look-ahead.</p>
-        <hr class="content-rule">
-        <h2 class="content-heading">Validate before commit</h2>
-        <p class="body-copy">Keep sequential FMT* semantics through <strong>in-order commit</strong> and mismatch recovery.</p>
-        <hr class="content-rule">
-        <p class="section-label">DESIGN LESSON</p>
-        <p class="takeaway">Parallelize computation.<br><strong>Preserve planning correctness.</strong></p>
-        <p class="s20-related">Independent related system; integration with ReCA is not evaluated.</p>
+        <div class="animation-controls"><button class="animation-control" id="s20-speed" type="button" aria-label="Playback speed: 1 time. Click to change speed.">1&times;</button><button class="animation-control" id="s20-toggle" type="button" aria-label="Play the animation">Play</button></div>
       </div>
     </main>
-    <p class="source-note">Source: <a href="https://arxiv.org/abs/2609.13420" target="_blank" rel="noreferrer">Liu et al., Arborist: Algorithm-Hardware Co-Design for Fast and Efficient Motion Planning (2026)</a>, §§III, IV-D; Fig. 9.</p>
-    <aside hidden class="speaker-notes" lang="zh-CN">Arborist 是独立的后续相关研究，2026年MICRO接收，作者为Yaotian Liu、Lingyi Huang、Zishen Wan、Bo Yuan、Cheng Tan和Jeff (Jun) Zhang。来源版本为arXiv:2609.13420v1，2026-09-11；原始矢量图为PDF第8页图9。它研究FMT*采样式运动规划，不是ReCA多智能体系统中的已实现模块，也没有与ReCA的端到端任务运行时间直接比较。本页只讲可迁移的设计思想：通过安全的多树展开以及树内前瞻计算暴露并行性；前瞻阶段提前做只读的邻居查询，重排序缓冲区按序提交，在提交时重新校验父节点选择和当前树状态，若失配则清除较年轻的投机结果。原始图9显示Issue、Execution、Complete、Commit四阶段。未来动画仅需高亮这些现有基础元素，无需视频或重新画复杂算法。结论是加速不应破坏规划语义。</aside>
-    <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div>
+    <p class="source-note">Sources: <a href="https://arxiv.org/abs/2609.13420" target="_blank" rel="noreferrer">Arborist</a> &middot; <a href="https://arxiv.org/abs/2605.13778" target="_blank" rel="noreferrer">FLASH</a> &middot; <a href="https://proceedings.iclr.cc/paper_files/paper/2026/file/c35834443b7881e782e52b3519fe27c7-Paper-Conference.pdf" target="_blank" rel="noreferrer">REMAC</a></p>
+    <aside hidden class="speaker-notes" lang="en">Related ideas 1, 2, and 4 from Slide 19. Fifteen-second sequence with one main idea per paper, followed by a complete static view. Arborist expands FMT* trees in parallel; speculative read-only neighbor queries run ahead of validated, in-order updates. It does not represent multiple robots. FLASH drafts actions with a lightweight model and verifies them in parallel with the main Action Expert, retaining the accepted prefix. Full inference is available when no prefix survives or during fine adjustment; the fallback branch indicates an option, not a response to every rejection. REMAC masks prefix loss during training to learn corrective suffix actions. At runtime, prefix-preserved sampling keeps the executed overlap and predicts the suffix. Training masks never delete live actions. Block counts are schematic. These are independent related systems, not integrations evaluated in ReCA. Printing and reduced-motion show the complete view.</aside>
+    <!-- <div data-review-check style="position: absolute; right: 110px; bottom: 40px; color: #d63232; font-size: 22px; font-weight: 700; line-height: 1;">Check</div> -->
     <div class="slide-author" aria-label="Presentation authors"><span>Shurui Hu</span></div>
     <div class="slide-number">20</div>
   </section>
 </div>
 <script src="runtime.js"></script>
 <script src="animation.js"></script>
+<script src="slide-20.js?v=three-ideas"></script>
 </body>
 </html>
