@@ -35,12 +35,8 @@
                 </defs>
                 <text class="b-core" x="200" y="19" text-anchor="middle">Capability-Aware Task Allocation</text>
                 <g id="dyna-plan">
-                  <path class="b-line" d="M340 76V58H60V76" marker-end="url(#dyna-arrow)" />
+                  <path class="b-line" d="M316 90H285V58H60V76" marker-end="url(#dyna-arrow)" />
                   <path class="b-line" d="M201 58V76" marker-end="url(#dyna-arrow)" />
-                </g>
-                <g id="dyna-leader">
-                  <rect x="292" y="32" width="94" height="25" rx="4" class="b-green"/>
-                  <text x="339" y="50" text-anchor="middle" class="b-code b-success">Leader</text>
                 </g>
                 <g id="dyna-robot-0" transform="translate(60 100)">
                   <rect x="-22" y="-23" width="44" height="28" rx="6" fill="#fff" stroke="#5b91c7" stroke-width="2"/>
@@ -50,7 +46,7 @@
                   <circle cx="13" cy="35" r="5" fill="#647b93"/>
                 </g>
                 <text x="60" y="157" text-anchor="middle" class="b-small">Navigate</text>
-                <path class="b-line" d="M60 162V173" marker-end="url(#dyna-arrow)" />
+                <path id="dyna-assignment-0" class="b-line" d="M60 162V173" marker-end="url(#dyna-arrow)" />
                 <g id="dyna-task-0">
                   <rect class="b-node" x="5" y="178" width="110" height="34" rx="5"/>
                   <text x="60.0" y="201.0" text-anchor="middle">Locate</text>
@@ -62,12 +58,17 @@
                   <path d="M18 15L29 3L36 16M32 17L38 18" class="b-line" stroke-width="3"/>
                 </g>
                 <text x="200" y="157" text-anchor="middle" class="b-small">Manipulate</text>
-                <path class="b-line" d="M200 162V173" marker-end="url(#dyna-arrow)" />
+                <path id="dyna-assignment-1" class="b-line" d="M200 162V173" marker-end="url(#dyna-arrow)" />
                 <g id="dyna-task-1">
                   <rect class="b-node" x="145" y="178" width="110" height="34" rx="5"/>
                   <text x="200.0" y="201.0" text-anchor="middle">Pick</text>
                 </g>
                 <g id="dyna-robot-2" transform="translate(340 100)">
+                  <g id="dyna-leader">
+                    <path d="M0 -31V-23" stroke="#328576" stroke-width="2"/>
+                    <rect x="-47" y="-56" width="94" height="25" rx="4" class="b-green"/>
+                    <text x="0" y="-38" text-anchor="middle" class="b-critical b-success">Leader</text>
+                  </g>
                   <rect x="-22" y="-23" width="44" height="28" rx="6" fill="#fff" stroke="#5b91c7" stroke-width="2"/>
                   <path d="M-9 -10H-4M4 -10H9" stroke="#173d6a" stroke-width="3" stroke-linecap="round"/>
                   <rect x="-17" y="8" width="34" height="25" rx="5" class="b-node"/>
@@ -76,14 +77,19 @@
                   <path d="M18 15L29 3L36 16M32 17L38 18" class="b-line" stroke-width="3"/>
                 </g>
                 <text x="340" y="157" text-anchor="middle" class="b-small">Both</text>
-                <path class="b-line" d="M340 162V173" marker-end="url(#dyna-arrow)" />
+                <path id="dyna-assignment-2" class="b-line" d="M340 162V173" marker-end="url(#dyna-arrow)" />
                 <g id="dyna-task-2">
                   <rect class="b-node" x="285" y="178" width="110" height="34" rx="5"/>
                   <text x="340.0" y="201.0" text-anchor="middle">Carry</text>
                 </g>
+                <g id="dyna-target-origin"><rect x="253" y="126" width="14" height="12" rx="2" fill="none" stroke="#b5c9d8" stroke-dasharray="3 3"/></g>
+                <g id="dyna-target" transform="translate(260 132)">
+                  <text x="0" y="-19" text-anchor="middle" class="b-small">Target</text>
+                  <rect x="-7" y="-6" width="14" height="12" rx="2" fill="#78c5a8" stroke="#328576" stroke-width="1.8"/>
+                </g>
                 <text id="dyna-event" x="200" y="241" text-anchor="middle" class="b-small">Profiles &amp; proposals → Elect once</text>
               </svg>
-              <p class="beyond-description">Coordinate heterogeneous robots through capability-aware task allocation and reflective execution.</p>
+              <p class="beyond-description">Assign tasks by robot capability; reallocate when the goal changes.</p>
             </article>
             <article class="beyond-card" data-paper="thea" data-state="pending">
               <header>
@@ -113,17 +119,21 @@
                   <rect class="b-node" x="223" y="43" width="162" height="38" rx="5"/>
                   <text x="304.0" y="68.0" text-anchor="middle">grasp(object)</text>
                 </g>
-                <g id="thea-attempt">
-                  <path class="b-line" d="M21 194H175M41 189V169L72 141L104 155" stroke-width="4"/>
+                <g id="thea-attempt" transform="translate(0 12)">
+                  <path d="M21 194H175" fill="none" stroke="#647b93" stroke-width="2"/>
+                  <path id="thea-arm" d="M41 189V169L65 145L109 139" fill="none" stroke="#5b91c7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                   <g id="thea-gripper">
-                    <path class="b-line" d="M98 152L104 166L113 155" stroke-width="3"/>
+                    <rect x="97" y="139" width="24" height="13" rx="3" fill="#173d6a"/>
+                    <path id="thea-left-finger" d="M99 152V171H105" fill="none" stroke="#173d6a" stroke-width="3" stroke-linecap="round"/>
+                    <path id="thea-right-finger" d="M119 152V171H113" fill="none" stroke="#173d6a" stroke-width="3" stroke-linecap="round"/>
                   </g>
-                  <rect x="118" y="174" width="20" height="19" rx="3" class="b-green"/>
+                  <rect id="thea-object" x="118" y="174" width="20" height="19" rx="3" fill="#78c5a8" stroke="#328576" stroke-width="2.4"/>
+                  <g id="thea-failure"><circle cx="158" cy="163" r="10" fill="#f8eded" stroke="#b9787d"/><path d="M154 159L162 167M162 159L154 167" stroke="#b56166" stroke-width="2" stroke-linecap="round"/></g>
                 </g>
                 <path class="b-line" d="M304 84V113" marker-end="url(#thea-arrow)" />
                 <g id="thea-evaluator">
                   <rect class="b-node" x="224" y="119" width="162" height="39" rx="5"/>
-                  <text x="305.0" y="144.5" text-anchor="middle">Evaluator</text>
+                  <text x="305.0" y="144.5" text-anchor="middle" class="b-critical">Evaluator</text>
                 </g>
                 <text x="304" y="181" text-anchor="middle" class="b-small">Image + post-condition</text>
                 <path class="b-line" d="M174 179H205V140H219" marker-end="url(#thea-arrow)" />
@@ -135,7 +145,7 @@
                 <path id="thea-recovery" class="b-line" d="M214 218H8V82H48" marker-end="url(#thea-arrow)"/>
                 <text id="thea-retry" x="99" y="242" text-anchor="middle" class="b-small">Update state → Retry</text>
               </svg>
-              <p class="beyond-description">Track world state with scene graphs and evaluate physical action outcomes.</p>
+              <p class="beyond-description">Check each action against the observed outcome, not the command.</p>
             </article>
             <article class="beyond-card" data-paper="remac" data-state="pending">
               <header>
@@ -144,52 +154,58 @@
               </header>
               <svg viewBox="0 0 400 250" role="img" aria-labelledby="remac-title remac-desc">
                 <title id="remac-title">REMAC: delayed inference and prefix-preserved action chunks</title>
-                <desc id="remac-desc">The current chunk executes while the next is predicted from an earlier observation. Delay can cause intra-chunk mismatch; a chunk transition can be discontinuous. During training the delayed prefix is masked from the loss. During sampling the overlapping prefix is preserved and the remaining suffix is generated. Block counts are illustrative.</desc>
+                <desc id="remac-desc">The current chunk executes while the next is predicted from an earlier observation. Delay can cause intra-chunk mismatch; a chunk transition can be discontinuous. The separate offline training strip masks the delayed prefix from the training loss. The runtime timelines never mask or restore their live prefix: prefix-preserved sampling keeps the executed overlap and generates only the remaining suffix. Block counts are illustrative.</desc>
                 <defs>
                   <marker id="remac-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
                     <path d="M0 0L8 4L0 8Z" fill="#91a9bd"/>
                   </marker>
                 </defs>
                 <text class="b-core" x="200" y="19" text-anchor="middle">Masked Action Chunking</text>
-                <text x="18" y="51" class="b-small">Executing current chunk</text>
-                <rect id="remac-old-0" x="19" y="64" width="38" height="31" rx="3" class="b-node"/>
-                <rect id="remac-old-1" x="64" y="64" width="38" height="31" rx="3" class="b-node"/>
-                <rect id="remac-old-2" x="109" y="64" width="38" height="31" rx="3" class="b-node"/>
-                <rect id="remac-old-3" x="154" y="64" width="38" height="31" rx="3" class="b-node"/>
-                <rect id="remac-old-4" x="199" y="64" width="38" height="31" rx="3" class="b-node"/>
-                <rect id="remac-old-5" x="244" y="64" width="38" height="31" rx="3" class="b-node"/>
-                <rect id="remac-old-6" x="289" y="64" width="38" height="31" rx="3" class="b-node"/>
-                <rect id="remac-old-7" x="334" y="64" width="38" height="31" rx="3" class="b-node"/>
-                <path id="remac-playhead" d="M20 58V180" stroke="#2f70b3" stroke-width="2"/>
-                <text x="18" y="132" class="b-small">Predicting next chunk</text>
-                <g id="remac-next-0">
-                  <rect x="109" y="148" width="38" height="31" rx="3" class="b-node"/>
+                <text id="remac-runtime-label" x="18" y="45" class="b-critical">Inference (runtime)</text>
+                <text x="18" y="69" class="b-small">Executing current chunk</text>
+                <rect id="remac-old-0" x="19" y="77" width="38" height="24" rx="3" class="b-node"/>
+                <rect id="remac-old-1" x="64" y="77" width="38" height="24" rx="3" class="b-node"/>
+                <rect id="remac-old-2" x="109" y="77" width="38" height="24" rx="3" class="b-node"/>
+                <rect id="remac-old-3" x="154" y="77" width="38" height="24" rx="3" class="b-node"/>
+                <rect id="remac-old-4" x="199" y="77" width="38" height="24" rx="3" class="b-node"/>
+                <rect id="remac-old-5" x="244" y="77" width="38" height="24" rx="3" class="b-node"/>
+                <rect id="remac-old-6" x="289" y="77" width="38" height="24" rx="3" class="b-node"/>
+                <rect id="remac-old-7" x="334" y="77" width="38" height="24" rx="3" class="b-node"/>
+                <path id="remac-playhead" d="M20 75V103" stroke="#2f70b3" stroke-width="2"/>
+                <text id="remac-predict-label" x="16" y="136" class="b-small"><tspan x="16">Predicting</tspan><tspan x="16" dy="18">next chunk</tspan></text>
+                <g id="remac-next-0"><rect x="109" y="130" width="38" height="24" rx="3" class="b-node"/></g>
+                <g id="remac-next-1"><rect x="154" y="130" width="38" height="24" rx="3" class="b-node"/></g>
+                <g id="remac-next-2"><rect x="199" y="130" width="38" height="24" rx="3" class="b-node"/></g>
+                <g id="remac-next-3"><rect x="244" y="130" width="38" height="24" rx="3" class="b-node"/></g>
+                <g id="remac-next-4"><rect x="289" y="130" width="38" height="24" rx="3" class="b-node"/></g>
+                <g id="remac-next-5"><rect x="334" y="130" width="38" height="24" rx="3" class="b-node"/></g>
+                <g id="remac-delay"><path class="b-line" d="M109 106H199" marker-end="url(#remac-arrow)"/><text id="remac-delay-label" x="154" y="123" text-anchor="middle" class="b-warning">Delay</text></g>
+                <path id="remac-jump" d="M236 108L244 115L236 122" fill="none" stroke="#b56166" stroke-width="2.5"/>
+                <path id="remac-prefix" d="M109 157V163H239V157" fill="none" stroke="#328576" stroke-width="2"/>
+                <g id="remac-training" data-context="offline">
+                  <rect id="remac-training-panel" x="12" y="169" width="376" height="35" rx="4" fill="#f4f7fa" stroke="#d8e4ef"/>
+                  <text id="remac-training-label" x="20" y="183" class="b-critical">Training (offline)</text>
+                  <text x="20" y="201" class="b-small">Mask prefix loss</text>
+                  <g id="remac-train-0"><rect x="214" y="180" width="22" height="22" rx="2" class="b-node"/>
+                    <path d="M217 198L233 183M217 189L224 183" fill="none" stroke="#a9bfd2" stroke-width="1.2"/>
+                  </g>
+                  <g id="remac-train-1"><rect x="241" y="180" width="22" height="22" rx="2" class="b-node"/>
+                    <path d="M244 198L260 183M244 189L251 183" fill="none" stroke="#a9bfd2" stroke-width="1.2"/>
+                  </g>
+                  <g id="remac-train-2"><rect x="268" y="180" width="22" height="22" rx="2" class="b-node"/>
+                    <path d="M271 198L287 183M271 189L278 183" fill="none" stroke="#a9bfd2" stroke-width="1.2"/>
+                  </g>
+                  <g id="remac-train-3"><rect x="295" y="180" width="22" height="22" rx="2" class="b-node"/>
+                  </g>
+                  <g id="remac-train-4"><rect x="322" y="180" width="22" height="22" rx="2" class="b-node"/>
+                  </g>
+                  <g id="remac-train-5"><rect x="349" y="180" width="22" height="22" rx="2" class="b-node"/>
+                  </g>
                 </g>
-                <g id="remac-next-1">
-                  <rect x="154" y="148" width="38" height="31" rx="3" class="b-node"/>
-                </g>
-                <g id="remac-next-2">
-                  <rect x="199" y="148" width="38" height="31" rx="3" class="b-node"/>
-                </g>
-                <g id="remac-next-3">
-                  <rect x="244" y="148" width="38" height="31" rx="3" class="b-node"/>
-                </g>
-                <g id="remac-next-4">
-                  <rect x="289" y="148" width="38" height="31" rx="3" class="b-node"/>
-                </g>
-                <g id="remac-next-5">
-                  <rect x="334" y="148" width="38" height="31" rx="3" class="b-node"/>
-                </g>
-                <g id="remac-delay">
-                  <path class="b-line" d="M77 108H106" marker-end="url(#remac-arrow)"/>
-                  <text x="23" y="115" class="b-small b-warning">Delay</text>
-                </g>
-                <path id="remac-jump" d="M230 98L238 107L230 115L238 123" fill="none" stroke="#b56166" stroke-width="2.5"/>
-                <path id="remac-prefix" d="M109 186V193H239V186" fill="none" stroke="#328576" stroke-width="2"/>
-                <text id="remac-note-a" x="200" y="220" text-anchor="middle" class="b-small">Observation / execution mismatch</text>
-                <text id="remac-note-b" x="200" y="244" text-anchor="middle" class="b-small">Possible jump at chunk boundaries</text>
+                <text id="remac-note-a" x="200" y="221" text-anchor="middle" class="b-critical b-warning">Problem: delay mismatch · boundary jump</text>
+                <text id="remac-note-b" x="200" y="242" text-anchor="middle" class="b-critical b-success">Fix: preserve prefix, predict suffix</text>
               </svg>
-              <p class="beyond-description">Improve action consistency and continuity during asynchronous inference.</p>
+              <p class="beyond-description">Keep action chunks consistent while the next chunk is still being predicted.</p>
             </article>
           </div>
           <div class="beyond-scrubber">
@@ -198,9 +214,9 @@
             <input class="beyond-progress" type="range" min="0" max="100" step="0.01" value="0" aria-label="Related-work animation progress">
             <div class="beyond-ticks" aria-hidden="true">
               <i style="left:0%"></i>
-              <i style="left:28.5714%"></i>
-              <i style="left:57.1429%"></i>
-              <i style="left:85.7143%"></i>
+              <i style="left:30.3030%"></i>
+              <i style="left:60.6061%"></i>
+              <i style="left:90.9091%"></i>
               <i style="left:100%"></i>
             </div>
           </div>
@@ -213,22 +229,16 @@
           </div>
           <div class="beyond-lesson">
             <span class="section-label">DESIGN LESSON</span>
-            <p>Real-time execution also needs <strong>coordination, feedback, and robustness.</strong>
+            <p>Efficient embodied AI needs <strong>both fast computation and reliable execution.</strong>
             </p>
           </div>
         </main>
-        <p class="source-note">Teaching schematics · <a href="https://arxiv.org/abs/2606.14882" target="_blank" rel="noreferrer">DynaHMRC (2026), §3 / Figs. 2, 11–12</a> · <a href="https://arxiv.org/abs/2608.11246" target="_blank" rel="noreferrer">Thea (2026), §4 / Figs. 6–7</a> · <a href="https://proceedings.iclr.cc/paper_files/paper/2026/file/c35834443b7881e782e52b3519fe27c7-Paper-Conference.pdf" target="_blank" rel="noreferrer">REMAC (ICLR 2026), §4 / Fig. 1</a>
+        <p class="source-note">Adapted from <a href="https://arxiv.org/abs/2606.14882" target="_blank" rel="noreferrer">DynaHMRC (2026), §3 / Figs. 2, 11–12</a> · <a href="https://arxiv.org/abs/2608.11246" target="_blank" rel="noreferrer">Thea (2026), §4 / Figs. 6–7</a> · <a href="https://proceedings.iclr.cc/paper_files/paper/2026/file/c35834443b7881e782e52b3519fe27c7-Paper-Conference.pdf" target="_blank" rel="noreferrer">REMAC (ICLR 2026), §4 / Fig. 1</a>
         </p>
         <div class="slide-author" aria-label="Presentation authors">
           <span>Yishan Song</span>
         </div>
         <div class="slide-number">22</div>
-        <aside hidden aria-label="Presenter notes" lang="zh-CN">
-          <p>本页为独立可靠性研究方向，不是集成到ReCA的统一系统，也未直接比较不同基准结果。借Alice和Bob可说明协作与反馈的重要性，但不要将教学例子的角色当作这些论文的实验平台。</p>
-          <p>DynaHMRC §3、图2和附录图11–12：先自述能力、提出协作计划并竞选，再一次性选出领导者。领导身份在任务执行期固定；机器人仍根据本地观测、记忆、反馈产生动作。环境或目标变化时，反思更新任务分配。图中导航、操作、两者兼具的机器人及任务是简化示意，不表示反复选主或总LLM调用必然更少。</p>
-          <p>Thea §4.1–4.2、图6–7：Scene Graph as Context提供世界状态，工具调用后独立评估器只读当前观察与工具后置条件，返回process、success或failure及证据/原因。此处演示失败后更新状态再决定恢复；对象留在桌面，不以模型自报当作成功。评估器也可能出错。ReCA本身已有状态监控与重规划，Thea突出结构化执行接口。</p>
-          <p>REMAC为ICLR 2026的Real-Time Robot Execution with Masked Action Chunking，非同名多智能体论文。§3–4、图1区分推理延迟引起的块内观察/执行不一致与块间轨迹跳变。训练时按延迟掩蔽未实际执行的前缀损失，并用自条件课程和残差对齐适配策略；采样时保留既有重叠前缀，仅生成余下后缀。示意块数和时间间距不代表实验参数，也非所有失败或安全风险都消除。</p>
-        </aside>
       </section>
     </div>
     <script src="runtime.js">

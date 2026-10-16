@@ -5,14 +5,18 @@
 .beyond-question .section-label { flex: 0 0 auto; font-size: 15px; }
 .beyond-question p { margin: 0; color: var(--navy); font-size: 24px; font-weight: 650; line-height: 1.35; }
 .beyond-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 17px; }
-.beyond-card { min-width: 0; height: 420px; padding: 20px; border: 1px solid #d8e4ef; border-radius: 9px; background: #fff; }
-.beyond-card[data-state="active"] { border-color: #80a9d0; }
+.beyond-card { min-width: 0; height: 420px; padding: 19px; border: 2px solid #d8e4ef; border-radius: 9px; background: #fff; }
+.beyond-card[data-state="active"] { border-color: var(--blue); opacity: 1; }
+.beyond-card[data-state="pending"] { opacity: .5; }
+.beyond-card[data-state="done"] { opacity: 1; }
 .beyond-category { margin: 0; color: var(--blue); font-size: 13px; font-weight: 800; letter-spacing: .08em; line-height: 1.4; }
 .beyond-card h2 { margin: 3px 0 7px; font-size: 31px; line-height: 1.2; font-weight: 750; letter-spacing: -.02em; }
 .beyond-card svg { display: block; width: 100%; height: 244px; overflow: visible; }
 .beyond-card svg text { font-family: inherit; fill: var(--navy); font-size: 19px; font-weight: 600; }
 .beyond-card svg .b-core { font-size: 17px; fill: #53677e; font-weight: 650; }
 .beyond-card svg .b-small { font-size: 16px; font-weight: 500; fill: #647b93; }
+.beyond-card svg .b-critical { font-size: 20px; font-weight: 650; fill: #53677e; }
+#flash-fallback { stroke: #5b91c7; stroke-width: 2.2; }
 .beyond-card svg .b-code { font-size: 17px; }
 .beyond-card svg .b-success { fill: #328576; }
 .beyond-card svg .b-warning { fill: #b56166; }
@@ -38,10 +42,18 @@
 .beyond-status { margin: 0; color: var(--blue); font-size: 18px; line-height: 1.3; font-weight: 650; }
 .beyond-toggle { min-width: 77px; }
 .beyond-speed { min-width: 53px; }
-.beyond-lesson { display: flex; align-items: baseline; gap: 18px; margin-top: 14px; padding-top: 13px; border-top: 1px solid #d8e4ef; }
+.beyond-lesson { display: flex; align-items: baseline; gap: 18px; margin-top: 9px; padding-top: 8px; border-top: 1px solid #d8e4ef; }
 .beyond-lesson .section-label { flex: 0 0 auto; font-size: 15px; }
 .beyond-lesson p { margin: 0; color: var(--navy); font-size: 25px; line-height: 1.25; font-weight: 750; letter-spacing: -.015em; }
 .beyond-lesson strong { color: var(--blue); font-weight: 800; }
 .beyond-slide > .source-note { font-size: 14px; }
 .beyond-slide .source-note a { text-underline-offset: 3px; }
 @media print { .beyond-scrubber, .beyond-transport { display: none; } .beyond-card { border-color: #d8e4ef; } }
+
+/* Slide 21 alone introduces the model interface before the three mechanisms. */
+.beyond-slide[data-slide="21"] .slide-content { top: 185px; }
+.s21-context { margin: 4px 0 0; color: #53677e; font-size: 19px; line-height: 26px; }
+.s21-context strong { color: #173d6a; font-weight: 750; }
+.s21-context span { color: #647b93; }
+.beyond-slide[data-slide="21"] .beyond-card { height: 412px; }
+.beyond-slide[data-slide="21"] .beyond-card svg { height: 236px; }

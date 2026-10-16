@@ -1,282 +1,72 @@
-
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-
 <title>ReCA · Slide 05</title>
 <link rel="stylesheet" href="slides.css">
-
-<style>
-/* =========================================
-   SLIDE 05 — RECA CROSS-LAYER OVERVIEW
-   ========================================= */
-
-/* Custom content position */
-
-.slide[data-slide="5"] .slide-content {
-  top: 246px;
-  bottom: 100px;
-}
-
-/* =========================================
-   MAIN TWO-COLUMN LAYOUT
-   ========================================= */
-
-.s5-layout {
-  width: 100%;
-  height: 100%;
-
-  display: grid;
-  grid-template-columns: minmax(0, 1030px) minmax(0, 1fr);
-  column-gap: 32px;
-  align-items: center;
-}
-
-/* =========================================
-   LEFT — ORIGINAL METHODOLOGY FIGURE
-   ========================================= */
-
-.s5-figure {
-  margin: 0;
-  min-width: 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.s5-figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 460px;
-  object-fit: contain;
-}
-
-.s5-figure figcaption {
-  margin-top: 13px;
-
-  color: #8090a3;
-  font-size: 15px;
-  line-height: 1.35;
-  text-align: center;
-}
-
-/* =========================================
-   RIGHT — ACADEMIC SUMMARY
-   ========================================= */
-
-.s5-summary {
-  min-width: 0;
-
-  padding-left: 27px;
-  border-left: 2px solid #d8e4ef;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 14px;
-}
-
-/* Section labels */
-
-.s5-label {
-  color: #2f70b3;
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  line-height: 1.35;
-}
-
-/* Research question */
-
-.s5-question {
-  margin: 0;
-
-  color: #173d6a;
-  font-size: 29px;
-  font-weight: 760;
-  line-height: 1.3;
-}
-
-.s5-question em {
-  color: #2f70b3;
-  font-style: normal;
-}
-
-/* Section divider */
-
-.s5-divider {
-  height: 1px;
-  background: #d8e4ef;
-  margin: 4px 0;
-}
-
-/* ReCA's approach */
-
-.s5-approach {
-  margin: 0;
-
-  color: #173d6a;
-  font-size: 25px;
-  font-weight: 730;
-  line-height: 1.34;
-}
-
-.s5-approach strong {
-  color: #2f70b3;
-  font-weight: 800;
-}
-
-/* Key insight */
-
-.s5-insight {
-  margin: 0;
-
-  color: #173d6a;
-  font-size: 25px;
-  font-weight: 740;
-  line-height: 1.34;
-}
-
-.s5-insight strong {
-  color: #2f70b3;
-  font-weight: 800;
-}
-</style>
+<link rel="stylesheet" href="animation.css">
+<link rel="stylesheet" href="slide-05.css">
 </head>
-
 <body>
-
 <div id="deck" role="group" aria-label="ReCA slide 5">
-
-  <section
-    class="slide active"
-    data-slide="5"
-    data-owner="A"
-    aria-hidden="false"
-  >
-
-    <!-- =========================
-         SECTION HEADING
-         ========================= -->
-
-    <div class="kicker">
-      02 / RECA OVERVIEW · CROSS-LAYER OVERVIEW
-    </div>
-
-    <!-- =========================
-         MAIN TITLE
-         ========================= -->
-
-    <h1 class="slide-title">
-      ReCA: Optimize the Entire Mission
-    </h1>
-
+  <section class="slide active" data-slide="5" data-owner="A" data-stage="overview" data-phase="complete" aria-hidden="false">
+    <div class="kicker">02 / RECA OVERVIEW · CROSS-LAYER OVERVIEW</div>
+    <h1 class="slide-title">ReCA: Optimize the Entire Mission</h1>
     <main class="slide-content">
-
       <div class="s5-layout">
-
-        <!-- =========================
-             LEFT — METHODOLOGY
-             ========================= -->
-
-        <figure class="s5-figure">
-
-          <img
-            src="../assets/images/ReCA_Methodology.svg"
-            alt="ReCA methodology overview: four system challenges matched to algorithm, system, and hardware co-design solutions."
-          >
-
-          <figcaption>
-            Wan et al., ASPLOS 2025 Presentation · Slide 35
-          </figcaption>
-
+        <figure class="s5-figure" aria-labelledby="s5-stage-title" aria-describedby="s5-source">
+          <div class="s5-stage-heading" aria-live="polite" aria-atomic="true">
+            <span id="s5-stage-label">FULL OVERVIEW</span>
+            <span id="s5-stage-title">Algorithm, system, and hardware work together</span>
+          </div>
+          <div class="s5-diagram">
+            <img class="s5-original" src="../assets/images/ReCA_Methodology.svg" width="1807" height="746" alt="Wan's original methodology overview. Challenge 1: long planning and communication latency, addressed by local LLM processing and planning-guided multi-step execution at the Algorithm level. Challenge 2: low cooperative efficiency and memory inconsistency, addressed by persistent and temporary memory at the System level. Challenge 3: limited scalability with many agents, addressed by hierarchical centralized and decentralized cooperative planning at the System level. Challenge 4: sensitivity of low-level planning and execution, addressed by an adaptive A* planning accelerator with accelerator-GPU interaction at the Hardware level.">
+            <!-- Native image coordinates keep every overlay aligned without cropping the source. -->
+            <svg class="s5-overlay" viewBox="0 0 1807 746" aria-hidden="true" focusable="false">
+              <defs id="s5-spotlight-masks"></defs>
+              <g id="s5-spotlight-layers"></g>
+            </svg>
+          </div>
+          <div class="s5-scrubber" id="s5-scrubber">
+            <div class="s5-range-rail" aria-hidden="true"></div>
+            <input class="s5-range" id="s5-time" type="range" min="0" max="100" step="0.1" value="100" aria-label="Methodology animation progress">
+            <div class="s5-range-ticks" aria-hidden="true">
+              <span style="left:0%"></span><span style="left:21.1765%"></span><span style="left:42.3529%"></span><span style="left:63.5294%"></span><span style="left:84.7059%"></span><span style="left:100%"></span>
+            </div>
+          </div>
+          <div class="s5-playback">
+            <span class="s5-playback-note">Challenge → Key Idea</span>
+            <div class="animation-controls">
+              <button class="animation-control" id="s5-speed" type="button" aria-label="Playback speed: 1 times. Click to change speed.">1×</button>
+              <button class="animation-control" id="s5-toggle" type="button" aria-label="Replay the methodology animation">Replay</button>
+            </div>
+          </div>
         </figure>
-
-        <!-- =========================
-             RIGHT — RESEARCH SUMMARY
-             ========================= -->
-
-        <aside class="s5-summary">
-
-          <!-- Research Question -->
-
-          <div class="s5-label">
-            RESEARCH QUESTION
-          </div>
-
-          <h2 class="s5-question">
-            How can Bob and the team
-            <em>finish faster?</em>
-          </h2>
-
-          <div class="s5-divider"></div>
-
-          <!-- ReCA's Approach -->
-
-          <div class="s5-label">
-            RECA'S APPROACH
-          </div>
-
-          <p class="s5-approach">
-            Match each bottleneck to a
-            <strong>cross-layer solution.</strong>
-          </p>
-
-          <div class="s5-divider"></div>
-
-          <!-- Key Insight -->
-
-          <div class="s5-label">
-            KEY INSIGHT
-          </div>
-
-          <p class="s5-insight">
-            Optimize the
-            <strong>entire mission</strong>,
-            not just one LLM call.
-          </p>
-
+        <aside class="s5-summary" aria-label="Research summary">
+          <section>
+            <div class="s5-label">RESEARCH QUESTION</div>
+            <h2 class="s5-question">How can Bob and the team <em>finish faster?</em></h2>
+          </section>
+          <section>
+            <div class="s5-label">RECA'S APPROACH</div>
+            <p class="s5-approach">Match each bottleneck to a <strong>cross-layer solution.</strong></p>
+          </section>
+          <section>
+            <div class="s5-label">KEY INSIGHT</div>
+            <p class="s5-insight">Optimize the <strong>entire mission</strong>, not just one LLM call.</p>
+          </section>
         </aside>
-
       </div>
-
     </main>
-
-    <!-- =========================
-         PAGE NUMBER
-         ========================= -->
-
+    <p class="source-note" id="s5-source">Zishen Wan, ASPLOS 2025 presentation, Slide 35 · ReCA §§3.4, 4, 6.2.</p>
     <div class="slide-author" aria-label="Presentation authors"><span>Yishan Song</span></div>
     <div class="slide-number">5</div>
-
   </section>
-
 </div>
-
-<script>
-(function () {
-  const deck = document.getElementById('deck');
-
-  function resize() {
-    const scale = Math.min(
-      window.innerWidth / 1600,
-      window.innerHeight / 900
-    );
-
-    deck.style.transform =
-      `translate(-50%, -50%) scale(${scale})`;
-  }
-
-  window.addEventListener('resize', resize);
-  resize();
-})();
-</script>
-
+<script src="runtime.js"></script>
+<script src="animation.js"></script>
+<script src="slide-05.js"></script>
 </body>
 </html>

@@ -93,8 +93,9 @@
 
   function storyAt(t) {
     if (t < 1.3) return 'A shared mission';
-    if (t < 4.5) return 'Discovering the plate';
-    if (t < 7.8) return 'Sharing the task';
+    if (t < 3.1) return 'Discovering the plate';
+    if (t < 4.5) return 'Recall: Bob spotted pears';
+    if (t < 7.8) return 'Request: fetch one pear';
     if (t < 11.5) return 'Bob approaches the pear';
     if (t < 13.1) return 'Bob picks up the pear';
     if (t < 14.6) return 'Pear retrieved';

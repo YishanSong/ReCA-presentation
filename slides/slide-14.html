@@ -19,7 +19,7 @@
         <figure class="s14-figure">
           <svg class="s14-scene" id="s14-scene" viewBox="0 0 1000 525" role="img" aria-labelledby="s14-svg-title s14-svg-desc">
             <title id="s14-svg-title">A-star grid search and binary min heap</title>
-            <desc id="s14-svg-desc">Bob stays at B5 while A-star computes a ten-move route to G2. A binary min heap selects the next node, neighbors receive actual costs, and insertions and swaps update the frontier. Search stops when the goal is popped, leaving other frontier nodes unexpanded.</desc>
+            <desc id="s14-svg-desc">Bob stays at B5 while A-star computes a ten-move route to G2. A binary min heap selects the next node. Proposed neighbor routes are compared with stored best costs; worse routes are ignored without changing the heap entry. Insertions and swaps update the frontier. Search stops when the goal is popped, leaving other frontier nodes unexpanded.</desc>
             <defs>
               <marker id="s14-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#91a9bd"/></marker>
             </defs>
@@ -37,12 +37,14 @@
               <rect x="339" y="429" width="15" height="15" fill="#8193A4"/><text x="362" y="442">Blocked</text>
             </g>
             <text x="510" y="30" class="s14-formula">f(n) = g(n) + h(n)</text>
-            <text id="s14-cost-node" x="510" y="65" class="s14-cost-detail"></text>
-            <text id="s14-cost-value" x="510" y="97" class="s14-cost-value"></text>
-            <text x="510" y="134" class="s14-chart-heading">Min Heap / Priority Queue</text>
+            <text x="510" y="55" class="s14-cost-guide">g: moves so far · h: estimated moves left</text>
+            <text id="s14-cost-node" x="510" y="84" class="s14-cost-detail"></text>
+            <text id="s14-cost-value" x="510" y="112" class="s14-cost-value"></text>
+            <text id="s14-cost-decision" x="510" y="138" class="s14-cost-decision"></text>
+            <text x="510" y="172" class="s14-chart-heading">Min Heap / Priority Queue</text>
             <g id="s14-heap-edges"></g>
             <g id="s14-heap-nodes"></g>
-            <text id="s14-heap-count" x="750" y="391" text-anchor="middle" class="s14-chart-small"></text>
+            <text id="s14-heap-count" x="750" y="399" text-anchor="middle" class="s14-chart-small"></text>
             <text id="s14-operation" x="750" y="422" text-anchor="middle" class="s14-operation"></text>
             <text id="s14-completion" x="750" y="449" text-anchor="middle" class="s14-completion" opacity="0">Goal popped → Path found</text>
             <text id="s14-remaining" x="750" y="471" text-anchor="middle" class="s14-remaining" opacity="0">Remaining frontier nodes are not expanded</text>
@@ -58,11 +60,11 @@
             <button class="animation-control" id="s14-speed" type="button">1.5×</button>
             <button class="animation-control" id="s14-toggle" type="button">Play</button>
           </div>
-          <figcaption>Schematic A* search visualization · ReCA §§6.2–6.3</figcaption>
+          <figcaption>Adapted from ReCA §§6.2–6.3</figcaption>
         </figure>
         <aside class="s14-summary" aria-label="Research summary">
           <div class="s14-label">RESEARCH QUESTION</div>
-          <h2 class="s14-question">Bob knows his destination. Why is A* search inefficient on <em>general-purpose CPUs and GPUs?</em></h2>
+          <h2 class="s14-question">Why is Bob’s A* search costly on <em>general-purpose CPUs and GPUs?</em></h2>
           <div class="s14-divider"></div>
           <div class="s14-label">COMPUTATIONAL CHALLENGES</div>
           <div class="s14-challenges">
@@ -77,7 +79,10 @@
           </div>
           <div class="s14-divider"></div>
           <div class="s14-label">KEY FINDING</div>
-          <p class="s14-finding">A* is poorly matched to <strong>conventional GPU-style parallel execution.</strong></p>
+          <div class="s14-finding">
+            <p><strong>CPU:</strong> repeated heap and memory operations.</p>
+            <p><strong>GPU:</strong> dependent iterations limit parallelism.</p>
+          </div>
         </aside>
       </div>
     </main>
